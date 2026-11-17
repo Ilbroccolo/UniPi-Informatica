@@ -1,0 +1,141 @@
+{
+  "corso": "Laurea Triennale in Informatica",
+  "ateneo": "Università di Pisa (UniPi)",
+  "studente": "Joseph Zucchelli (@Ilbroccolo)",
+  "materie": [
+    {
+      "id": "analisi-matematica",
+      "anno": 1,
+      "semestre": 1,
+      "materia": "Analisi Matematica",
+      "docenti": ["Prof. Carlo Romano Grisanti", "Prof.ssa Elisabetta Chiodaroli"],
+      "modalita_esame": "Test a risposta multipla / Scritto + Orale",
+      "stato": "Completato / Appello",
+      "cartella": "Anno-1/Analisi-Matematica",
+      "argomenti_chiave": [
+        "Limiti e continuità",
+        "Derivabilità (Rolle, Lagrange, Cauchy)",
+        "Integrali definiti, indefiniti e impropri",
+        "Serie numeriche e polinomi di Taylor",
+        "Equazioni differenziali ordinarie (ODE I e II ordine)"
+      ],
+      "note_esame": "Presenti dossier e schemi rapidi + simulazioni d'esame."
+    },
+    {
+      "id": "algebra-lineare",
+      "anno": 1,
+      "semestre": 1,
+      "materia": "Algebra Lineare",
+      "docenti": [],
+      "modalita_esame": "Scritto + Orale",
+      "stato": "Completato",
+      "cartella": "Anno-1/Algebra-Lineare",
+      "argomenti_chiave": [
+        "Vettori e matrici",
+        "Sistemi lineari ed eliminazione di Gauss",
+        "Spazi vettoriali e basi",
+        "Applicazioni lineari",
+        "Autovalori, diagonalizzazione e prodotti scalari"
+      ],
+      "note_esame": "Disponibile Bibbia LaTeX completa ed eserciziario."
+    },
+    {
+      "id": "programmazione",
+      "anno": 1,
+      "semestre": 1,
+      "materia": "Programmazione",
+      "docenti": [],
+      "modalita_esame": "Scritto / Pratico + Orale",
+      "stato": "Completato",
+      "cartella": "Anno-1/Programmazione",
+      "argomenti_chiave": [
+        "Fondamenti di programmazione",
+        "Strutture di controllo e funzioni",
+        "Ricorsione e strutture dati base"
+      ],
+      "note_esame": "Appunti ed esercizi raccolti dal 1° anno."
+    },
+    {
+      "id": "laboratorio-1",
+      "anno": 1,
+      "semestre": 1,
+      "materia": "Laboratorio 1",
+      "docenti": [],
+      "modalita_esame": "Prova pratica / Progetto",
+      "stato": "Completato",
+      "cartella": "Anno-1/Laboratorio-1",
+      "argomenti_chiave": [
+        "JavaScript",
+        "Flusso di controllo",
+        "Problemi algoritmici pratici"
+      ],
+      "note_esame": "Esercitazioni pratiche in JavaScript."
+    },
+    {
+      "id": "algoritmica",
+      "anno": 1,
+      "semestre": 2,
+      "materia": "Algoritmica",
+      "docenti": [],
+      "modalita_esame": "Scritto + Orale",
+      "stato": "Completato",
+      "cartella": "Anno-1/Algoritmica",
+      "argomenti_chiave": [
+        "Complessità asintotica",
+        "Algoritmi di ordinamento (MergeSort, QuickSort, ecc.)",
+        "Alberi, grafi e programmazione dinamica"
+      ],
+      "note_esame": "Disponibile Bibbia_Programmazione_Algoritmica.pdf e log errori."
+    },
+    {
+      "id": "architettura-elaboratori",
+      "anno": 1,
+      "semestre": 2,
+      "materia": "Architettura degli Elaboratori",
+      "docenti": [],
+      "modalita_esame": "Scritto + Orale",
+      "stato": "Completato",
+      "cartella": "Anno-1/Architettura-Elaboratori",
+      "argomenti_chiave": [
+        "Rappresentazione binaria e algebra booleana",
+        "Circuiti combinatori e sequenziali",
+        "Assembly e architettura CPU"
+      ],
+      "note_esame": "Dispense ed esercizi del 2° semestre."
+    },
+    {
+      "id": "paradigmi-di-programmazione",
+      "anno": 2,
+      "semestre": 1,
+      "materia": "Paradigmi di Programmazione",
+      "docenti": ["Prof. Milazzo"],
+      "modalita_esame": "Scritto + Orale",
+      "stato": "In corso",
+      "cartella": "Anno-2/Paradigmi-di-Programmazione",
+      "argomenti_chiave": [
+        "Semantica operazionale e denotazionale",
+        "Lambda-calcolo non tipato",
+        "Sistemi di tipi e Lambda-calcolo tipato"
+      ],
+      "note_esame": "Disponibili Tomo Master LaTeX, eserciziario risolto e dispense ufficiali."
+    },
+    {
+      "id": "ricerca-operativa",
+      "anno": 2,
+      "semestre": 1,
+      "materia": "Ricerca Operativa",
+      "docenti": ["Prof. Luca Mencarelli"],
+      "modalita_esame": "Compitini (parziali) / Scritto + Orale",
+      "stato": "In corso",
+      "cartella": "Anno-2/Ricerca-Operativa",
+      "argomenti_chiave": [
+        "Modellazione PL e PLI",
+        "Risoluzione grafica e poliedri",
+        "Metodo del Simplesso, Due Fasi e Big-M",
+        "Dualità, scarti complementari (KKT) e analisi di sensitività",
+        "Grafi, flusso massimo (Ford-Fulkerson), Branch & Bound, TSP"
+      ],
+      "note_esame": "1° Compitino (metà novembre) su Modellazione e Grafi; disponibili Bibbia LaTeX, formulari e 24 lezioni in Markdown."
+    }
+  ]
+}
