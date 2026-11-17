@@ -1,0 +1,100 @@
+\section{Sistemi Lineari e Gauss}
+\emph{[Rif. Lezione 1, Lezione 2 e 3]}
+
+\subsection{Concetti Introduttivi (Lezione 1)}
+
+\subsubsection{Premesse Fondamentali}
+Salvo esplicito avviso contrario, supponiamo sempre di lavorare in $\mathbb{R}$ (insieme dei numeri reali).
+
+\subsubsection{Equazioni Lineari}
+\textbf{Definizione:} Un'equazione lineare è un'equazione di I grado (in cui l'incognita compare al grado 1).
+
+\paragraph{Caso 1: Equazioni in una variabile}
+Forma normale: $ax + b = 0$.
+\begin{itemize}
+    \item Se $a \neq 0 \implies$ \textbf{1 soluzione}: $x = -\frac{b}{a}$.
+    \item Se $a = 0$ e $b \neq 0 \implies$ \textbf{Impossibile}.
+    \item Se $a = 0$ e $b = 0 \implies$ \textbf{Indeterminata} ($\forall x \in \mathbb{R}$).
+\end{itemize}
+
+\paragraph{Caso 2: Equazioni in due variabili}
+Esempio: $x + y = 1$.
+Soluzioni: $\{ (t, 1-t) \mid t \in \mathbb{R} \}$.
+\textbf{Interpretazione Geometrica:} I punti di una retta.
+
+\subsection{Sistemi di Equazioni Lineari}
+\textbf{Definizione:} Insieme di equazioni che devono essere soddisfatte \textbf{contemporaneamente}.
+
+\subsubsection{Interpretazione Geometrica (Sistemi $2 \times 2$)}
+Cercare l'intersezione tra due rette.
+\begin{center}
+\begin{tabular}{ccc}
+\toprule
+\textbf{Configurazione} & \textbf{Soluzioni} & \textbf{Esempio} \\
+\midrule
+\textbf{Rette Incidenti} & \textbf{1 Soluzione} & $\begin{cases} x+y=1 \\ 2x-y=0 \end{cases}$ \\
+\midrule
+\textbf{Rette Parallele} & \textbf{0 Soluzioni} & $\begin{cases} x+y=1 \\ x+y=2 \end{cases}$ \\
+\midrule
+\textbf{Rette Coincidenti} & \textbf{$\infty$ Soluzioni} & $\begin{cases} x+y=1 \\ 2x+2y=2 \end{cases}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Generalizzazione}
+Un sistema lineare può essere:
+\begin{enumerate}
+    \item \textbf{Possibile (Compatibile):}
+    \begin{itemize}
+        \item 1 Soluzione unica.
+        \item $\infty$ Soluzioni.
+    \end{itemize}
+    \item \textbf{Impossibile:} 0 Soluzioni.
+\end{enumerate}
+
+\section{Algoritmo di Eliminazione di Gauss}
+
+\subsection{Sistemi Equivalenti}
+Due sistemi si dicono \textbf{EQUIVALENTI} se hanno lo stesso insieme di soluzioni.
+
+\begin{concept}{Sistemi Triangolari}
+I sistemi triangolari superiori sono facili da risolvere con la \textbf{Sostituzione a Ritroso}.
+\end{concept}
+
+\subsection{Le 3 Mosse di Gauss}
+Operazioni lecite sulle righe della matrice completa $(A|b)$:
+\begin{enumerate}
+    \item[(I)] Scambiare due righe ($R_i \leftrightarrow R_j$).
+    \item[(II)] Moltiplicare una riga per uno scalare $\lambda \neq 0$ ($R_i \to \lambda R_i$).
+    \item[(III)] Sommare a una riga un multiplo di un'altra ($R_i \to R_i + k R_j$).
+\end{enumerate}
+
+\subsection{Esempi Pratici}
+
+\subsubsection{Esempio 1: Sistema $3 \times 3$ Completo}
+$$ \begin{cases} x+y+z=6 \\ 2x+y-z=3 \\ -x-y+2z=5 \end{cases} \implies C = \left(\begin{array}{ccc|c} 1 & 1 & 1 & 6 \\ 2 & 1 & -1 & 3 \\ -1 & -1 & 2 & 5 \end{array}\right) $$
+\textbf{Passo 1:} Uccidere i termini sotto il primo pivot.
+\begin{itemize}
+    \item $R_2 \to R_2 - 2R_1$: $(0, -1, -3, -9)$
+    \item $R_3 \to R_3 + R_1$: $(0, 0, 3, 11)$
+\end{itemize}
+$$ \left(\begin{array}{ccc|c}  1 & 1 & 1 & 6 \\  0 & -1 & -3 & -9 \\  0 & 0 & 3 & 11  \end{array}\right) $$
+Risolvendo a ritroso: $z = 11/3$, $y = -2$, $x = 13/3$.
+
+\subsubsection{Esempio 2: Impossibile}
+$$ \left(\begin{array}{cc|c} 1 & 1 & 3 \\ 0 & -4 & -13 \end{array}\right) $$
+Se avessimo ottenuto una riga $\begin{pmatrix} 0 & 0 & | & k \end{pmatrix}$ con $k \neq 0$, il sistema sarebbe impossibile.
+Esempio:
+$$ \left(\begin{array}{ccc|c} 2 & \dots & \dots & \dots \\ 0 & 0 & 0 & 2 \\ 0 & 0 & 0 & 0 \end{array}\right) \implies \text{IMPOSSIBILE} $$
+
+\subsubsection{Esempio 3: Famiglia di Soluzioni}
+$$ \left(\begin{array}{ccc|c} 1 & 1 & 1 & 3 \\ 0 & -1 & 1 & 1 \end{array}\right) $$
+Ponendo $z=t$ (libero): $y = t-1$, $x = 4-2t$.
+Soluzioni: $(4-2t, t-1, t)$ per ogni $t \in \mathbb{R}$.
+
+\subsection{Riepilogo e Morale}
+\begin{itemize}
+    \item Riga $0 \dots 0 | b \ (b \neq 0) \implies$ \textbf{0 soluzioni}.
+    \item Riga $0=0 \implies$ Ridondante.
+    \item Sistema quadrato triangolare con pivot $\neq 0 \implies$ \textbf{1 soluzione}.
+\end{itemize}

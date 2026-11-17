@@ -1,0 +1,67 @@
+\section{Sistemi Lineari e Matrici}
+
+\subsection{Sistemi Lineari}
+
+\begin{exercisebox}[title={Esercizio 1: Parametri}]
+Discutere, al variare del parametro $k \in \mathbb{R}$, le soluzioni del seguente sistema lineare:
+$$
+\begin{cases}
+x + y + z = 1 \\
+x + k y + z = 1 \\
+x + y + k^2 z = k
+\end{cases}
+$$
+\end{exercisebox}
+
+\begin{solbox}
+Scriviamo la matrice completa associata al sistema:
+$$
+(A|b) = \left(\begin{array}{ccc|c}
+1 & 1 & 1 & 1 \\
+1 & k & 1 & 1 \\
+1 & 1 & k^2 & k
+\end{array}\right)
+$$
+Applichiamo l'eliminazione di Gauss.
+1. $R_2 \to R_2 - R_1$:
+$$ \left(\begin{array}{ccc|c} 1 & 1 & 1 & 1 \\ 0 & k-1 & 0 & 0 \\ 1 & 1 & k^2 & k \end{array}\right) $$
+2. $R_3 \to R_3 - R_1$:
+$$ \left(\begin{array}{ccc|c} 1 & 1 & 1 & 1 \\ 0 & k-1 & 0 & 0 \\ 0 & 0 & k^2-1 & k-1 \end{array}\right) $$
+La matrice è a scalini.
+Discussione sui pivot ($k-1$ e $k^2-1$):
+\begin{itemize}
+    \item Se $k \neq 1$ e $k \neq -1$: Tutti i pivot sono non nulli. Soluzione unica.
+    \item Se $k = 1$: Matrice $(0 \dots 0)$. Infinite soluzioni.
+    \item Se $k = -1$: Terza riga diventa $0 \ 0 \ 0 \ | -2$. Impossibile.
+\end{itemize}
+\end{solbox}
+
+\begin{exercisebox}[title={Esercizio 2: Sistema $2 \times 2$}]
+Risolvere il sistema:
+$$ \begin{cases} 2x - 3y = 7 \\ 4x + y = 21 \end{cases} $$
+\end{exercisebox}
+
+\begin{solbox}
+Gauss:
+$$ \left(\begin{array}{cc|c} 2 & -3 & 7 \\ 4 & 1 & 21 \end{array}\right) \xrightarrow{R_2 - 2R_1} 
+\left(\begin{array}{cc|c} 2 & -3 & 7 \\ 0 & 7 & 7 \end{array}\right) $$
+$7y = 7 \implies y = 1$.
+$2x - 3(1) = 7 \implies 2x = 10 \implies x = 5$.
+Soluzione: $(5, 1)$.
+\end{solbox}
+
+\begin{exercisebox}[title={Esercizio 3: Sistema Omogeneo}]
+Determinare lo spazio delle soluzioni del sistema omogeneo:
+$$ \begin{cases} x + 2y - z = 0 \\ 2x - y + 3z = 0 \end{cases} $$
+\end{exercisebox}
+
+\begin{solbox}
+Matrice:
+$$ \left(\begin{array}{ccc} 1 & 2 & -1 \\ 2 & -1 & 3 \end{array}\right) \xrightarrow{R_2 - 2R_1} 
+\left(\begin{array}{ccc} 1 & 2 & -1 \\ 0 & -5 & 5 \end{array}\right) $$
+La seconda riga corrisponde a $-5y + 5z = 0 \implies y = z$.
+Sostituiamo nella prima: $x + 2(z) - z = 0 \implies x + z = 0 \implies x = -z$.
+Ponendo $z = t$ (parametro libero), le soluzioni sono:
+$$ \begin{pmatrix} x \\ y \\ z \end{pmatrix} = \begin{pmatrix} -t \\ t \\ t \end{pmatrix} = t \begin{pmatrix} -1 \\ 1 \\ 1 \end{pmatrix}, \quad \forall t \in \mathbb{R} $$
+Lo spazio delle soluzioni ha dimensione 1 ed è generato da $v = (-1, 1, 1)$.
+\end{solbox}

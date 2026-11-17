@@ -1,0 +1,51 @@
+\section{Applicazioni Lineari}
+
+\begin{definitionbox}
+Una funzione $f: V \to W$ tra due spazi vettoriali è \textbf{lineare} se conserva le operazioni, ovvero se $\forall v, w \in V, \forall \lambda \in \mathbb{R}$:
+1) $f(v+w) = f(v) + f(w)$
+2) $f(\lambda v) = \lambda f(v)$
+\end{definitionbox}
+
+\begin{example}{Esempi di Applicazioni}{}
+\textbf{1.} $f(x) = 3x$ \textbf{è lineare}. (Vale per $f(x) = kx \ \forall k$).\\
+\textbf{2.} $f(x) = ax + b$ \textbf{NON è lineare} se $b \neq 0$.\\
+\textbf{3.} $f(x) = x^2$ \textbf{NON è lineare}.
+\end{example}
+
+\begin{concept}{Applicazione Associata a una Matrice}
+Consideriamo $A \in M_{m \times n}(\mathbb{R})$ e l'applicazione $L_A: \mathbb{R}^n \to \mathbb{R}^m$ definita da:
+$$ L_A(x) = A \cdot x $$
+$L_A$ è lineare. L'immagine di $e_i$ è l'$i$-esima colonna di $A$: $L_A(e_i) = A^i$.
+Tutte le applicazioni lineari tra spazi reali finitamente generati sono matrici in incognito.
+\end{concept}
+
+\subsection{Costruzione di un'Applicazione Lineare}
+\begin{proposition}{Esistenza ed Unicità}{}
+Per costruire un'applicazione lineare $L: V \to W$ è sufficiente fissare i valori su una QUALSIASI BASE fissata per $V$. Siano $v_1, \dots, v_n$ base di $V$ e $w_1, \dots, w_n \in W$ a piacere, esiste un'unica applicazione lineare tale che $L(v_i) = w_i$.
+\end{proposition}
+
+\section{Nucleo, Immagine e Teorema della Dimensione}
+
+\begin{definitionbox}
+Sia $f: V \to W$ un'applicazione lineare. 
+\begin{itemize}
+    \item \textbf{Nucleo:} $Ker(f) = \{ v \in V \mid f(v) = 0_W \}$. È un sottospazio vettoriale di $V$.
+    \item \textbf{Immagine:} $Im(f) = \{ w \in W \mid \exists v \in V : f(v) = w \}$. È un sottospazio vettoriale di $W$.
+\end{itemize}
+\end{definitionbox}
+
+\begin{proposition}{Criterio di Iniettività}{}
+$f$ è iniettiva $\iff Ker(f) = \{ 0 \}$. (i.e. il nucleo contiene solo il vettore nullo).
+\end{proposition}
+
+\begin{concept}{Nucleo e Immagine per Matrici}
+Chi è il $Ker(L_A)$?\\
+È l'insieme delle soluzioni del sistema omogeneo associato alla matrice $A$. $L_A$ è iniettiva $\iff$ le colonne di $A$ sono linearmente indipendenti.\\
+Chi è l'$Im(L_A)$?\\
+L'immagine di $L_A$ è lo span delle colonne di $A$. Di conseguenza, la dimensione dell'immagine è il rango della matrice: $\dim Im(L_A) = \text{rk}(A)$.
+\end{concept}
+
+\begin{proposition}{Teorema della Dimensione (Rank-Nullity)}{}
+Sia $f: V \to W$ un'applicazione lineare. Se $V$ ha dimensione finita $n$, allora:
+$$ \dim Ker(f) + \dim Im(f) = \dim(V) = n $$
+\end{proposition}

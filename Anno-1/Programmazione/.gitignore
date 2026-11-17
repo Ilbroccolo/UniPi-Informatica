@@ -1,0 +1,41 @@
+# LaTeX build artifacts
+*.aux
+*.bbl
+*.blg
+*.brf
+*.bcf
+*.cpt
+*.ent
+*.fdb_latexmk
+*.fls
+*.idx
+*.ilg
+*.ind
+*.lof
+*.log
+*.lot
+*.maf
+*.mtc
+*.mtc0
+*.nav
+*.out
+*.run.xml
+*.snm
+*.synctex
+*.synctex(busy)
+*.synctex.gz
+*.toc
+
+# Editor backups
+*~
+*.swp
+*.bak
+.DS_Store
+.vscode/
+
+# Ignore compiled PDFs except the main ones in the root if you want to track them
+# (If you don't want to track any PDF, uncomment the following line)
+# *.pdf
+
+# Specific folder ignores if needed
+_file_temporanei/

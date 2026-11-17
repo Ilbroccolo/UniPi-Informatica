@@ -1,0 +1,60 @@
+
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\begin{document}
+
+\section*{Teoremi di Confronto}
+
+\subsection*{Teorema del Confronto (o dei due carabinieri per disuguaglianze late)}
+Siano $f, g: A \to \mathbb{R}$, $x_0 \in \text{Acc}(A)$.
+Se $\lim_{x \to x_0} f(x) = l_1$ e $\lim_{x \to x_0} g(x) = l_2$, e se esiste un intorno $V$ di $x_0$ tale che $f(x) \le g(x)$ per ogni $x \in V \cap A$, allora:
+$$ l_1 \le l_2 $$
+\textit{Nota:} Le disuguaglianze strette \textbf{non} passano necessariamente al limite (diventano deboli). Esempio: $f(x) < g(x)$ può implicare $l_1 \le l_2$.
+
+\subsection*{Teorema dei Carabinieri (Squeeze Theorem)}
+Siano $f, g, h$ funzioni tali che $f(x) \le g(x) \le h(x)$ in un intorno di $x_0$.
+Se:
+$$ \lim_{x \to x_0} f(x) = l \quad \text{e} \quad \lim_{x \to x_0} h(x) = l $$
+Allora anche:
+$$ \lim_{x \to x_0} g(x) = l $$
+\textit{Esempio:} $\lim_{x \to +\infty} \frac{\sin x}{x} = 0$ (perché $-\frac{1}{x} \le \frac{\sin x}{x} \le \frac{1}{x}$).
+
+\section*{Algebra dei Limiti}
+Siano $\lim f(x) = l_1$ e $\lim g(x) = l_2$.
+\begin{itemize}
+    \item $\lim (f+g)(x) = l_1 + l_2$
+    \item $\lim (f \cdot g)(x) = l_1 \cdot l_2$
+\end{itemize}
+Queste valgono se l'operazione ha senso in $\overline{\mathbb{R}}$.
+
+\subsection*{Forme Indeterminate}
+Casi che non hanno senso immediato:
+\begin{itemize}
+    \item Somma: $(+\infty) + (-\infty)$
+    \item Prodotto: $0 \cdot (\pm \infty)$
+    \item Altre (derivate): $\frac{\infty}{\infty}, \frac{0}{0}, 1^\infty, \infty^0, 0^0$.
+\end{itemize}
+\textit{Esempio $0 \cdot \infty$:}
+\begin{itemize}
+    \item $f(x)=\frac{1}{x}, g(x)=x^2 \implies \lim_{x \to +\infty} f \cdot g = +\infty$.
+    \item $f(x)=\frac{1}{x}, g(x)=x \implies \lim_{x \to +\infty} f \cdot g = 1$.
+\end{itemize}
+
+\section*{Limiti Fondamentali e Polinomi}
+\begin{itemize}
+    \item $\lim_{x \to +\infty} x^n = +\infty$ (per $n \in \mathbb{N}$).
+    \item $\lim_{x \to +\infty} \frac{1}{x^n} = 0$.
+    \item \textbf{Polinomi:} Il limite a $\pm \infty$ di un polinomio è determinato dal termine di grado massimo.
+    $$ \lim_{x \to \pm \infty} (a_n x^n + \dots + a_0) = \lim_{x \to \pm \infty} a_n x^n $$
+    \item \textbf{Funzioni Razionali:} $\lim_{x \to \infty} \frac{P(x)}{Q(x)}$ dipende dal rapporto dei termini di grado massimo.
+\end{itemize}
+
+\section*{Limiti e Limitatezza}
+Se $\lim_{x \to x_0} f(x) = l \in \mathbb{R}$ (finito), allora $f$ è limitata in un intorno di $x_0$.
+\textbf{Proposizione:}
+Se $f$ è limitata (anche se non ha limite) e $\lim g(x) = 0$, allora $\lim (f(x) \cdot g(x)) = 0$.
+(Esempio: $\lim_{x \to +\infty} \frac{\sin x}{x} = 0$ perché $\sin x$ è limitata).
+
+\end{document}

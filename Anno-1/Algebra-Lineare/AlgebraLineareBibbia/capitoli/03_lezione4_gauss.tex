@@ -1,0 +1,581 @@
+\newgeometry{top=2cm, bottom=2cm, left=1.8cm, right=1.8cm}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+
+% --- INTESTAZIONE ---
+\begin{center}
+    {\Huge \textbf{\color{cherryRed} Lezione 4: Algoritmo di Gauss}} \\
+    \vspace{0.3cm}
+    {\Large \textit{Trascrizione Integrale del PDF "lezione 4\_090226"}}
+    \vspace{0.5cm}
+    \hrule height 1pt
+\end{center}
+
+% =========================================================================
+% PAGINA 1
+% =========================================================================
+\section{Introduzione e Risoluzione a Ritroso (Pag. 1)}
+
+\begin{example}{Esempio 2}{}
+Adesso la matrice è triangolare superiore ($\Rightarrow$ "Tri Sup"). Risolvo il sistema "a ritroso".
+
+Sistema:
+\[
+\begin{cases}
+x + y + z = 6 \\
+y - 3z = -9 \\
+7z = 17
+\end{cases}
+\]
+
+\textbf{Svolgimento:}
+1. Dalla terza equazione: $z = \frac{17}{7}$.
+2. Sostituisco nella seconda: $y = -9 + 3z = -9 + 3\left(\frac{17}{7}\right) = -9 + \frac{51}{7} = \frac{-63+51}{7} = -\frac{12}{7}$.
+3. Sostituisco nella prima: $x = 6 - y - z = 6 - \left(-\frac{12}{7}\right) - \frac{17}{7} = 6 + \frac{12}{7} - \frac{17}{7} = 6 - \frac{5}{7} = \frac{42-5}{7} = \frac{37}{7}$.
+
+\textbf{Nota:} Per avere la "Tri Sup" basta scambiare le righe $C_2 \leftrightarrow C_3$ se necessario.
+\end{example}
+
+\begin{example}{Esempio 3 (Veloce)}{}
+\[
+\begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix} \implies \begin{cases} y=1 \\ x+y=2 \implies x=1 \end{cases}
+\]
+Soluzione: $(1, 1)$.
+\end{example}
+
+\begin{example}{Esempio 4 (Impossibile)}{}
+\[
+\begin{cases}
+x+y=2 \\
+x+y=3 \\
+2x+2y=4
+\end{cases}
+\]
+\begin{note}{Osservazione}{}
+Si vede "a occhio" che la $1^a$ e la $2^a$ equazione sono incompatibili $\implies$ il sistema è impossibile.
+Ma supponiamo che io non me ne accorga.
+\end{note}
+
+Matrice associata:
+\[
+\begin{pmatrix}
+1 & 1 & | & 2 \\
+1 & 1 & | & 3 \\
+2 & 2 & | & 4
+\end{pmatrix}
+\]
+Ammazzo i pivot sotto $A_{11}$:
+\begin{itemize}
+    \item $C_2 \to C_2 - C_1$
+    \item $C_3 \to C_3 - 2C_1$
+\end{itemize}
+Otteniamo:
+\[
+\begin{pmatrix}
+1 & 1 & | & 2 \\
+0 & 0 & | & 1 \\
+0 & 0 & | & 0
+\end{pmatrix}
+\]
+La seconda riga corrisponde all'equazione $0x + 0y = 1 \implies 0=1$. \textbf{IMPOSSIBILE}.
+\end{example}
+
+% =========================================================================
+% PAGINA 2
+% =========================================================================
+\section{Variabili Libere e Interpretazione Geometrica (Pag. 2)}
+
+\begin{example}{Esempio 5}{}
+\[
+\begin{cases}
+x+y+z=3 \\
+2x+y+3z=7
+\end{cases}
+\xrightarrow{\text{Matrice}}
+\begin{pmatrix} 1 & 1 & 3 & | & 3 \\ 2 & 1 & 3 & | & 7 \end{pmatrix}
+\]
+Applicazione Gauss: $C_2 \to C_2 - 2C_1$.
+\[
+\begin{pmatrix} 1 & 1 & 3 & | & 3 \\ 0 & -1 & -1 & | & 1 \end{pmatrix}
+\]
+\end{example}
+
+\begin{note}{Morale}{}
+La forma a scalini fa emergere subito una "famiglia" di soluzioni, in questo caso dipendenti da 1 parametro (gradi di libertà).
+Chiamiamo \textbf{Variabili Libere} quelle corrispondenti alle colonne in cui NON c'è il pivot.
+\end{note}
+
+Nel sistema ridotto:
+\[
+\begin{cases}
+x+y+z=3 \\
+-y-z=1
+\end{cases}
+\]
+Variabile libera: $z$ (terza colonna senza pivot). Poniamo $z = t$.
+Svolgimento a ritroso:
+1. $-y - t = 1 \implies y = -1 - t$.
+2. $x + (-1-t) + t = 3 \implies x - 1 = 3 \implies x = 4$.
+
+\textbf{Soluzione:} $(4, -1-t, t)$.
+Famiglia di soluzioni $\infty^1$.
+
+\textbf{Riassumendo quanto visto dagli esempi:}
+\begin{itemize}
+    \item Se compare una riga $0 \ 0 \ \dots \ 0 \ | \ b$ con $b \neq 0 \implies$ \textbf{Nessuna soluzione}.
+    \item Una o più righe tutte di zeri $\implies$ qualche equazione ridondante (si possono cancellare).
+    \item Sistema quadrato che diventa triangolare con pivot tutti non nulli $\implies$ \textbf{1! Soluzione}.
+\end{itemize}
+
+\begin{note}{Importante}{}
+Il numero dei pivot misura quanta "info indipendente" c'è.
+\end{note}
+
+% =========================================================================
+% PAGINA 3
+% =========================================================================
+\section{Esempi Veloci e Introduzione Teoria (Pag. 3)}
+
+\begin{itemize}
+    \item $\begin{cases} x+y=4 \\ 2x+4y=8 \end{cases} \implies \infty^1$ sol.
+    \item $\begin{cases} 2x+2y=4 \\ 2x+2y=9 \end{cases} \implies 0$ sol (rette parallele distinte).
+    \item $\begin{cases} 2x+y=5 \\ 2x-y=1 \end{cases} \implies 1!$ sol (rette incidenti).
+\end{itemize}
+
+A questo punto enunciamo la \textbf{Teoria Generale}: ALGORITMO DI GAUSS (ripetuto per comodità alla pagina successiva).
+
+% =========================================================================
+% PAGINA 4
+% =========================================================================
+\section{Algoritmo di Gauss e Mosse Elementari (Pag. 4)}
+
+\subsection{Equivalenza di Sistemi}
+Sia $C = (A|b)$ la matrice completa di un sistema lineare.
+Le \textbf{Mosse di Gauss} (Operazioni Elementari) sono:
+\begin{enumerate}
+    \item[(I)] Scambiare tra loro due righe ($R_i \leftrightarrow R_j$).
+    \item[(II)] Moltiplicare una riga per una costante $\lambda \neq 0$.
+    \item[(III)] Sostituire una riga $C_i$ con la somma di $C_i$ con un multiplo di un'altra riga: $C_i \to C_i + \lambda C_j$.
+\end{enumerate}
+
+Due sistemi ottenuti l'uno dall'altro tramite mosse di Gauss sono tra loro \textbf{EQUIVALENTI}, cioè hanno le stesse soluzioni.
+
+\subsection{Metodo di Eliminazione di Gauss}
+È una procedura (algoritmo) che consente di trasformare un qualsiasi sistema lineare in un sistema a scalini equivalente.
+\textbf{Obiettivo:} Ottenere $C_{ij} = 0$ sotto la diagonale.
+
+% =========================================================================
+% PAGINA 5
+% =========================================================================
+\section{Procedimento Passo-Passo (Pag. 5)}
+
+\textbf{Passo 1:}
+Considera la prima colonna di $C$, $C_1$.
+\begin{itemize}
+    \item Se contiene solo zeri, lasciala stare e ricomincia dalla colonna 2.
+    \item Se contiene qualche elemento $\neq 0$, a meno di scambiare tra loro le righe, portati nella situazione $a_{11} \neq 0$ (questo sarà il \textbf{Primo Pivot} $P_1$).
+    \item Ora "AMMAZZA" tutti i coefficienti sotto $P_1$. Per farlo, basta sostituire $C_i \to C_i - \frac{C_{i1}}{P_1} C_1$.
+\end{itemize}
+Ti sei ricondotto a una matrice di forma:
+\[
+\begin{pmatrix}
+P_1 & \times & \dots \\
+0 & \times & \dots \\
+0 & \times & \dots
+\end{pmatrix}
+\]
+
+\textbf{Passo 2:}
+Ripeti (I) e (II) sulla sottomatrice $(A'|b')$.
+E così via fino alla fine.
+
+% =========================================================================
+% PAGINA 6
+% =========================================================================
+\section{Variabili Libere e Pivot (Pag. 6)}
+
+Termini con una situazione di questo tipo (Matrice a scalini):
+\[
+\begin{pmatrix}
+P_1 & \times & \times & \dots & | & \times \\
+0 & P_2 & \times & \dots & | & \times \\
+0 & 0 & 0 & P_3 & \dots & | & \times \\
+\vdots & & & & & & \vdots
+\end{pmatrix}
+\]
+Notiamo colonne senza pivot (es. colonna 3).
+\begin{note}{Definizione}{}
+Chiamo \textbf{VARIABILI LIBERE} quelle corrispondenti alle colonne in cui NON ho pivot.
+Sono $n-r$ (dove $r$ è il numero di pivot).
+\end{note}
+
+Il processo di eliminazione ha termine quando $r=m$ oppure, se $r<m$, le ultime $m-r$ righe sono tutte nulle (nella matrice dei coefficienti).
+Se $r=m=n$, la matrice è triangolare superiore con pivot sulla diagonale principale.
+
+% =========================================================================
+% PAGINA 7
+% =========================================================================
+\section{Esempio di Applicazione (Pag. 7)}
+
+Matrice $C$:
+\[
+C = \begin{pmatrix}
+0 & 1 & 1 & | & 0 \\
+1 & 1 & 2 & | & -3 \\
+-1 & 2 & 1 & | & 1
+\end{pmatrix}
+\]
+1. Scambio $R_1 \leftrightarrow R_2$ (per avere pivot in alto a sinistra):
+\[
+\begin{pmatrix}
+1 & 1 & 2 & | & -3 \\
+0 & 1 & 1 & | & 0 \\
+-1 & 2 & 1 & | & 1
+\end{pmatrix}
+\]
+2. $C_3 \to C_3 + C_1$:
+\[
+\begin{pmatrix}
+1 & 1 & 2 & | & -3 \\
+0 & 1 & 1 & | & 0 \\
+0 & 3 & 3 & | & -2
+\end{pmatrix}
+\]
+3. $C_3 \to C_3 - 3C_2$:
+\[
+\begin{pmatrix}
+1 & 1 & 2 & | & -3 \\
+0 & 1 & 1 & | & 0 \\
+0 & 0 & 0 & | & -2
+\end{pmatrix}
+\]
+L'ultima riga è $0 = -2 \implies$ \textbf{IMPOSSIBILE}.
+
+\subsection{Algoritmo di Gauss-Jordan}
+Oltre ad arrivare a una matrice a scalini, posso renderla di una forma particolare (Semplice):
+1. Tutti i pivot uguali a 1 (basta dividere la riga per il pivot).
+2. Tutti i coefficienti \textbf{SOPRA} i pivot uguali a 0.
+Come si fa? Si opera "dal basso" verso l'alto.
+
+Questa si chiama \textbf{MATRICE COMPLETAMENTE RIDOTTA DEL SISTEMA}.
+
+% =========================================================================
+% PAGINA 8
+% =========================================================================
+\section{Esercizio Svolto (Pag. 8)}
+
+\textbf{Testo:}
+Dato il sistema:
+\[
+\begin{cases}
+x + 3y + z - w = 2 \\
+3x + 9y + 4z + w = 1 \\
+2x + y + 5z + 2w = 0 \\
+y - z - w = 2
+\end{cases}
+\]
+1. Scrivere la matrice completa.
+2. Applicando Gauss, trasformare in matrice a scalini (Matrice Ridotta).
+3. Determinare la matrice COMPLETAMENTE RIDOTTA.
+4. Cosa puoi osservare sulle soluzioni?
+
+\textbf{Svolgimento:}
+Matrice $C$:
+\[
+\begin{pmatrix}
+1 & 3 & 1 & -1 & | & 2 \\
+3 & 9 & 4 & 1 & | & 1 \\
+2 & 1 & 5 & 2 & | & 0 \\
+0 & 1 & -1 & -1 & | & 2
+\end{pmatrix}
+\]
+Passaggio 1: Eliminare sotto il primo pivot (1).
+$C_2 \to C_2 - 3C_1$ e $C_3 \to C_3 - 2C_1$.
+\[
+\begin{pmatrix}
+1 & 3 & 1 & -1 & | & 2 \\
+0 & 0 & 1 & 4 & | & -5 \\
+0 & -5 & 3 & 4 & | & -4 \\
+0 & 1 & -1 & -1 & | & 2
+\end{pmatrix}
+\]
+Nota: Sotto il secondo elemento della prima riga c'è uno zero, dobbiamo scambiare righe per avere un pivot. Scambio $C_2 \leftrightarrow C_4$ (o $C_2 \leftrightarrow C_3$). Scambiamo con l'ultima per comodità (come nell'appunto):
+\[
+\begin{pmatrix}
+1 & 3 & 1 & -1 & | & 2 \\
+0 & 1 & -1 & -1 & | & 2 \\
+0 & -5 & 3 & 4 & | & -4 \\
+0 & 0 & 1 & 4 & | & -5
+\end{pmatrix}
+\]
+Continuo eliminazione: $C_3 \to C_3 + 5C_2$.
+\[
+\begin{pmatrix}
+1 & 3 & 1 & -1 & | & 2 \\
+0 & 1 & -1 & -1 & | & 2 \\
+0 & 0 & -2 & -1 & | & 6 \\
+0 & 0 & 1 & 4 & | & -5
+\end{pmatrix}
+\]
+Scambio $C_3 \leftrightarrow C_4$ per avere 1 come pivot (più comodo) oppure procedo. Nell'appunto si vede che si arriva a:
+\[
+\begin{pmatrix}
+1 & 3 & 1 & -1 & | & 2 \\
+0 & 1 & -1 & -1 & | & 2 \\
+0 & 0 & 1 & 4 & | & -5 \\
+0 & 0 & -2 & -1 & | & 6
+\end{pmatrix}
+\]
+Ultimo passaggio: $C_4 \to C_4 + 2C_3$.
+\[
+\begin{pmatrix}
+1 & 3 & 1 & -1 & | & 2 \\
+0 & 1 & -1 & -1 & | & 2 \\
+0 & 0 & 1 & 4 & | & -5 \\
+0 & 0 & 0 & 7 & | & -4
+\end{pmatrix}
+\]
+Matrice a scalini (anzi Triangolare Superiore).
+Ci fermiamo.
+$r = \# \text{pivot} = 4$.
+
+% =========================================================================
+% PAGINA 9
+% =========================================================================
+\section{Continuazione Esercizio (Pag. 9)}
+
+La matrice ridotta mi fornisce automaticamente la soluzione (che è unica, $r=n=4$).
+Dall'ultima riga:
+\[ 7w = -4 \implies w = -4/7 \]
+Ora usiamo Gauss-Jordan (uccidere i coefficienti sopra).
+Normalizzo l'ultimo pivot ($P_4=7 \to 1$): $C_4 \to \frac{1}{7}C_4$.
+\[
+\begin{pmatrix}
+1 & 3 & 1 & -1 & | & 2 \\
+0 & 1 & -1 & -1 & | & 2 \\
+0 & 0 & 1 & 4 & | & -5 \\
+0 & 0 & 0 & 1 & | & -4/7
+\end{pmatrix}
+\]
+Operazioni a ritroso:
+\begin{itemize}
+    \item $C_3 \to C_3 - 4C_4$
+    \item $C_2 \to C_2 + C_4$
+    \item $C_1 \to C_1 + C_4$
+\end{itemize}
+Matrice diventa:
+\[
+\begin{pmatrix}
+1 & 3 & 1 & 0 & | & 2 - 4/7 = 10/7 \\
+0 & 1 & -1 & 0 & | & 2 - 4/7 = 10/7 \\
+0 & 0 & 1 & 0 & | & -5 + 16/7 = -19/7 \\
+0 & 0 & 0 & 1 & | & -4/7
+\end{pmatrix}
+\]
+Proseguo eliminando sopra il pivot della riga 3 ($P_3=1$):
+\begin{itemize}
+    \item $C_2 \to C_2 + C_3$
+    \item $C_1 \to C_1 - C_3$
+\end{itemize}
+\[
+\begin{pmatrix}
+1 & 3 & 0 & 0 & | & 10/7 - (-19/7) = 29/7 \\
+0 & 1 & 0 & 0 & | & 10/7 - 19/7 = -9/7 \\
+0 & 0 & 1 & 0 & | & -19/7 \\
+0 & 0 & 0 & 1 & | & -4/7
+\end{pmatrix}
+\]
+Infine elimino sopra $P_2$: $C_1 \to C_1 - 3C_2$.
+\[
+\begin{pmatrix}
+1 & 0 & 0 & 0 & | & 29/7 - 3(-9/7) = 56/7 = 8 \\
+0 & 1 & 0 & 0 & | & -9/7 \\
+0 & 0 & 1 & 0 & | & -30/7 \text{ (Nota: correzione calcolo a margine)}\\
+0 & 0 & 0 & 1 & | & -4/7
+\end{pmatrix}
+\]
+(Nota: ci sono correzioni manuali nei calcoli sul foglio, ho riportato i valori finali visibili: $x=8$ o valori simili corretti a penna come $30/7$).
+
+% =========================================================================
+% PAGINA 10
+% =========================================================================
+\section{Teorema Sistema Quadrato (Pag. 10)}
+
+\begin{tcolorbox}[colback=white, colframe=black, title=TEOREMA]
+Un sistema lineare quadrato ammette 1! soluzione $\iff$ i pivot della sua matrice ridotta sono tutti $\neq 0$ (cioè sono $n$).
+In tal caso la matrice ridotta è triangolare superiore.
+\end{tcolorbox}
+
+\begin{note}{Osservazione}{}
+Come abbiamo ben visto dagli esempi, i pivot non sono univocamente determinati, perché dipendono dalle scelte che effettuiamo nell'applicare l'algoritmo (scambi di riga).
+Tuttavia, si può dimostrare che: il NUMERO dei pivot è COSTANTE.
+\end{note}
+
+\textbf{Proposizione:} Se una matrice ammette $r$ pivots per una serie di mosse, ne ammette $r$ per un'altra qualsiasi scelta.
+TRADUZIONE: I pivot non sono univoci, ma il loro NUMERO sì!
+
+% =========================================================================
+% PAGINA 11
+% =========================================================================
+\section{Rango e Rouché-Capelli (Pag. 11)}
+
+\begin{note}{Definizione}{}
+Il numero dei pivot di una qualsiasi riduzione a scale di una matrice $A$ si dice \textbf{RANGO} della matrice $A$.
+Si scrive $r = \text{rk}(A)$.
+Vale sempre $r \le \min(m, n)$.
+\end{note}
+Una matrice quadrata di ordine $n$ si dice \textbf{NON SINGOLARE} se $\text{rk}(A)=n$, SINGOLARE altrimenti.
+
+\begin{tcolorbox}[colback=lightBg, colframe=cherryRed, title=TEOREMA DI ROUCHÉ-CAPELLI]
+Sia $C=(A|b)$ la matrice completa di un sistema lineare $m \times n$.
+Supponiamo di aver ridotto a scale la matrice $A$.
+\begin{itemize}
+    \item Il sistema è \textbf{COMPATIBILE} (ha soluzioni) $\iff \text{rk}(A) = \text{rk}(A|b)$.
+    Ovvero non compare una riga del tipo $(0 \dots 0 | d)$ con $d \neq 0$.
+    \item Se compatibile:
+    \begin{itemize}
+        \item Ammette \textbf{1! soluzione} se $r = n$.
+        \item Ammette \textbf{infinite soluzioni} dipendenti da $n-r$ parametri se $r < n$.
+    \end{itemize}
+\end{itemize}
+\end{tcolorbox}
+
+% =========================================================================
+% PAGINA 12
+% =========================================================================
+\section{Dimostrazione Costruttiva (Pag. 12)}
+
+Dimostrazione "costruttiva" usando la forma ridotta.
+Se la matrice $(A|b)$ ridotta è della forma:
+\[
+\begin{pmatrix}
+\dots & | & d_1 \\
+\vdots & | & \vdots \\
+0 \dots 0 & | & d_r \\
+0 \dots 0 & | & d_{r+1} \\
+\vdots & | & \vdots \\
+0 \dots 0 & | & d_m
+\end{pmatrix}
+\]
+Le righe $r+1, \dots, m$ corrispondono alle equazioni $0 = d_{r+1}, \dots, 0 = d_m$.
+\begin{itemize}
+    \item Se uno dei $d_i$ con $i > r$ fosse $\neq 0 \implies$ Impossibile.
+    \item Se tutti i $d_i$ sono $0 \implies$ Posso dimenticarmi delle ultime equazioni (ridondanti).
+\end{itemize}
+Rimane un sistema $r \times n$.
+Chiamo \textbf{variabili libere} quelle corrispondenti alle colonne senza pivot. Sono $n-r$. A ciascuna assegno un parametro $t_j$.
+Mi riconduco a un sistema triangolare risolvibile.
+
+% =========================================================================
+% PAGINA 13
+% =========================================================================
+\section{Esempio Dimostrativo (Pag. 13)}
+
+Consideriamo il sistema lineare:
+\[
+\begin{cases}
+2x_2 + 2x_3 - 3x_4 - x_5 = 0 \\
+x_1 - 4x_2 + 2x_3 - 3x_4 + x_5 = 1 \\
+x_4 + x_5 = 3
+\end{cases}
+\]
+Matrice:
+\[
+C = \begin{pmatrix}
+0 & 2 & 2 & -3 & -1 & | & 0 \\
+1 & -4 & 2 & -3 & 1 & | & 1 \\
+0 & 0 & 0 & 1 & 1 & | & 3
+\end{pmatrix}
+\]
+Scambio $R_1 \leftrightarrow R_2$:
+\[
+\begin{pmatrix}
+1 & -4 & 2 & -3 & 1 & | & 1 \\
+0 & 2 & 2 & -3 & -1 & | & 0 \\
+0 & 0 & 0 & 1 & 1 & | & 3
+\end{pmatrix}
+\]
+È già a scalini!
+$r = \#\text{pivot} = 3$ (Pivot: 1, 2, 1).
+Sistema compatibile (non ci sono righe impossibili).
+Numero incognite $n=5$.
+Infinite soluzioni dipendenti da $n-r = 5-3 = 2$ parametri.
+
+Le colonne senza pivot sono la 3 e la 5 ($x_3, x_5$).
+Pongo $x_3 = t_3, x_5 = t_5$.
+Risolvo:
+\begin{itemize}
+    \item $x_4 + x_5 = 3 \implies x_4 = 3 - t_5$
+    \item $2x_2 + 2t_3 - 3(3-t_5) - t_5 = 0 \implies$ trovo $x_2$.
+    \item $x_1 - \dots = 1 \implies$ trovo $x_1$.
+\end{itemize}
+
+% =========================================================================
+% PAGINA 14 (ESERCIZIO PARAMETRICO)
+% =========================================================================
+\section{Esercizio Parametrico (Pag. 14)}
+
+\textbf{Esercizio:} Determinare i valori di $a$ per i quali il seguente sistema presenta:
+i) Nessuna soluzione; ii) 1! soluzione; iii) Più di una soluzione.
+
+\[
+\begin{cases}
+x + y - z = 1 \\
+2x + 3y + az = 3 \\
+x + 2y + 3z = 2
+\end{cases}
+\xrightarrow{\text{Matrice}}
+\begin{pmatrix}
+1 & 1 & -1 & | & 1 \\
+2 & 3 & a & | & 3 \\
+1 & a & 3 & | & 2
+\end{pmatrix}
+\]
+Effettuo la riduzione a scalini:
+1. $R_2 \to R_2 - 2R_1$.
+2. $R_3 \to R_3 - R_1$.
+\[
+\begin{pmatrix}
+1 & 1 & -1 & | & 1 \\
+0 & 1 & a+2 & | & 1 \\
+0 & a-1 & 4 & | & 1
+\end{pmatrix}
+\]
+3. $R_3 \to R_3 - (a-1)R_2$.
+Calcolo elemento $(3,3)$: $4 - (a-1)(a+2) = 4 - (a^2+2a-a-2) = 4 - (a^2+a-2) = 6 - a - a^2$.
+Calcolo termine noto $(3,4)$: $1 - (a-1)\cdot 1 = 2 - a$.
+
+Matrice ridotta:
+\[
+\begin{pmatrix}
+1 & 1 & -1 & | & 1 \\
+0 & 1 & a+2 & | & 1 \\
+0 & 0 & 6-a-a^2 & | & 2-a
+\end{pmatrix}
+\]
+Nota che $6-a-a^2 = -(a^2+a-6) = -(a+3)(a-2)$.
+
+\textbf{Discussione:}
+\begin{enumerate}
+    \item[(i)] \textbf{NESSUNA SOLUZIONE:}
+    Se il pivot è $0$ ma il termine noto è $\neq 0$.
+    $6-a-a^2 = 0 \iff a=2 \lor a=-3$.
+    \begin{itemize}
+        \item Se $a=-3$: L'ultima riga diventa $0 \ | \ 2-(-3) = 5$. $0=5$ IMPOSSIBILE.
+    \end{itemize}
+    
+    \item[(ii)] \textbf{1! SOLUZIONE:}
+    Se il pivot è $\neq 0$.
+    $6-a-a^2 \neq 0 \implies a \neq 2 \land a \neq -3$.
+    In questo caso $r=n=3$.
+    
+    \item[(iii)] \textbf{PIÙ DI UNA SOLUZIONE (Infinite):}
+    Se l'ultima riga è $0=0$.
+    Serve $a=2$.
+    Termine noto: $2-2=0$.
+    Pivot: $0$.
+    Riga: $0 \ 0 \ 0 \ | \ 0$.
+    Il rango diventa 2 ($<3$). Infinite soluzioni ($\infty^1$).
+\end{enumerate}
+
+\restoregeometry

@@ -1,0 +1,104 @@
+\section{Spazi Vettoriali e Applicazioni Matriciali}
+
+\subsection{Introduzione a $\mathbb{R}^n$}
+Supponiamo di avere un sistema lineare di $n$ incognite. Per definizione, le sue soluzioni sono $n$-uple di numeri reali.
+Denotiamo con $\mathbb{R}^n$ l'insieme delle $n$-uple di numeri reali.
+$$ \mathbb{R}^n = \left\{ v = \begin{pmatrix} v_1 \\ \vdots \\ v_n \end{pmatrix} \Big| v_i \in \mathbb{R} \ \forall i \right\} $$
+Ciascun elemento di $\mathbb{R}^n$ si chiama \textbf{VETTORE}.
+\textit{Osservazione:} I vettori, per come sono scritti, sono matrici $n \times 1$.
+
+\begin{definitionbox}
+Dati $v, w \in \mathbb{R}^n$ e $\lambda \in \mathbb{R}$, definiamo:
+\begin{itemize}
+    \item \textbf{SOMMA:} $v + w = \begin{pmatrix} v_1 + w_1 \\ \vdots \\ v_n + w_n \end{pmatrix} \in \mathbb{R}^n$
+    \item \textbf{PRODOTTO PER SCALARE:} $\lambda v = \begin{pmatrix} \lambda v_1 \\ \vdots \\ \lambda v_n \end{pmatrix} \in \mathbb{R}^n$
+\end{itemize}
+\end{definitionbox}
+
+\begin{concept}{Sottospazio Vettoriale}
+Dato uno spazio vettoriale $(V, +, \cdot)$, si chiama \textbf{Sottospazio Vettoriale} un sottoinsieme $W \subseteq V$ che sia \textbf{chiuso} rispetto alla somma e al prodotto per scalare.
+\end{concept}
+
+\begin{example}{Esempi e Controesempi sui Sottospazi}{}
+1. l'insieme delle soluzioni di un sistema lineare \textbf{OMOGENEO} ($Ax = 0$) è un sottospazio vettoriale di $\mathbb{R}^n$.
+2. l'insieme delle soluzioni di un sistema \textbf{NON OMOGENEO} ($Ax = b \neq 0$) NON è un sottospazio vettoriale (perché non contiene il vettore nullo).
+3. $W = \{ (a,b,c) \in \mathbb{R}^3 \mid c \in \mathbb{Z} \}$ NON è un sottospazio (non chiuso al prodotto per scalari reali).
+4. $W = \{ (a,b,c) \in \mathbb{R}^3 \mid a \cdot b = 0 \}$ NON è un sottospazio (non chiuso alla somma).
+\end{example}
+
+\section{Calcolo Matriciale: Prodotto tra Matrici}
+
+\begin{definitionbox}
+\textbf{Matrice Trasposta:} Data $A \in M_{m \times n}$, definisco $A^T$ come la matrice ottenuta scambiando le righe con le colonne. $A^T \in M_{n \times m}$.
+
+\textbf{Prodotto tra Matrici (Righe per Colonne):} Siano $A \in M_{m \times n}$ e $B \in M_{n \times p}$. Il prodotto $C = A \cdot B \in M_{m \times p}$ si può definire solo se il numero di colonne di $A$ è uguale al numero di righe di $B$.
+$$ c_{ij} = \sum_{k=1}^n a_{ik} b_{kj} $$
+\end{definitionbox}
+
+\begin{example}{Esempio Prodotto}{}
+$$
+A = \begin{pmatrix} 2 & 1 \\ 3 & 7 \end{pmatrix}, \quad B = \begin{pmatrix} 1 & 0 & 4 \\ 2 & 5 & 1 \end{pmatrix}
+$$
+Risultato dimensione $2 \times 3$. 
+Riga 1 di $A$ $\cdot$ Colonna 1 di $B$: $c_{11} = (2 \cdot 1) + (1 \cdot 2) = 4$.
+\end{example}
+
+\begin{concept}{Proprietà del Prodotto Matriciale}
+Il prodotto non è commutativo ($A \cdot B \neq B \cdot A$).
+Gode però di:
+\begin{itemize}
+    \item \textbf{Associativa:} $A(B \cdot C) = (AB)C$
+    \item \textbf{Distributiva:} $(A+B)C = AC + BC$ e $C(A+B) = CA + CB$
+    \item \textbf{Prodotto per scalare:} $(\lambda A)B = A(\lambda B) = \lambda(AB)$
+    \item \textbf{Elemento neutro:} $A \cdot I = I \cdot A = A$
+    \item \textbf{Trasposta del prodotto:} $(AB)^T = B^T \cdot A^T$
+\end{itemize}
+\end{concept}
+
+\begin{proposition}{Affermazioni sugli insiemi delle soluzioni}{}
+Nella notazione matriciale per i sistemi $Ax=b$, l'insieme $S = \{ x \in \mathbb{R}^n \mid Ax = b \}$ delle soluzioni:
+\begin{itemize}
+    \item Se $b = 0$ (Sistemi Omogenei), $S$ \textbf{è} un sottospazio vettoriale.
+    \item Se $b \neq 0$ (Sistemi Non Omogenei), $S$ \textbf{NON è} un sottospazio vettoriale.
+\end{itemize}
+\end{proposition}
+
+\section{Combinazione Lineare, Indipendenza e Basi}
+
+\begin{definitionbox}
+\textbf{Combinazione Lineare e Span:} $v = \alpha_1 v_1 + \dots + \alpha_k v_k$. L'insieme di tutte le possibili combinazioni lineari si definisce \textbf{Span}.
+
+\textbf{Indipendenza Lineare:} I vettori $v_1, \dots, v_n$ si dicono \textbf{Linearmente Indipendenti} se:
+$$ \alpha_1 v_1 + \dots + \alpha_n v_n = 0 \implies \alpha_1 = \dots = \alpha_n = 0 $$
+Altrimenti, si dicono Linearmente Dipendenti (esiste una combinazione non banale che dà zero).
+\end{definitionbox}
+
+\begin{proposition}{Solubilità e Generatori}{}
+Il sistema $Ax = b$ è COMPATIBILE $\iff b \in Span(A^1, \dots, A^n)$ (dove $A^i$ sono le colonne della matrice $A$).\\
+Un sistema omogeneo $Ax = 0$ ha solo la soluzione banale $\iff$ le colonne $A^1, \dots, A^n$ sono linearmente indipendenti.
+\end{proposition}
+
+\subsection{Basi e Dimensione}
+
+\begin{definitionbox}
+Un insieme $\mathcal{B} = \{v_1, \dots, v_n\}$ di vettori è una \textbf{Base} di $V$ se:
+1. Genera $V$ ($Span(\mathcal{B}) = V$).
+2. I vettori $v_i$ sono linearmente indipendenti.
+
+La \textbf{Dimensione} di uno spazio vettoriale è il numero degli elementi di una sua base. ($\dim V = n$).
+\end{definitionbox}
+
+\begin{concept}{Coordinate}
+Ogni elemento di uno spazio vettoriale si può scrivere in uno e un sol modo come combinazione lineare dei vettori di una base.
+Gli unici coefficienti scalari si chiamano \textbf{Coordinate} del vettore rispetto alla base $\mathcal{B}$.
+\end{concept}
+
+\begin{example}{Estrazione di una Base}{}
+Trovare una base per $V = Span(v_1, v_2, v_3, v_4)$ con:
+$$
+v_1 = \begin{pmatrix} 1 \\ 2 \\ 0 \end{pmatrix}, \ v_2 = \begin{pmatrix} 3 \\ 6 \\ 0 \end{pmatrix}, \ v_3 = \begin{pmatrix} 2 \\ 4 \\ 1 \end{pmatrix}, \ v_4 = \begin{pmatrix} 1 \\ 2 \\ 3 \end{pmatrix}
+$$
+1. Notiamo $v_2 = 3v_1$. Dipendente $\implies$ Scarto $v_2$.
+2. Controllo $v_1, v_3, v_4$ combinandoli e uguagliandoli a zero. Si scopre che $5v_1 - 3v_3 + v_4 = 0$. Scarto implicato.
+Base finale Massimale: $\{v_1, v_3\}$.
+\end{example}

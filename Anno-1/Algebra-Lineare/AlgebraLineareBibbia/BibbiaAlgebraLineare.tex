@@ -1,0 +1,232 @@
+\documentclass[a4paper,11pt]{article}
+
+% --- Pacchetti Fondamentali ---
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[italian]{babel}
+\usepackage{geometry}
+\geometry{top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm}
+
+% --- Font Moderni ---
+\usepackage{lmodern}
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault} 
+
+% --- Colori e Grafica ---
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{amssymb}
+\usepackage{amsmath} 
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{cancel}
+\usepackage{booktabs}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{multicol} % Per layout a 2 colonne (Cheat Sheet)
+\usepackage[most]{tcolorbox} 
+
+\usetikzlibrary{shapes, arrows.meta, positioning, chains, fit, calc, matrix, trees, backgrounds}
+
+% --- Definizione Colori (Cotton + Cherry Red Palette) ---
+\definecolor{cotton}{RGB}{237, 235, 221}    % #EDEBDD
+\definecolor{cherryRed}{RGB}{129, 1, 0}     % #810100
+\definecolor{maroon}{RGB}{99, 0, 0}         % #630000
+\definecolor{noirBlack}{RGB}{27, 23, 23}    % #1B1717
+
+% Mappatura sui colori logici del progetto
+\colorlet{mainColor}{cherryRed}
+\colorlet{accentColor}{maroon}
+\colorlet{lightBg}{cotton}
+\colorlet{textColor}{noirBlack}
+
+% --- Header & Footer Setup ---
+\pagestyle{fancy}
+\fancyhf{} 
+\renewcommand{\headrulewidth}{1.5pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{mainColor}\leaders\hrule height \headrulewidth\hfill}}
+
+\lhead{\textbf{\textcolor{textColor}{Sistemi Lineari e Matrici}}}
+\cfoot{\thepage}
+
+% --- COMANDO COPERTINA (Left Aligned as requested) ---
+\newcommand{\customcover}[2]{
+    \begin{titlepage}
+    \thispagestyle{empty}
+    \begin{tikzpicture}[remember picture, overlay]
+        % 1. Sfondo Laterale (Scuro - Noir Black)
+        \fill[noirBlack] (current page.north west) rectangle ($(current page.south west) + (4cm,0)$);
+        
+        % 2. Linea Accento (Cherry Red)
+        \draw[cherryRed, line width=4pt] ($(current page.north west) + (4.2cm,-2cm)$) -- ($(current page.south west) + (4.2cm,2cm)$);
+        
+        % 3. Contenuto Testuale (Allineato a SINISTRA, vicino alla fascia scura)
+        % Anchor North West, posizionato rispetto al bordo sinistro (dopo la fascia nera)
+        \node[anchor=north west, inner sep=0, text width=13cm, align=left] at ($(current page.north west) + (5cm,-5cm)$) {
+            
+                {\fontsize{18}{22}\selectfont \textcolor{maroon}{Università di Pisa}}\\[0.2cm]
+                {\fontsize{16}{20}\selectfont \textcolor{maroon}{Corso di Laurea in Informatica}}\\[2cm]
+                
+                {\fontsize{60}{70}\selectfont \textbf{\textcolor{cherryRed}{LA BIBBIA}}}\\[0.5cm]
+                
+                
+                {\fontsize{35}{45}\selectfont \textbf{\textcolor{noirBlack}{ di ALGEBRA LINEARE}}}\\[1.5cm]
+                
+                % Linea divisoria CherryRed
+                \textcolor{cherryRed}{\rule{13cm}{4pt}}\\[1cm]
+                
+                {\Large \textbf{#1}}\\[0.2cm]
+                {\large \textit{#2}}\\[1.5cm]
+                
+                {\large Docente titolare:}\\[0.2cm]
+                {\Large \textbf{Prof.ssa Silvia Benvenuti}}\\[2cm]
+                
+                \textbf{\large Autore del riassunto:}\\
+                {\large \textbf{Joseph Zucchelli (ilbroccolo)}}\\[2cm]
+                
+                \vfill
+                {\large \textbf{Anno Accademico 2025 - 2026}}
+            
+        };
+        
+        % Badge (In basso a destra)
+        \node[anchor=south east] at ($(current page.south east) + (-2cm, 2cm)$) {
+            \tikz\draw[fill=cherryRed, draw=none] (0,0) rectangle (2,2) node[midway, white, font=\bfseries\huge] {AL};
+        };
+
+    \end{tikzpicture}
+    \end{titlepage}
+    \clearpage
+}
+
+% --- Setup Titoli ---
+\usepackage{titlesec}
+\titleformat{\section}
+{\color{mainColor}\normalfont\Large\bfseries}
+{\color{mainColor}\thesection}{1em}{}[\color{mainColor}\hrule height 1pt]
+
+\titleformat{\subsection}
+{\color{mainColor}\normalfont\large\bfseries}
+{\color{mainColor}\thesubsection}{1em}{}
+
+% --- Box Styles (Themed) ---
+
+% Concept Box (Using lighter variant of mainColor)
+\newtcolorbox{concept}[1]{
+  colback=lightBg,
+  colframe=accentColor,
+  title={#1},
+  coltitle=white,
+  fonttitle=\bfseries,
+  sharp corners=downhill,
+  enhanced,
+  drop shadow
+}
+
+% Definition Box (Replacing previous style)
+\newtcolorbox{definitionbox}{
+  colback=white,
+  colframe=cherryRed,
+  fonttitle=\bfseries,
+  coltitle=white,
+  title={Definizione},
+  sharp corners,
+  enhanced,
+  borderline west={4pt}{0pt}{cherryRed}
+}
+
+% --- BOX PERSONALIZZATI ---
+
+% Esempio (Redefinition using theme colors)
+\newtcbtheorem[number within=section]{example}{Esempio}{
+    enhanced,
+    colback=white,
+    colframe=accentColor,
+    coltitle=white,
+    fonttitle=\bfseries,
+    attach boxed title to top left={yshift=-2mm, xshift=2mm},
+    boxed title style={colback=cherryRed, sharp corners},
+    breakable
+}{ex}
+
+% Nota Manoscritta
+\newtcbtheorem[number within=section]{note}{Nota Manoscritta}{
+    enhanced,
+    frame hidden,
+    colback=gray!10,
+    borderline west={2mm}{0pt}{accentColor},
+    fonttitle=\bfseries\color{maroon},
+    coltitle=maroon,
+    title={#1},
+    breakable
+}{note}
+
+% Definizione (Lezione 6 style adapted to theme)
+\newtcbtheorem[number within=section]{definition}{Definizione}{
+    enhanced,
+    colback=lightBg,
+    colframe=cherryRed,
+    coltitle=white,
+    fonttitle=\bfseries,
+    attach boxed title to top left={yshift=-2mm, xshift=2mm},
+    boxed title style={colback=maroon, sharp corners},
+    breakable
+}{def}
+
+% Osservazione
+\newtcbtheorem[number within=section]{observation}{Osservazione}{
+    enhanced,
+    frame hidden,
+    colback=white,
+    borderline west={1mm}{0pt}{cherryRed},
+    fonttitle=\bfseries\color{cherryRed},
+    coltitle=cherryRed,
+    title={#1},
+    breakable
+}{obs}
+
+% Proposizione (New Lezione 5)
+\newtcbtheorem[number within=section]{proposition}{Proposizione}{
+    enhanced,
+    colback=white,
+    colframe=accentColor,
+    coltitle=white,
+    fonttitle=\bfseries,
+    attach boxed title to top left={yshift=-2mm, xshift=2mm},
+    boxed title style={colback=cherryRed, sharp corners},
+    breakable
+}{prop}
+
+\begin{document}
+
+% Copertina Aggiornata
+\customcover{Appunti Completi: Sistemi e Matrici}{Trascrizione analitica Lezioni 1, 2, 3, 4, 5, 6}
+
+\tableofcontents
+\newpage
+
+% Include Chapters
+
+\input{capitoli/01_vettori_matrici.tex}
+\newpage
+\input{capitoli/02_sistemi_lineari.tex}
+\newpage
+\input{capitoli/03_lezione4_gauss.tex}
+\newpage
+\input{capitoli/04_lezione5_spazi_rn.tex}
+\newpage
+\input{capitoli/05_spazi_vettoriali_assiomi_polinomi.tex}
+\newpage
+\input{capitoli/06_spazi_vettoriali.tex}
+\newpage
+\input{capitoli/07_lezione6_vettori_piano.tex}
+\newpage
+\input{capitoli/08_applicazioni_lineari.tex}
+\newpage
+\input{capitoli/09_autovalori_diagonalizzazione.tex}
+\newpage
+\input{capitoli/10_prodotti_scalari.tex}
+\newpage
+\input{capitoli/zz_cheat_sheet.tex}
+
+\end{document}

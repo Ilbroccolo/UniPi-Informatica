@@ -1,0 +1,46 @@
+\section{Sistemi Lineari e Rouché-Capelli}
+
+\begin{concept}{Richiami di Teoria: Esistenza delle Soluzioni}
+Un sistema in forma matriciale è $Ax = b$.
+\textbf{Teorema di Rouché-Capelli:} Il sistema è \textit{compatibile} (ammette soluzioni) se e solo se il rango della matrice incompleta è uguale a quello della matrice completa:
+$$ \text{rk}(A) = \text{rk}(A|b) = r $$
+Se questa condizione è verificata:
+\begin{itemize}
+    \item Se $r = n$ (incognite), la soluzione è \textbf{unica} ($\infty^0$).
+    \item Se $r < n$ (incognite), esistono \textbf{infinite soluzioni} dipendenti da $n - r$ variabili libere (o gradi di libertà).
+\end{itemize}
+\end{concept}
+
+\begin{logicbox}
+\textbf{Pattern 2: Discutere un Sistema Parametrico}\\
+Se è presente un parametro $k$ o $a$:
+1. Scrivi la matrice $(A|b)$ associata al sistema.
+2. Procedi subito alla riduzione verso la forma a \textit{scalini} (non applicare formule complesse a priori).
+3. Studia i pivot: 
+   \begin{itemize}
+       \item Trova per quali $k$ i pivot (gli elementi in diagonale o nei gradini) si annullano (es. se pivot $= k-2$, pongo $k=2$).
+       \item Se il pivot si annulla e hai l'ineguaglianza "zero = costante non nulla", il sistema è \textbf{Impossibile}.
+       \item Per i valori in cui nessun pivot cruciale si annulla, trovi una e \textbf{una sola soluzione}.
+       \item Per i valori in cui un'intera riga si annulla a zero (sia matrice che termini noti), hai \textbf{infinite} soluzioni e un rango più basso.
+   \end{itemize}
+\end{logicbox}
+
+\begin{exercisebox}[title={Esercizio 1: Risoluzione Standard}]
+Risolvere il sistema lineare omogeneo associato alla matrice:
+$$ A = \begin{pmatrix} 1 & -2 & 3 \\ 2 & -4 & 6 \\ -1 & 2 & -3 \end{pmatrix} $$
+\end{exercisebox}
+
+\begin{solbox}
+Costruiamo la matrice per il sistema omogeneo ($b=0$):
+$$ \left(\begin{array}{ccc|c} 1 & -2 & 3 & 0 \\ 2 & -4 & 6 & 0 \\ -1 & 2 & -3 & 0 \end{array}\right) $$
+Procediamo con l'eliminazione di Gauss: \\
+$R_2 \to R_2 - 2R_1$: $2 - 2(1) = 0, -4 - 2(-2) = 0, 6 - 2(3) = 0$. Tutta una riga di zeri.\\
+$R_3 \to R_3 + R_1$: $-1 + 1 = 0, 2 + (-2) = 0, -3 + 3 = 0$. Tutta una riga di zeri.\\
+La matrice ridotta diventa:
+$$ \left(\begin{array}{ccc|c} 1 & -2 & 3 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \end{array}\right) $$
+Il rango è $r=1$ e le incognite sono $n=3$. Abbiamo $\infty^{3-1} = \infty^2$ soluzioni (2 parametri liberi).
+Le colonne senza pivot sono la $y$ e la $z$. Poniamo $y=t, z=s$.
+L'unica equazione rimasta è $x - 2y + 3z = 0 \implies x = 2t - 3s$.
+Le combinazioni di soluzioni assumono la forma:
+$$ S = \{ (2t-3s, t, s) \vert t,s \in \mathbb{R} \} $$
+\end{solbox}

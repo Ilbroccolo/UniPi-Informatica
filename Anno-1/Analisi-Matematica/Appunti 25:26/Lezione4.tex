@@ -1,0 +1,67 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\begin{document}
+
+\section*{Massimi e Minimi di un Insieme}
+Sia $A \subseteq \mathbb{R}, A \neq \emptyset$.
+\begin{itemize}
+    \item $m \in \mathbb{R}$ è il \textbf{massimo} di $A$ ($m = \max(A)$) se:
+    \begin{enumerate}
+        \item $m \ge a, \forall a \in A$ (è un maggiorante)
+        \item $m \in A$
+    \end{enumerate}
+    \item $m \in \mathbb{R}$ è il \textbf{minimo} di $A$ ($m = \min(A)$) se:
+    \begin{enumerate}
+        \item $m \le a, \forall a \in A$ (è un minorante)
+        \item $m \in A$
+    \end{enumerate}
+\end{itemize}
+\textit{Esempio:} $A=[0,1] \implies \max=1, \min=0$. $B=[0,1)$ non ha massimo.
+
+\section*{Maggioranti e Estremo Superiore}
+\begin{itemize}
+    \item $k$ è un \textbf{maggiorante} di $A$ se $k \ge a, \forall a \in A$.
+    \item L'insieme dei maggioranti si indica con $\mathcal{M}_A$.
+    \item Se $\mathcal{M}_A \neq \emptyset$, $A$ si dice \textbf{superiormente limitato}.
+    \item \textbf{Teorema:} Se $A \subset \mathbb{R}$ è superiormente limitato, esiste il minimo dei maggioranti. Questo valore si chiama \textbf{Estremo Superiore} ($\sup(A)$).
+\end{itemize}
+Se $A$ non è limitato superiormente, $\sup(A) = +\infty$.
+Se esiste il massimo, $\max(A) = \sup(A)$.
+
+\textbf{Caratterizzazione del sup:}
+$S = \sup(A)$ se e solo se:
+\begin{enumerate}
+    \item $S \ge a, \forall a \in A$
+    \item $\forall \epsilon > 0, \exists \bar{a} \in A$ tale che $\bar{a} > S - \epsilon$.
+\end{enumerate}
+
+Analogamente si definiscono i \textbf{minoranti}, l'insieme limitato inferiormente e l'\textbf{Estremo Inferiore} ($\inf(A)$).
+
+\section*{Retta Reale Estesa $\overline{\mathbb{R}}$}
+$\overline{\mathbb{R}} = \mathbb{R} \cup \{-\infty\} \cup \{+\infty\}$.
+Regole aritmetiche (con $x \in \mathbb{R}$):
+\begin{itemize}
+    \item $x + (+\infty) = +\infty$
+    \item $x + (-\infty) = -\infty$
+    \item $(+\infty) + (+\infty) = +\infty$
+    \item $(+\infty) + (-\infty)$ è \textbf{vietato} (forma indeterminata).
+    \item $x \cdot (+\infty) = +\infty$ se $x > 0$, $-\infty$ se $x < 0$.
+    \item $0 \cdot (\pm \infty)$ è \textbf{vietato}.
+\end{itemize}
+
+\section*{Estremi di Funzioni}
+Sia $f: A \to \mathbb{R}$.
+\begin{itemize}
+    \item $f$ è limitata superiormente se $f(A)$ (l'immagine) è un insieme limitato superiormente.
+    \item $\sup(f) = \sup(f(A))$.
+    \item $\max(f) = \max(f(A))$ (se esiste).
+\end{itemize}
+\textbf{Teorema:}
+\begin{itemize}
+    \item Se $A$ ha massimo e $f$ è crescente, allora $\max(f) = f(\max(A))$.
+    \item Se $A$ ha massimo e $f$ è decrescente, allora $\min(f) = f(\max(A))$.
+\end{itemize}
+
+\end{document}

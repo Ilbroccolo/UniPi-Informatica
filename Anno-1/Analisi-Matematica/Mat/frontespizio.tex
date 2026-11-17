@@ -1,0 +1,42 @@
+\begin{titlepage}
+    \begin{figure}[t]
+        \centering
+        % Se l'immagine c'è la carica, altrimenti spazio vuoto (evita errori)
+        \IfFileExists{\LogoImmagine}{\includegraphics[width=0.98\textwidth]{\LogoImmagine}}{}
+    \end{figure}
+    \vspace{20mm}
+
+    \begin{Large}
+     \begin{center}
+        \textbf{\Dipartimento} \\
+        \vspace{20mm}
+        {\LARGE{\InfoCorso}}\\
+        \vspace{10mm}
+        
+        % TITOLO ROSSO
+        {\huge \bfseries \color{mainRed} \TitoloCorso}\\
+        {\small{\bf \Sottotitolo}}\\
+    \end{center}
+    \end{Large}
+
+    \vspace{36mm}
+
+    % Blocchi Professori e Autori
+    \begin{minipage}[t]{0.47\textwidth}
+        \Professori
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.47\textwidth}\raggedleft
+        \Autori
+    \end{minipage}
+
+    \vspace{25mm}
+
+    % Linea finale ROSSA
+    {\color{mainRed}\hrule height 1pt}
+
+    \vspace{5mm}
+
+    \centering{\large{\bf \AnnoAccademico }}
+
+\end{titlepage}

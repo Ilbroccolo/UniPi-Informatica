@@ -1,0 +1,50 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\begin{document}
+
+\section*{Monotonia}
+Sia $f: A \to B$, con $A, B \subset \mathbb{R}$.
+\begin{itemize}
+    \item \textbf{Strettamente crescente:} $\forall x_1, x_2 \in A, x_1 < x_2 \implies f(x_1) < f(x_2)$.
+    \item \textbf{Debolmente crescente:} $\forall x_1, x_2 \in A, x_1 < x_2 \implies f(x_1) \le f(x_2)$.
+    \item \textbf{Strettamente decrescente:} $\forall x_1, x_2 \in A, x_1 < x_2 \implies f(x_1) > f(x_2)$.
+    \item \textbf{Debolmente decrescente:} $\forall x_1, x_2 \in A, x_1 < x_2 \implies f(x_1) \ge f(x_2)$.
+\end{itemize}
+
+\textbf{Rapporto Incrementale:}
+$R(x_1, x_2) = \frac{f(x_1) - f(x_2)}{x_1 - x_2}$.
+\begin{itemize}
+    \item $f$ strettamente crescente $\iff \frac{f(x_1) - f(x_2)}{x_1 - x_2} > 0 \quad \forall x_1 \neq x_2$.
+    \item $f$ strettamente decrescente $\iff \frac{f(x_1) - f(x_2)}{x_1 - x_2} < 0 \quad \forall x_1 \neq x_2$.
+\end{itemize}
+\textit{Esempio:} $f(x) = \frac{1}{x}$ è strettamente decrescente su $(-\infty, 0)$ e su $(0, +\infty)$, ma non globalmente sul suo dominio.
+
+\subsection*{Composizione e Monotonia}
+Siano $f: A \to B$ e $g: B \to C$. Sia $h = g \circ f$.
+\begin{itemize}
+    \item Crescente $\circ$ Crescente $\implies$ Crescente
+    \item Decrescente $\circ$ Decrescente $\implies$ Crescente
+    \item Crescente $\circ$ Decrescente $\implies$ Decrescente
+    \item Decrescente $\circ$ Crescente $\implies$ Decrescente
+\end{itemize}
+(Funziona come la regola dei segni).
+\textit{Nota:} Se $f$ è strettamente monotona, allora $f$ è iniettiva. Il viceversa non è sempre vero.
+
+\section*{Simmetrie}
+Dato un dominio $A$ simmetrico rispetto all'origine ($x \in A \implies -x \in A$):
+\begin{itemize}
+    \item \textbf{Pari:} $f(-x) = f(x)$ (Grafico simmetrico rispetto all'asse $y$). Esempio: $x^2, \cos(x)$.
+    \item \textbf{Dispari:} $f(-x) = -f(x)$ (Grafico simmetrico rispetto all'origine). Esempio: $x^3, \sin(x), \frac{1}{x}$.
+\end{itemize}
+
+\section*{Funzioni Elementari: Potenze}
+Consideriamo $f(x) = x^k$.
+\begin{itemize}
+    \item Se $k$ è pari (es. $x^2, x^4$): Funzione pari. Biettiva solo se ristretta a $[0, +\infty)$. Inversa: $\sqrt[k]{y}$.
+    \item Se $k$ è dispari (es. $x^3, x^5$): Funzione dispari. Biettiva su tutto $\mathbb{R}$. Inversa: $\sqrt[k]{y}$.
+    \item $k \in \mathbb{Z}, k < 0$ (es. $x^{-1} = \frac{1}{x}$): Definita per $x \neq 0$.
+\end{itemize}
+
+\end{document}

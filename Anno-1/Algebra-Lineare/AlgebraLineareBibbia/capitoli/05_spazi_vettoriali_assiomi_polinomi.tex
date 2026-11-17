@@ -1,0 +1,121 @@
+\newgeometry{top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm}
+
+\section{Approfondimento: Assiomi e Spazio dei Polinomi}
+
+\subsection{Definizione Generale di Spazio Vettoriale (Dalle slide)}
+
+\begin{definition}{Spazio Vettoriale su $\mathbb{R}$}{}
+Uno \textbf{Spazio Vettoriale su $\mathbb{R}$} è un insieme $V$ dotato di due operazioni:
+\begin{itemize}
+    \item \textbf{Somma:} $+ : V \times V \to V$
+    \item \textbf{Prodotto per scalare:} $\cdot : \mathbb{R} \times V \to V$
+\end{itemize}
+Tali che valgano le seguenti 8 proprietà (assiomi).
+\end{definition}
+
+\begin{enumerate}
+    \item $(u + v) + w = u + (v + w)$ [Associativa della somma]
+    \item $\exists \, 0 \in V$ tale che $0 + v = v + 0 = v, \quad \forall v \in V$ [Esistenza dell'elemento neutro]
+    \item $\forall v \in V, \exists -v \in V : v + (-v) = 0$ [Esistenza dell'opposto]
+    \item $\forall v, w \in V \quad v + w = w + v$ [Commutativa della somma]
+    \item $(\lambda \mu) v = \lambda (\mu v)$ [Associativa del prodotto per scalare]
+    \item $1 \cdot v = v$ e $0 \cdot v = 0 \quad \forall v \in V$ [Elemento neutro moltiplicativo / annullamento]
+    \item $\lambda (v + w) = \lambda v + \lambda w \quad \forall \lambda \in \mathbb{R}, \forall v, w \in V$ [Distributiva rispetto alla somma di vettori]
+    \item $(\lambda + \mu) v = \lambda v + \mu v \quad \forall \lambda, \mu \in \mathbb{R}, \forall v \in V$ [Distributiva rispetto alla somma di scalari]
+\end{enumerate}
+
+\section{Esempio 1: Spazio dei Polinomi (Dalla lavagna)}
+
+\begin{definition}{Polinomi $P_n(x)$}{}
+I Polinomi di grado $n$ in una variabile $x$ si indicano con $P_n(x)$.
+\[
+P_n(x) = \{ a_n x^n + a_{n-1} x^{n-1} + \dots + a_1 x + a_0 \mid a_i \in \mathbb{R} \quad \forall i \}
+\]
+\end{definition}
+
+Per capire se posso dotarlo di una struttura di spazio vettoriale, devo innanzitutto definire le due operazioni e poi verificare che soddisfino le proprietà (la lista degli assiomi vista sopra).
+
+\begin{proposition}{Definizione delle Operazioni}{}
+Siano $p(x), q(x) \in P_n(x)$ dove:
+\[
+\begin{aligned}
+p(x) &= a_n x^n + \dots + a_0 \\
+q(x) &= b_n x^n + \dots + b_0
+\end{aligned}
+\]
+
+\begin{itemize}
+    \item \textbf{Somma ($+$):} $P_n(x) \times P_n(x) \to P_n(x)$ \\
+    $(p(x), q(x)) \to p(x) + q(x) = (a_n + b_n)x^n + \dots + (a_0 + b_0)$ \\
+    (Si sommano i coefficienti corrispondenti)
+    
+    \item \textbf{Prodotto per scalare ($\cdot$):} $\mathbb{R} \times P_n(x) \to P_n(x)$ \\
+    $(\lambda, p(x)) \to \lambda \cdot p(x) = (\lambda a_n)x^n + \dots + (\lambda a_0)$
+\end{itemize}
+\end{proposition}
+
+\subparagraph{Dimostrazione alla lavagna (Verifica degli assiomi):}
+Il professore dimostra che $(P_n(x), +, \cdot)$ è uno spazio vettoriale su $\mathbb{R}$.
+
+\textbf{I. Associatività della somma:}\\
+Siano $p(x), q(x), h(x) \in P_n(x)$. Bisogna dimostrare che $(p(x)+q(x))+h(x) = p(x)+(q(x)+h(x))$.
+
+Svolgimento:
+\[
+\begin{aligned}
+&[(a_n+b_n)x^n + \dots + (a_0+b_0)] + h(x) \\
+&= [(a_n+b_n) + c_n]x^n + \dots + [(a_0+b_0) + c_0]
+\end{aligned}
+\]
+(Nota scritta a mano: "$||$ perché siamo in $\mathbb{R}$" - intende che l'associatività vale per i numeri reali)
+\[
+= [a_n + (b_n+c_n)]x^n + \dots + [a_0 + (b_0+c_0)]
+\]
+Che corrisponde a $p(x) + (q(x) + h(x))$.
+
+\textbf{II. Elemento Neutro:}\\
+$\exists \, 0 \in P_n(x)$ tale che $0 + p(x) = p(x) \quad \forall p \in P_n(x)$.\\
+L'elemento è il polinomio con tutti i coefficienti nulli: $0 = 0x^n + \dots + 0$.
+
+\begin{note}{Note sulle altre proprietà (Lavagna)}{}
+\begin{itemize}
+    \item $p(x) \in P_n(x) \implies \exists -p(x) \in P_n(x)$ tale che $p(x) + (-p(x)) = 0$. (Esistenza dell'opposto, coefficienti $-a_i$).
+    \item Commutativa: $p(x) + q(x) = q(x) + p(x)$ (deriva dalla commutatività di $a_i + b_i$ in $\mathbb{R}$).
+    \item $(\lambda \mu)p(x) = \lambda (\mu p(x))$
+    \item Elemento neutro per il prodotto scalare: $1 \in \mathbb{R}$.
+    \item Nota finale: "7 e 8 si dimostrano analogamente".
+\end{itemize}
+\end{note}
+
+\section{Esempio 2: Vettori Geometrici (Dalla slide)}
+
+\textbf{Contesto:} Consideriamo il piano euclideo $\mathbb{R}^2$ e fissiamo un'origine $O \in \mathbb{R}^2$.
+
+\begin{definition}{Insieme $V_O^2$}{}
+Un \textbf{Vettore Applicato in $O$} $\doteq$ un segmento orientato con primo estremo in $O$ e secondo estremo in un punto $A \in \mathbb{R}^2$.\\
+Si indica con $\overrightarrow{OA}$.
+
+$V_O^2 \doteq \{ \text{vettori applicati in } O \}$\\
+L'Origine di $V_O^2$ è il punto $O$ (vettore nullo).
+\end{definition}
+
+\begin{proposition}{Operazioni Geometriche}{}
+\begin{itemize}
+    \item \textbf{Somma di vettori applicati ($+$):} $V_O^2 \times V_O^2 \to V_O^2$ \\
+    Dati $\overrightarrow{OA}$ e $\overrightarrow{OB}$, la somma è $\overrightarrow{OC}$ tale che $\overrightarrow{OA} + \overrightarrow{OB} = \overrightarrow{OC}$.\\
+    (\textbf{Regola del Parallelogramma}: $C$ è il vertice opposto a $O$ del parallelogramma formato da $A$ e $B$).
+
+    \item \textbf{Prodotto per scalare ($\cdot$):} $\mathbb{R} \times V_O^2 \to V_O^2$ \\
+    $(\lambda, \overrightarrow{OA}) \to \lambda \cdot \overrightarrow{OA} = \text{un vettore } \overrightarrow{OC}$ dove:
+    \begin{itemize}
+        \item $C$ appartiene alla retta per $O$ ed $A$.
+        \item Tale che $\frac{\text{lunghezza } OC}{\text{lunghezza } OA} = |\lambda|$.
+    \end{itemize}
+\end{itemize}
+\end{proposition}
+
+\begin{tcolorbox}[colback=white, colframe=cherryRed, title=Affermazione (AFF)]
+$(V_O^2, +, \text{prod per scalare})$ è uno spazio vettoriale.
+\end{tcolorbox}
+
+\restoregeometry

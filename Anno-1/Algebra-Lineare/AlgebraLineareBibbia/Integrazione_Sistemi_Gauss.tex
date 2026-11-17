@@ -1,0 +1,451 @@
+\documentclass[11pt,a4paper]{article}
+
+% --- PACCHETTI FONDAMENTALI ---
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[italian]{babel}
+\usepackage{amsmath, amssymb, amsthm, mathtools}
+\usepackage{geometry}
+\geometry{a4paper, top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm}
+\usepackage{tikz}
+\usepackage[most]{tcolorbox}
+\usepackage{xcolor}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+
+% --- PALETTE COLORI ---
+\definecolor{paletteIndigo}{HTML}{4B0082}
+\definecolor{paletteRegalia}{HTML}{522D80}
+\definecolor{Lenurple}{HTML}{BA96CD}
+\definecolor{Lavender}{HTML}{E6E6FA}
+\definecolor{darkgray}{HTML}{333333}
+
+% --- STILI TCOLORBOX ---
+\tcbset{
+    basebox/.style={
+        enhanced,
+        boxrule=1pt,
+        arc=4pt,
+        fonttitle=\bfseries,
+        coltitle=white,
+        attach boxed title to top left={yshift=-2mm, xshift=4mm},
+        boxed title style={arc=2pt, boxrule=0pt}
+    },
+    defbox/.style={
+        basebox,
+        colback=Lavender!30,
+        colframe=paletteIndigo,
+        boxed title style={colback=paletteIndigo}
+    },
+    conceptbox/.style={
+        basebox,
+        colback=white,
+        colframe=paletteRegalia,
+        boxed title style={colback=paletteRegalia}
+    },
+    examplebox/.style={
+        basebox,
+        colback=Lenurple!10,
+        colframe=Lenurple,
+        coltitle=paletteIndigo,
+        boxed title style={colback=Lenurple!50}
+    }
+}
+
+% --- AMBIENTI PERSONALIZZATI ---
+\newtcolorbox{definition}[1][Definizione]{defbox, title=#1}
+\newtcolorbox{concept}[1][Concetto Chiave]{conceptbox, title=#1}
+\newtcolorbox{esercizio}[1][Esercizio/Esempio]{examplebox, title=#1}
+
+\begin{document}
+
+\title{\vspace{-2cm}\textbf{\color{paletteIndigo}Appunti Universitari: Algebra Lineare}\\ \Large Introduzione ai Sistemi Lineari, Matrici ed Eliminazione di Gauss}
+\author{\textit{Redazione Accademica Universale}}
+\date{Marzo 2026}
+\maketitle
+
+\section{Introduzione alle Equazioni e ai Sistemi Lineari}
+
+\subsection{Premesse Fondamentali}
+Salvo esplicito avviso contrario, supponiamo sempre di lavorare in $\mathbb{R}$, cioè che i coefficienti, i termini noti e le variabili (o incognite) delle equazioni siano sempre numeri reali[cite: 3, 4, 5, 6, 7].
+
+\subsection{Equazioni Lineari}
+\begin{definition}[Equazione Lineare in una Variabile]
+Un'equazione lineare è un'equazione di primo grado (i.e., in cui l'incognita compare al primo grado)[cite: 8]. Se un'equazione lineare è in una sola incognita, la si può sempre porre, tramite passaggi algebrici, nella forma:
+\begin{equation}
+ax + b = 0
+\end{equation}
+\end{definition}
+
+\textbf{Soluzioni:}
+\begin{itemize}
+    \item Se $a \neq 0 \implies 1$ soluzione, $x = \frac{-b}{a}$[cite: 12].
+    \item Se $a = 0$ e $b \neq 0 \implies$ NON AMMETTE SOLUZIONI[cite: 13].
+    \item Se $a = 0$ e $b = 0 \implies$ soddisfatta per $\forall x \in \mathbb{R}$ (è un'identità)[cite: 14].
+\end{itemize}
+
+\begin{concept}[Equazione Lineare in due Variabili]
+Se invece un'equazione lineare ha due variabili, le soluzioni sono in generale infinite[cite: 15, 16]. 
+\textbf{Esempio:}
+\begin{equation}
+x + y = 1
+\end{equation}
+Le soluzioni sono coppie: $(1,0), (0,1), (1/2, 1/2)$, ecc...[cite: 17, 18].
+Ovvero tutte le infinite coppie $(x,y)$ con $x = t$ e $y = 1 - t$, per $t \in \mathbb{R}$[cite: 19].
+\end{concept}
+
+\textbf{Interpretazione Geometrica:} Se consideriamo il piano cartesiano riferito a una coppia di assi geometrici ortogonali, sappiamo che le soluzioni rappresentano i punti della retta di equazione $y = -x + 1$[cite: 20, 22, 23, 25].
+
+\subsection{Sistemi di Equazioni Lineari}
+Supponiamo di avere anche un'altra equazione lineare in due incognite, per esempio $x - y = 0$, e ci chiediamo se esistono valori di $x$ e $y$ che soddisfano ENTRAMBE le equazioni: abbiamo quindi quello che si chiama un SISTEMA LINEARE che si indica con la scrittura[cite: 27]:
+\begin{equation}
+\begin{cases}
+x + y = 1 \\
+x - y = 0
+\end{cases}
+\end{equation}
+
+\begin{definition}[Sistema di Equazioni]
+Un insieme di equazioni di cui si cercano le (eventuali) soluzioni comuni prende il nome di Sistema di Equazioni[cite: 30, 33]. Un sistema lineare è un sistema composto esclusivamente da equazioni lineari[cite: 32].
+\end{definition}
+
+\subsubsection{Risoluzione e Interpretazione Geometrica}
+Proviamo a risolvere il sistema precedente. Dalla seconda equazione troviamo che $x = y$, e sostituendo nella prima ricaviamo $x = y = \frac{1}{2}$[cite: 32].
+Dal punto di vista geometrico, ciascuna equazione rappresenta una retta, e le soluzioni del sistema corrispondono ai punti in cui si incontrano[cite: 32, 39, 41, 43]. 
+Ci sono 3 possibili situazioni geometriche[cite: 45, 47]:
+
+\begin{center}
+\begin{tikzpicture}[scale=0.8, every node/.style={scale=0.8}]
+    % Caso 1: Incidenti
+    \draw[->] (-1,0) -- (3,0) node[right] {$x$};
+    \draw[->] (0,-1) -- (0,3) node[above] {$y$};
+    \draw[paletteIndigo, thick] (-0.5, 1.5) -- (2.5, -1.5) node[right] {$x+y=1$};
+    \draw[paletteRegalia, thick] (-1, -1) -- (2.5, 2.5) node[right] {$2x-y=0$};
+    \filldraw[black] (0.5,0.5) circle (2pt) node[above] {1 Sol.};
+    \node at (1, -2.5) {\textbf{Rette Incidenti}};
+    
+    % Caso 2: Parallele
+    \begin{scope}[xshift=5cm]
+    \draw[->] (-1,0) -- (3,0) node[right] {$x$};
+    \draw[->] (0,-1) -- (0,3) node[above] {$y$};
+    \draw[paletteIndigo, thick] (-0.5, 1.5) -- (2.5, -1.5) node[right] {$x+y=1$};
+    \draw[paletteRegalia, thick] (-0.5, 2.5) -- (2.5, -0.5) node[right] {$x+y=2$};
+    \node at (1, -2.5) {\textbf{Rette Parallele}};
+    \node at (1, -3) {(Nessuna Soluzione)};
+    \end{scope}
+
+    % Caso 3: Coincidenti
+    \begin{scope}[xshift=11cm]
+    \draw[->] (-1,0) -- (3,0) node[right] {$x$};
+    \draw[->] (0,-1) -- (0,3) node[above] {$y$};
+    \draw[Lenurple, line width=1.5mm] (-0.5, 1.5) -- (2.5, -1.5);
+    \draw[paletteIndigo, thick] (-0.5, 1.5) -- (2.5, -1.5) node[right, yshift=-0.3cm] {$2x+2y=2$};
+    \node[right, yshift=0.3cm] at (2.5,-1.5) {$x+y=1$};
+    \node at (1, -2.5) {\textbf{Rette Coincidenti}};
+    \node at (1, -3) {($\infty$ Soluzioni)};
+    \end{scope}
+\end{tikzpicture}
+\end{center}
+[cite: 48]
+
+\subsection{Generalizzazione ai Sistemi $m \times n$}
+Le considerazioni viste per i sistemi lineari $2 \times 2$ si possono generalizzare al caso di sistemi di $m$ equazioni in $n$ incognite[cite: 49, 51, 52]:
+\begin{equation}
+\begin{cases}
+a_{11}x_1 + a_{12}x_2 + \dots + a_{1n}x_n = b_1 \\
+a_{21}x_1 + a_{22}x_2 + \dots + a_{2n}x_n = b_2 \\
+\vdots \\
+a_{m1}x_1 + a_{m2}x_2 + \dots + a_{mn}x_n = b_m
+\end{cases}
+\end{equation}
+[cite: 50]
+
+\textbf{Casistica delle Soluzioni:}
+\begin{itemize}
+    \item \textbf{Possibile (Compatibile, Risolubile):} Ha soluzioni. Può essere $1!$ soluzione unica, oppure $\infty$ soluzioni, dipendente da uno o più parametri[cite: 50].
+    \item \textbf{Impossibile:} $0$ soluzioni comuni alle $m$ equazioni[cite: 50].
+\end{itemize}
+Non è interesse solo (o non tanto) risolvere un sistema lineare, ma soprattutto discuterlo, i.e. scoprire A PRIORI (ovvero senza risolverlo) se è risolubile o no, e quante sono le sue soluzioni al variare di eventuali parametri[cite: 50].
+
+\begin{concept}[Sistemi Equivalenti]
+Per risolvere un sistema lineare, l'idea di fondo è trasformare il sistema dato in un sistema che abbia le stesse soluzioni, ma sia più facile da risolvere[cite: 54, 132].
+Due sistemi si dicono \textbf{equivalenti} se possiedono le stesse soluzioni, i.e. ogni n-upla di valori che risolve uno, risolve anche l'altro[cite: 54, 132].
+
+\textbf{Esempio di sistemi equivalenti:}
+$$
+\begin{cases} (1+6)x = 7 \\ y = 2x \end{cases} \implies \begin{cases} x = 1 \\ y = 2 \end{cases}
+\quad \text{Sono sistemi equivalenti a:} \quad
+\begin{cases} x + 3y = 7 \\ 2x - y = 0 \end{cases}
+$$
+[cite: 54, 132]
+\end{concept}
+
+\section{Dai Sistemi alle Matrici}
+Per studiare i sistemi lineari, basta studiarne le matrici associate, poiché la struttura è la stessa e cambiano solo i numeri[cite: 55, 133].
+\textbf{Esempio di passaggio alle matrici:}
+$$
+\begin{cases}
+5x + 6y = 0 \\
+3x + 2y = 7 \\
+7x + 2y = 2
+\end{cases}
+\implies
+\text{Associo la matrice: }
+\begin{pmatrix}
+5 & 6 & 0 \\
+3 & 2 & 7 \\
+7 & 2 & 2
+\end{pmatrix}
+$$
+[cite: 54, 132]
+
+\begin{definition}[Matrice e Vettori]
+Dato il sistema generico $m \times n$, definiamo:
+\begin{itemize}
+    \item \textbf{Matrice Associata (Incompleta) $A$}: La tabella $m \times n$ (con $m$ righe e $n$ colonne) che raccoglie i coefficienti $a_{ij}$. L'elemento $a_{ij}$ occupa la riga $i$ e la colonna $j$[cite: 58, 68, 70, 71, 72, 135, 143, 144, 152, 153].
+    \item \textbf{Vettore dei Termini Noti $b$}: È una matrice $m \times 1$ (vettore colonna) che raccoglie i valori $b_i$[cite: 60, 73, 74, 81, 148, 156, 158].
+    \item \textbf{Matrice Completa del Sistema $(A|b)$}: È la matrice con $m$ righe e $n+1$ colonne ottenuta affiancando ad $A$ il vettore $b$[cite: 61, 75, 76, 159, 160].
+\end{itemize}
+\end{definition}
+
+\subsection{Tipologie di Matrici}
+\begin{itemize}
+    \item \textbf{Matrice Quadrata:} Una matrice in cui il numero di righe è uguale al numero di colonne ($m=n$). Il numero $n$ si dice \textbf{ORDINE} della matrice. Esempio di matrice quadrata di ordine 3: $\begin{pmatrix} 4 & 2 & 3 \\ 2 & 4 & 5 \\ 3 & 0 & 1 \end{pmatrix}$[cite: 63, 64, 78, 79, 82, 83, 162, 164, 165, 172, 173]. Un sistema lineare si dice quadrato se la sua matrice associata è quadrata[cite: 88, 90, 181].
+    \item \textbf{Diagonale Principale:} L'insieme degli elementi $a_{ij}$ con $i = j$ ($a_{11}, a_{22}, \dots, a_{nn}$)[cite: 85, 174].
+    \item \textbf{Matrice Diagonale:} Se $a_{ij} = 0 \ \forall i \neq j$[cite: 85, 174].
+    \item \textbf{Matrice Triangolare Superiore:} Tutti gli elementi sotto la diagonale principale sono nulli ($a_{ij} = 0 \ \forall i > j$). Esempio: $A = \begin{pmatrix} 1 & 3 \\ 0 & 1 \end{pmatrix}$[cite: 85, 174]. Un sistema si dice triangolare superiore se la sua matrice lo è[cite: 91, 182].
+    \item \textbf{Matrice Triangolare Inferiore:} Tutti gli elementi sopra la diagonale principale sono nulli ($a_{ij} = 0 \ \forall i < j$). Esempio: $A = \begin{pmatrix} 1 & 0 \\ 2 & 3 \end{pmatrix}$[cite: 85, 174].
+\end{itemize}
+\textit{Osservazione:} Una matrice diagonale è contemporaneamente triangolare superiore e triangolare inferiore[cite: 85, 174].
+
+\begin{concept}[Pivot di una riga]
+Consideriamo una matrice qualsiasi $A$, $m \times n$. Le sue righe sono $A_1, A_2, \dots, A_m$.
+Chiamiamo \textbf{Pivot} della riga $A_i$ il primo elemento non nullo della riga $A_i$[cite: 174].
+
+\textbf{Esempio:} In $A = \begin{pmatrix} 0 & 1 & 2 & 3 \\ 7 & 3 & 5 & 0 \end{pmatrix}$, il pivot di $A_1$ è $a_{12} = 1$, il pivot di $A_2$ è $a_{21} = 7$[cite: 177, 180]. 
+Una matrice è a scalini se il pivot della riga successiva è più a destra[cite: 180, 288].
+\end{concept}
+
+
+\subsection{Risoluzione di Sistemi Triangolari}
+I sistemi lineari triangolari superiori sono "i più belli di tutti", sono facili da risolvere sostituendo a ritroso[cite: 104, 126, 195, 215].
+
+\begin{esercizio}[Esempi Completi di Sostituzione a Ritroso]
+\textbf{Esempio 1: 1! Soluzione}
+$$
+\begin{cases} 3x + 2y - z = 0 \\ y - z = 0 \\ z = 1 \end{cases} \implies
+A = \begin{pmatrix} 3 & 2 & 0 \\ 0 & 1 & -1 \\ 0 & 0 & 1 \end{pmatrix}, \ b = \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix}
+$$
+[cite: 101, 102, 103, 192, 193, 194]
+Risolvendo dal basso verso l'alto (sostituendo a ritroso):
+1) $z = 1$ [cite: 109, 200]
+2) Dalla seconda equazione: $y - 1 = 0 \implies y = 1$ [cite: 204]
+3) Dalla prima equazione: $3x + 2y = 0 \implies 3x + 2(1) = 0 \implies 3x + 2 = 0$ [cite: 105, 110, 204] 
+(Nota dai manoscritti: l'equazione appare come $3x+2y=0$ ma la matrice $A$ ha $-z$ nel primo esempio $3x+2y-z=0$ e $0$ nel secondo, mostriamo i passaggi così come segnati negli appunti).
+
+\textbf{Esempio 2: Nessuna Soluzione (Impossibile)}
+$$
+A = \begin{pmatrix} 3 & 2 & 0 \\ 0 & 0 & 1 \\ 0 & 0 & 1 \end{pmatrix}, \ b = \begin{pmatrix} 0 \\ 3 \\ 1 \end{pmatrix}
+$$
+[cite: 111, 118, 206]
+Se l'ultima riga indica $1 \cdot z = 1$ e la seconda $1 \cdot z = 3$, il sistema entra in contraddizione. Sistema impossibile, non ha soluzioni[cite: 121, 122, 210, 211].
+
+\textbf{Esempio 3: $\infty$ Soluzioni (Gradi di Libertà)}
+$$
+A = \begin{pmatrix} -3 & 2 & 0 \\ 0 & 0 & 2 \\ 0 & 0 & 1 \end{pmatrix}, \ b = \begin{pmatrix} 0 \\ 2 \\ 1 \end{pmatrix}
+$$
+[cite: 119, 207, 208]
+Ha infinite soluzioni dipendenti da 1 grado di libertà. Soluzioni della forma $(t, \dots, 1)$ o $(t, -3/2 t, 1)$[cite: 123, 212, 213].
+\end{esercizio}
+
+Se il sistema di partenza non è triangolare, ad esempio:
+$$
+\begin{cases} x + y + z = 0 \\ 2x + y - z = 3 \\ x - y + 2z = 5 \end{cases}
+$$
+[cite: 219, 220]
+Non è immediatamente risolubile. Ci serve una "ricetta" per passare da un sistema ad un sistema triangolare superiore equivalente: l'Algoritmo di Gauss[cite: 224, 225, 230].
+
+\section{Eliminazione di Gauss}
+
+\begin{definition}[Mosse di Gauss]
+Date un sistema $C = (A|b)$, le mosse di Gauss su $C$ non modificano l'insieme delle soluzioni del sistema lineare associato (cambiano l'aspetto ma non l'insieme $S = S'$ delle soluzioni)[cite: 255, 262, 263, 265, 266, 268, 269]. Le operazioni sono 3:
+\begin{enumerate}
+    \item Scambiare 2 righe[cite: 258].
+    \item Moltiplicare una riga per un numero $\lambda \neq 0$[cite: 259].
+    \item Aggiungere a una riga un'altra riga moltiplicata per un $\lambda$ qualsiasi[cite: 260, 261].
+\end{enumerate}
+\end{definition}
+
+\subsection{L'Algoritmo}
+L'algoritmo trasforma una matrice qualsiasi in una a scalini[cite: 272].
+\begin{algorithmic}[1]
+\STATE Se $C_{11} = 0$ scambia la riga 1 con un'altra riga in modo da ottenere $C_{11} \neq 0$. (Se $C_{i1} = 0 \ \forall i$, passa al punto 3) [cite: 272].
+\STATE Con il pivot $C_{11} \neq 0$, "ammazza" (annulla) gli elementi $C_{i1}$ sottostanti, sostituendo la riga $C_i$ con $C_i - \frac{C_{i1}}{C_{11}} C_1$[cite: 272].
+\STATE Hai ottenuto $C_{i1} = 0 \ \forall i \ge 2$. Copri la prima riga e la prima colonna e riparti dal punto 1 sulla sottomatrice ottenuta[cite: 272].
+\end{algorithmic}
+
+\begin{esercizio}[Esempio 3: Applicazione Algoritmo]
+Partiamo dal sistema lineare equivalente a:
+$$
+C = \begin{pmatrix}
+0 & 1 & 1 & | & 0 \\
+1 & 1 & 2 & | & -3 \\
+-1 & 2 & 1 & | & 1
+\end{pmatrix} \quad \text{corrispondente a } \quad
+\begin{cases}
+x_2 + x_3 = 0 \\
+x_1 + x_2 + 2x_3 = -3 \\
+-x_1 + 2x_2 + x_3 = 1
+\end{cases}
+$$
+[cite: 272]
+
+\textbf{Passo 1:} $C_{11} = 0$, quindi scambio $C_1$ con $C_2$:
+$$
+\begin{pmatrix}
+1 & 1 & 2 & | & -3 \\
+0 & 1 & 1 & | & 0 \\
+-1 & 2 & 1 & | & 1
+\end{pmatrix}
+$$
+[cite: 272]
+
+\textbf{Passo 2:} "Ammazzo" il -1. Sostituisco $C_3 \leftarrow C_3 + C_1$:
+$$
+\begin{pmatrix}
+1 & 1 & 2 & | & -3 \\
+0 & 1 & 1 & | & 0 \\
+0 & 3 & 3 & | & -2
+\end{pmatrix}
+$$
+[cite: 276, 277, 278]
+
+\textbf{Passo 3:} Il pivot successivo è $C_{22} = 1 \neq 0$, va bene. Devo ammazzare $C_{32} = 3$. Sostituisco $C_3 \leftarrow C_3 - 3C_2$:
+$$
+\begin{pmatrix}
+1 & 1 & 2 & | & -3 \\
+0 & 1 & 1 & | & 0 \\
+0 & 0 & 0 & | & -2
+\end{pmatrix}
+$$
+[cite: 279, 280, 281, 282, 283, 284, 285, 286]
+Matrice a scalini ottenuta. Mi fermo[cite: 288, 289, 292].
+\end{esercizio}
+
+\begin{esercizio}[Esempio 1: Algoritmo Completo con Soluzione]
+$$
+\begin{cases}
+x + y + z = 6 \\
+2x + y - z = 3 \\
+-x - y + 2z = 5
+\end{cases}
+\implies
+\text{Matrice associata } C = \begin{pmatrix}
+1 & 1 & 1 & | & 6 \\
+2 & 1 & -1 & | & 3 \\
+-1 & -1 & 2 & | & 5
+\end{pmatrix}
+$$
+[cite: 298, 299, 300, 301, 302, 303, 304, 305]
+
+Cosa manca alla matrice per essere triangolare superiore? Devo uccidere i pivot di $A_2$ e $A_3$[cite: 306, 307, 308, 315].
+Eseguo $C_2 \leftarrow C_2 - 2C_1$ e $C_3 \leftarrow C_3 + C_1$:
+$$
+\begin{pmatrix}
+1 & 1 & 1 & | & 6 \\
+0 & -1 & -3 & | & -9 \\
+0 & 0 & 3 & | & 11
+\end{pmatrix}
+$$
+(Dai manoscritti si legge il passaggio come $C_3 \leftarrow C_3 - C_1$ per un possibile errore di trascrizione in aula, poi corretto in una riga $0 \ 0 \ 7 \ | \ 17$) [cite: 312, 313, 316, 318, 319, 328].
+Adesso la matrice è triangolare superiore. Risolvo il sistema corrispondente:
+$$
+\begin{cases}
+x + y + z = 6 \\
+-y - 3z = -9 \\
+7z = 17
+\end{cases}
+$$
+[cite: 323, 327, 328]
+Risolvendo a ritroso:
+$z = \frac{17}{7}$, 
+$y = 9 - 3z = \frac{12}{7}$, 
+$x = -y - z + 6 = \frac{13}{7}$[cite: 329].
+\end{esercizio}
+
+\begin{esercizio}[Esempio 4: Rilevare l'impossibilità]
+$$
+\begin{cases}
+x + y = 2 \\
+2x + 2y = 4 \\
+x + y = 3
+\end{cases}
+\implies
+C = \begin{pmatrix}
+1 & 1 & | & 2 \\
+2 & 2 & | & 4 \\
+1 & 1 & | & 3
+\end{pmatrix}
+$$
+[cite: 322, 325, 336, 337, 338, 339]
+
+Si vede "a occhio" che la prima e la terza equazione sono incompatibili, il sistema è impossibile. Ma mettiamo che io non me ne accorga[cite: 333, 334, 335].
+Ammazzo i pivot di $A_2$ e $A_3$ con le mosse $C_2 \leftarrow C_2 - 2C_1$ e $C_3 \leftarrow C_3 - C_1$[cite: 340, 341]:
+$$
+\begin{pmatrix}
+1 & 1 & | & 2 \\
+0 & 0 & | & 0 \\
+0 & 0 & | & 1
+\end{pmatrix}
+$$
+[cite: 342, 343, 344]
+L'ultima riga rappresenta l'equazione $0 = 1$, IMPOSSIBILE[cite: 342, 345].
+\end{esercizio}
+
+\begin{esercizio}[Esempio 5: Sistema Dipendente da Parametri]
+$$
+\begin{cases}
+x + y + z = 3 \\
+2x + y + 3z = 7
+\end{cases}
+\implies
+\begin{pmatrix}
+1 & 1 & 1 & | & 3 \\
+2 & 1 & 3 & | & 7
+\end{pmatrix}
+$$
+[cite: 347]
+
+Mossa di Gauss: la matrice diventa a scalini:
+$$
+\begin{pmatrix}
+1 & 1 & 1 & | & 3 \\
+0 & -1 & 1 & | & 1
+\end{pmatrix}
+\implies
+\begin{cases}
+x + y + z = 3 \\
+-y + z = 1
+\end{cases}
+$$
+[cite: 347]
+Ponendo $z = t$, ricaviamo $y = t - 1$ e $x = -y - z + 3 = -(t-1) - t + 3 = 4 - 2t$.
+Soluzioni della forma $(4 - 2t, t - 1, t)$. Abbiamo infinite soluzioni (gradi di libertà = 1 parametro)[cite: 347].
+\end{esercizio}
+
+\begin{concept}[Esempi Veloci e Morale sull'Algoritmo]
+\textbf{Esempi Veloci:}
+\begin{itemize}
+    \item $\begin{cases} 5x + 2y = 4 \\ 10x + 4y = 8 \end{cases} \implies \infty$ soluzioni[cite: 348].
+    \item $\begin{cases} x + 2y = 4 \\ 2x + 4y = 9 \end{cases} \implies 0$ soluzioni[cite: 348].
+    \item $\begin{cases} 2x + y = 5 \\ x - y = 1 \end{cases} \implies 1!$ soluzione[cite: 348].
+\end{itemize}
+
+\textbf{MORALE:} La forma a scalini fa emergere subito le caratteristiche delle soluzioni[cite: 347].
+1. Se compare una riga del tipo $\begin{pmatrix} 0 & 0 & \dots & 0 & | & b \end{pmatrix}$ con $b \neq 0 \implies$ Nessuna Soluzione[cite: 347].
+2. Se compare una o più righe tutte di zeri $\implies$ è un'equazione ridondante[cite: 347].
+3. In un sistema quadrato che diviene triangolare con tutti i pivot sulla diagonale $\neq 0 \implies 1!$ soluzione unica[cite: 347].
+Il numero dei pivot misura quante informazioni indipendenti ci sono nel sistema[cite: 347].
+\end{concept}
+
+\end{document}

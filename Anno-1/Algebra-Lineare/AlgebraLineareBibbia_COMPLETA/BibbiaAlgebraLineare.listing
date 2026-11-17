@@ -1,0 +1,3 @@
+// Esempio pseudo-codice (solo per demo template)
+Matrix A = new Matrix(2, 2);
+A.set(0, 0, 1);

@@ -1,0 +1,340 @@
+% =======================================================
+% FILE: infinitesimi.tex
+% DA INCLUDERE NEL MAIN DOCUMENT CON \input{capitoli/infinitesimi}
+% =======================================================
+
+
+% Comandi personalizzati
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+
+
+\section{Infinitesimi e Sviluppi di Taylor}
+
+\subsection{Spiegazione Intuitiva (da "compagno di banco")}
+Gli infinitesimi sono un modo per capire \textbf{chi vince la gara ad andare a zero}.
+
+\subsubsection{1. I Corridori}
+Immagina che $x=0$ sia un traguardo.
+Ora immagina che diverse funzioni siano dei "corridori" che, quando la $x$ si avvicina a 0, corrono verso quel traguardo.
+Tutte le funzioni che "corrono" verso lo 0 si chiamano \textbf{infinitesimi}.
+
+Prendiamo tre corridori:
+\begin{itemize}
+    \item Corridore A: $f(x) = x$
+    \item Corridore B: $g(x) = x^2$
+    \item Corridore C: $h(x) = x^3$
+\end{itemize}
+Tutti, per $x \to 0$, vanno a 0. Ma non ci vanno alla stessa velocità.
+
+Guarda cosa succede quando $x$ è \textit{vicinissimo} al traguardo (es. $x = 0.01$):
+\begin{itemize}
+    \item Corridore A ($x$): Si trova a distanza $0.01$ dal traguardo.
+    \item Corridore B ($x^2$): Si trova a distanza $(0.01)^2 = 0.0001$ dal traguardo.
+    \item Corridore C ($x^3$): Si trova a distanza $(0.01)^3 = 0.000001$ dal traguardo.
+\end{itemize}
+Come vedi, $x^3$ è molto più vicino allo zero di $x^2$, che a sua volta è molto più vicino di $x$.
+Possiamo dire che $x^3$ va a zero \textit{molto più velocemente} di $x^2$, e $x^2$ va a zero \textit{molto più velocemente} di $x$.
+
+\subsubsection{2. Cos'è "o-piccolo"?}
+L' "\textbf{o-piccolo}" (che si scrive $o()$) è solo un modo per dire questa cosa.
+$f = o(g)$ si legge "f è o-piccolo di g" e significa semplicemente:
+\begin{center}
+    \textbf{"$f$ va a zero \textit{molto più velocemente} di $g$"}
+\end{center}
+Usando i nostri corridori:
+\begin{itemize}
+    \item $x^2$ è più veloce di $x$, quindi scriviamo: $x^2 = o(x)$
+    \item $x^3$ è più veloce di $x^2$, quindi scriviamo: $x^3 = o(x^2)$
+    \item $x^3$ è \textit{molto} più veloce di $x$, quindi scriviamo anche: $x^3 = o(x)$
+\end{itemize}
+
+\subsubsection{3. A che serve? (Il "Bidone della Spazzatura")}
+L' "\textbf{o-piccolo}" è come un \textbf{bidone della spazzatura} per le cose che non ci interessano.
+Immagina di dover descrivere la funzione $f(x) = 2x + 3x^2 + 5x^3$ quando sei \textit{vicinissimo} a zero.
+\begin{itemize}
+    \item $2x$ è la parte "lenta".
+    \item $3x^2$ è "spazzatura" in confronto a $x$ (perché $x^2 = o(x)$).
+    \item $5x^3$ è "spazzatura" in confronto a $x$ (perché $x^3 = o(x)$).
+\end{itemize}
+Invece di scrivere la funzione per intero, possiamo "semplificarla" buttando la roba veloce nel bidone $o(x)$.
+$$ f(x) = 2x + \underbrace{3x^2 + 5x^3}_{\text{roba che va a zero più velocemente di } x} $$
+Possiamo riscriverla come:
+$$ f(x) = 2x + o(x) $$
+Questa scrittura significa: "Guarda, la funzione $f(x)$ vicino a zero si comporta \textit{principalmente} come $2x$. C'è anche dell'altra roba, ma è così veloce ad andare a zero (è un $o(x)$) che per ora non ci interessa."
+
+\subsubsection{4. Il Trucco Matematico (La Prova)}
+Come fai a sapere se $f$ è davvero più veloce di $g$?
+Fai la gara con una divisione:
+Se $\lim\limits_{x \to x_0} \frac{f(x)}{g(x)} = 0$, allora $f$ vince la gara (va a zero più velocemente) e puoi scrivere $f = o(g)$.
+
+\begin{example}
+$f(x) = x^2$ e $g(x) = x$. Per $x\to 0$:
+$$ \lim_{x \to 0} \frac{x^2}{x} = \lim_{x \to 0} x = 0 $$
+Il limite è zero! Questo conferma che $x^2$ vince, quindi $x^2 = o(x)$.
+\end{example}
+
+\begin{example}
+$f(x) = \sin(x) - x$ e $g(x) = x$. Per $x\to 0$:
+$$ \lim_{x \to 0} \frac{\sin(x) - x}{x} = \lim_{x \to 0} \left(\frac{\sin(x)}{x} - 1\right) = 1 - 1 = 0 $$
+Il limite è zero! Questo significa che $\sin(x) - x$ va a zero più velocemente di $x$.
+Quindi possiamo scrivere: $\sin(x) - x = o(x)$, che è lo stesso che dire $\sin(x) = x + o(x)$.
+\end{example}
+
+\subsection{Infinitesimi e Asintotici (Definizioni Formali)}
+
+\subsubsection{O-piccolo (Notazione di Landau)}
+\begin{definition}[O-piccolo]
+Prendiamo $A \subset \R, x_0 \in Acc(A)$, $f,g: A \to \R$. Si dice che $f$ è \textbf{o-piccolo} di $g$ per $x$ che tende a $x_0$, e si scrive $f(x) = o(g(x))$ per $x \to x_0$ se esiste una funzione $\omega(x)$ tale che $\lim\limits_{x \to x_0} \omega(x) = 0$ e $f(x) = g(x) \cdot \omega(x)$ per $x$ in un intorno di $x_0$.
+\end{definition}
+
+\begin{observation}
+Se esiste un intorno $U$ di $x_0$ t.c. $g(x) \neq 0 \, \forall x \in U \setminus \{x_0\}$, allora
+$$ f(x) = o(g(x)) \Longleftrightarrow \lim\limits_{x\to x_0}\frac{f(x)}{g(x)}=0 $$
+Intuitivamente, $f(x)$ è infinitesimamente più piccola di $g(x)$ per $x\to x_0$.
+\end{observation}
+
+\begin{example}
+Se prendiamo $f(x) = x^3$ e $g(x) = x^2$, $f(x) = o(g(x))$ per $x\to 0$.
+Infatti $\lim_{x\to 0} \frac{f(x)}{g(x)} = \lim_{x\to 0} \frac{x^3}{x^2} = \lim_{x\to 0} x = 0$.
+\end{example}
+
+\subsubsection{Proprietà o-piccolo}
+Dato un $A \subset \R$, un $x_0 \in Acc(A)$, e due funzioni $f,g: A \to \R$ e con tutti gli o-piccoli che si intendono per $x\to x_0$, valgono le seguenti proprietà.
+\begin{enumerate}
+    \item $f(x) \cdot o(g(x)) = o(f(x) \cdot g(x))$.
+    \item Se $k \in \R$, e $k \neq 0 \Longrightarrow o(k \cdot g(x)) = o(g(x))$.
+    \item $o(g) + o(g) = o(g)$.
+    \item Se $\lim\limits_{x\to x_0}f(x) = 0 \Longrightarrow f(x) \cdot g(x) = o(g(x))$.
+    \item Se $\lim\limits_{x\to x_0}f(x) = 0 \Longrightarrow o(g) + o(f \cdot g) = o(g)$.
+    \item $o(o(g)) = o(g)$.
+    \item $o(f + g) = o(f) + o(g)$ è in generale \textbf{falso}, ma si ha $\mathbf{o(f) + o(g) = o(\min(|f|, |g|))}$ (dove $\min(|f|,|g|)$ è l'infinitesimo di ordine inferiore)
+    \item $o(g) \cdot o(f) = o(f \cdot g)$.
+\end{enumerate}
+
+\begin{observation}
+Vale anche nel caso $o(g) - o(g)$.
+$$o(g) - o(g) = o(g) + (-1)\cdot o(g) = o(g) + o(-1 \cdot g) = o(g) + o(g) = o(g)$$ 
+\end{observation}
+
+\begin{example}
+Prendiamo $f(x) = x^3$, $g(x) = x^2$ e $h(x) = x^4$ per $x\to 0$. Sappiamo che $x^3 = o(x^2)$ e $x^4 = o(x^2)$.
+Allora $x^3 - x^4$ è un $o(x^2)$, ma non è la funzione nulla, infatti $\lim_{x\to 0} \frac{x^3 - x^4}{x^2} = \lim_{x\to 0} (x - x^2) = 0$.
+\end{example}
+
+\begin{observation}
+Se prendiamo $\alpha, \beta \in \R$ con $\alpha > \beta$ e $x_0=0$:
+$$ x^\alpha = o(x^\beta) $$
+Questo perché $\lim_{x\to 0} \frac{x^\alpha}{x^\beta} = \lim_{x\to 0} x^{\alpha - \beta} = 0$, dato che $\alpha - \beta > 0$. In questo caso, $x^\alpha$ va a zero \textbf{più velocemente} di $x^\beta$.
+\end{observation}
+
+\begin{example}
+Prendiamo $f(x) = \tan(x) \cdot \sin(x)$ e diciamo che $f(x) = o(x)$ per $x\to 0$.
+Infatti $\lim\limits_{x\to 0}\frac{f(x)}{x} = \lim\limits_{x\to 0}\frac{\tan(x) \cdot \sin(x)}{x} = \lim\limits_{x\to 0}\tan(x) \cdot \lim\limits_{x\to 0}\frac{\sin(x)}{x} = 0 \cdot 1 = 0$.
+\end{example}
+
+\subsubsection{O-grande}
+\begin{definition}[O-grande]
+    Dato $A \subset \R$, $x_0 \in Acc(A)$, e $f,g: A \to \R$. Se $\exists M > 0$ t.c. $|f(x)| \leq M \cdot |g(x)| \, \forall x \in U \cap A \setminus \{x_0\}$ dove $U$ è un intorno di $x_0$, allora si dice che $f$ è \textbf{O-grande} di $g$ per $x$ che tende a $x_0$ e si scrive $f(x) = O(g(x))$ per $x\to x_0$.
+\end{definition}
+
+\begin{observation}
+Se $g$ non si annulla in un intorno di $x_0$ allora possiamo scrivere che:
+$$ f(x) = O(g) \Longleftrightarrow \text{la funzione } \left|\frac{f(x)}{g(x)}\right| \text{ è localmente limitata in un intorno di } x_0 $$
+\end{observation}
+
+\begin{example}
+    Prendiamo $f(x) = x\sin(x)$ e $g(x) = x$ per $x \to 0$.
+    Vediamo che $|\frac{f(x)}{g(x)}| = |\frac{x\sin(x)}{x}| = |\sin(x)|$.
+    Poiché $|\sin(x)| \leq 1$ in $\R$, la funzione è limitata (con $M=1$) in un intorno di 0, quindi $f(x) = O(g(x))$ per $x\to 0$.
+\end{example}
+
+\subsubsection{Ordine di infinitesimo/infinito}
+\begin{definition}[Ordine e Parte Principale]
+    Siano $f$ e $g$ due funzioni infinitesime (o divergenti) per $x\to x_0$. Se esistono $L \in \R \setminus \{0\}$ e $\alpha > 0$ t.c.
+    $$ f(x) = L \cdot (g(x))^\alpha + o((g(x))^\alpha) \quad \text{per } x\to x_0 $$
+    si dice che $f$ è infinitesima (o divergente) di \textbf{ordine $\alpha$} rispetto a $g$ e che $L(g(x))^\alpha$ è la \textbf{parte principale} di $f$.
+\end{definition}
+
+\begin{example}
+    Prendiamo $f(x) = 3\sin(x) + x^2$ e $g(x) = x$ con $x_0 = 0$.
+    Sviluppiamo $\sin(x) = x + o(x)$:
+    $$ f(x) = 3(x + o(x)) + x^2 = 3x + 3o(x) + x^2 $$
+    Poiché $x^2 = o(x)$ per $x \to 0$, $3o(x) + x^2 = o(x) + o(x) = o(x)$.
+    $$ f(x) = 3x + o(x) $$
+    Quindi $f$ è di \textbf{ordine 1} rispetto a $x$ con \textbf{parte principale $3x$}.
+\end{example}
+
+\begin{example}[Caso divergente]
+    Prendiamo $f(x) = 5x^4 + (2\sin(x)) \cdot x^2 + 3x$ e $g(x) = x$ per $x\to +\infty$.
+    Vediamo l'ordine in base al limite del rapporto:
+    $$ \lim_{x\to +\infty} \frac{f(x)}{x^4} = \lim_{x\to +\infty} \left( 5 + \frac{2\sin(x)}{x^2} + \frac{3}{x^3} \right) = 5 + 0 + 0 = 5 \neq 0 $$
+    Quindi $f(x)$ è di \textbf{ordine 4} rispetto a $x$ con \textbf{parte principale $5x^4$} per $x\to +\infty$.
+    Infatti $f(x) = 5x^4 + o(x^4)$.
+\end{example}
+
+\begin{example}[Divergente con logaritmo]
+    Guardiamo un esempio con $f(x) = \log(e^{3x} + x^2)$ per $x\to +\infty$.
+    Raccogliamo il termine dominante all'interno del logaritmo:
+    \begin{align*}
+        \log(e^{3x} + x^2) &= \log\left(e^{3x} \cdot \left(1 + \frac{x^2}{e^{3x}}\right)\right) \\
+        &= \log(e^{3x}) + \log\left(1 + \frac{x^2}{e^{3x}}\right) \\
+        &= 3x + \log\left(1 + \frac{x^2}{e^{3x}}\right)
+    \end{align*}
+    Poiché $\lim_{x\to +\infty} \frac{x^2}{e^{3x}} = 0$, il termine $\log\left(1 + \frac{x^2}{e^{3x}}\right) \to 0$.
+    Quindi, questo termine è un $o(x)$ per $x\to +\infty$.
+    $$ f(x) = 3x + o(x) $$
+    $f(x)$ è di \textbf{ordine 1} rispetto a $x$ con \textbf{parte principale $3x$}.
+\end{example}
+
+\subsection{Sviluppi al Primo Ordine (da Limiti Noti)}
+
+Questi sono i primi termini degli sviluppi di Taylor (Maclaurin) per $x\to 0$:
+\begin{itemize}
+    \item Da $\lim\limits_{x\to 0}\frac{\sin(x)}{x} = 1$:
+    $$ \sin(x) = x + o(x) $$
+    
+    \item Da $\lim\limits_{x\to 0}\frac{1 - \cos(x)}{x^2} = \frac{1}{2}$:
+    $$ \cos(x) = 1 - \frac{x^2}{2} + o(x^2) $$
+    
+    \item Da $\lim\limits_{x\to 0}\frac{\tan(x)}{x} = 1$:
+    $$ \tan(x) = x + o(x) $$
+    
+    \item Da $\lim\limits_{x\to 0}\frac{e^x - 1}{x} = 1$:
+    $$ e^x = 1 + x + o(x) $$
+    
+    \item Da $\lim\limits_{x\to 0} \frac{\log(1 + x)}{x} = 1$:
+    $$ \log(1 + x) = x + o(x) $$
+    
+    \item Da $\lim\limits_{x\to 0} \frac{(1+x)^\alpha - 1}{x} = \alpha$:
+    $$ (1+x)^\alpha = 1 + \alpha x + o(x) $$
+\end{itemize}
+
+\begin{example}
+    Esempio risolvendo $(\tan(x))^2$ in termini di o-piccoli per $x\to 0$. Sappiamo che $\tan(x) = x + o(x)$.
+    \begin{align*}
+        \tan(x)^2 &= (x + o(x))^2 \\
+        &= x^2 + 2x \cdot o(x) + (o(x))^2 \\
+        &= x^2 + o(x^2) + o(x^2) \quad (\text{poiché } x \cdot o(x) = o(x^2)) \\
+        &= x^2 + o(x^2)
+    \end{align*}
+    Il risultato è che $\tan(x)^2 = x^2 + o(x^2) $
+\end{example}
+
+\begin{example}
+    Calcoliamo $\lim\limits_{x\to 0}\frac{\cos(\sin^2(x)) - 1}{x^4}$ (come nell'originale, ma con la notazione corretta).
+    
+    \paragraph{Passo 1: Sviluppo di $\sin^2(x)$}
+    $\sin(x) = x + o(x) \implies \sin^2(x) = (x + o(x))^2 = x^2 + o(x^2)$.
+    
+    \paragraph{Passo 2: Sviluppo del Coseno Composto}
+    Poniamo $t = \sin^2(x) = x^2 + o(x^2)$. Usiamo lo sviluppo di $\cos(t) = 1 - \frac{t^2}{2} + o(t^2)$:
+    \begin{align*}
+        \cos(\sin^2(x)) &= 1 - \frac{(x^2 + o(x^2))^2}{2} + o((x^2 + o(x^2))^2) \\
+        &= 1 - \frac{x^4 + o(x^4)}{2} + o(x^4) \\
+        &= 1 - \frac{x^4}{2} + o(x^4)
+    \end{align*}
+    
+    \paragraph{Passo 3: Calcolo del Limite}
+    $$ \lim\limits_{x\to 0}\frac{\cos(\sin^2(x)) - 1}{x^4} = \lim\limits_{x\to 0}\frac{\left(1 - \frac{x^4}{2} + o(x^4)\right) - 1}{x^4} $$
+    $$ = \lim\limits_{x\to 0}\frac{-\frac{x^4}{2} + o(x^4)}{x^4} = \lim\limits_{x\to 0} \left(-\frac{1}{2} + \frac{o(x^4)}{x^4}\right) = -\frac{1}{2} $$
+\end{example}
+
+
+\newpage
+\section{Approfondimento: Teorema di Taylor}
+
+Gli "sviluppi al primo ordine" sono i primi termini dello sviluppo di Taylor (o Maclaurin, se $x_0 = 0$). L'uso del Teorema di Taylor permette di "guardare più a fondo" nell' $o(x)$ e trovare i termini successivi, cosa fondamentale quando il primo ordine non è sufficiente.
+
+\subsection{La Formula di Taylor-Maclaurin}
+Per $x \to x_0$, una funzione $f(x)$ derivabile $n$ volte può essere scritta come un polinomio di grado $n$ più un errore (Resto di Peano):
+$$ f(x) = \sum_{k=0}^{n} \frac{f^{(k)}(x_0)}{k!}(x-x_0)^k + o((x-x_0)^n) $$
+Nel caso di \textbf{Maclaurin} ($x_0=0$):
+$$ f(x) = f(0) + f'(0)x + \frac{f''(0)}{2!}x^2 + \dots + \frac{f^{(n)}(0)}{n!}x^n + o(x^n) $$
+L'ultimo termine, $o((x-x_0)^n)$, è il \textbf{Resto di Peano} e ci dice che l'errore che commettiamo è un infinitesimo di ordine \textit{superiore} a $(x-x_0)^n$.
+
+\subsection{Sviluppi Fondamentali (per $x \to 0$)}
+\begin{align*}
+    e^x &= 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \dots + \frac{x^n}{n!} + o(x^n) \\
+    \sin(x) &= x - \frac{x^3}{3!} + \frac{x^5}{5!} - \dots + (-1)^k \frac{x^{2k+1}}{(2k+1)!} + o(x^{2n+2}) \\
+    \cos(x) &= 1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \dots + (-1)^k \frac{x^{2k}}{(2k)!} + o(x^{2n+1}) \\
+    \log(1+x) &= x - \frac{x^2}{2} + \frac{x^3}{3} - \dots + (-1)^{n-1} \frac{x^n}{n} + o(x^n) \\
+    (1+x)^\alpha &= 1 + \alpha x + \frac{\alpha(\alpha-1)}{2!}x^2 + \dots + \binom{\alpha}{n}x^n + o(x^n) \\
+    \tan(x) &= x + \frac{x^3}{3} + \frac{2x^5}{15} + o(x^6) \\
+    \arctan(x) &= x - \frac{x^3}{3} + \frac{x^5}{5} + o(x^6)
+\end{align*}
+
+\newpage
+\section{Esercizi Guidati Passo Passo}
+
+\subsection{Esercizio 1: Risolvere la forma indeterminata}
+\begin{example}
+\textbf{Obiettivo:} Calcolare $\lim\limits_{x\to 0}\frac{\sin(x) - x}{x^3}$
+\end{example}
+
+\paragraph{1. Analisi e Scelta dell'Ordine}
+Siamo nella forma $\frac{0}{0}$. Il denominatore è $x^3$, quindi dobbiamo sviluppare il numeratore almeno fino all'ordine 3.
+
+\paragraph{2. Sviluppo e Sostituzione}
+Sviluppo di $\sin(x)$ fino al 3° ordine:
+$$ \sin(x) = x - \frac{x^3}{6} + o(x^3) $$
+Sostituendo nel limite:
+$$ \lim_{x\to 0}\frac{\left(x - \frac{x^3}{6} + o(x^3)\right) - x}{x^3} = \lim_{x\to 0}\frac{-\frac{x^3}{6} + o(x^3)}{x^3} $$
+
+\paragraph{3. Conclusione}
+Dividendo per $x^3$:
+$$ \lim_{x\to 0} \left( \frac{-\frac{x^3}{6}}{x^3} + \frac{o(x^3)}{x^3} \right) = \lim_{x\to 0} \left( -\frac{1}{6} + 0 \right) = \mathbf{-\frac{1}{6}} $$
+
+---
+\subsection{Esercizio 2: Termini misti}
+\begin{example}
+\textbf{Obiettivo:} Calcolare $\lim\limits_{x\to 0}\frac{e^x - \log(1+x) - 1}{x^2}$
+\end{example}
+
+\paragraph{1. Analisi e Scelta dell'Ordine}
+Siamo nella forma $\frac{0}{0}$. Il denominatore è $x^2$, quindi sviluppiamo tutti i termini del numeratore fino all'ordine 2.
+
+\paragraph{2. Sviluppi Necessari}
+\begin{itemize}
+    \item $e^x = 1 + x + \frac{x^2}{2} + o(x^2)$
+    \item $\log(1+x) = x - \frac{x^2}{2} + o(x^2)$
+\end{itemize}
+
+\paragraph{3. Sostituzione e Calcolo}
+Sostituiamo nel limite:
+$$ \lim_{x\to 0}\frac{\left(1 + x + \frac{x^2}{2} + o(x^2)\right) - \left(x - \frac{x^2}{2} + o(x^2)\right) - 1}{x^2} $$
+Raggruppiamo i termini e semplifichiamo (ricordando che $o(x^2) - o(x^2) = o(x^2)$):
+$$ \lim_{x\to 0}\frac{(1 - 1) + (x - x) + \left(\frac{x^2}{2} + \frac{x^2}{2}\right) + o(x^2)}{x^2} = \lim_{x\to 0}\frac{x^2 + o(x^2)}{x^2} $$
+
+\paragraph{4. Conclusione}
+$$ \lim_{x\to 0} \left( \frac{x^2}{x^2} + \frac{o(x^2)}{x^2} \right) = \lim_{x\to 0} \left( 1 + 0 \right) = \mathbf{1} $$
+
+---
+\subsection{Esercizio 3: Sviluppo di Funzioni Composte}
+\begin{example}
+\textbf{Obiettivo:} Calcolare $\lim\limits_{x\to 0}\frac{\cos(\sin(x)) - 1}{x^2}$
+\end{example}
+
+\paragraph{1. Analisi e Scelta dell'Ordine}
+Forma $\frac{0}{0}$. Denominatore $x^2$. Dobbiamo sviluppare $\cos(\sin(x))$ fino all'ordine 2.
+
+\paragraph{2. Sviluppo Composto}
+\begin{itemize}
+    \item **Funzione Esterna ($t \to 0$):** $\cos(t) = 1 - \frac{t^2}{2} + o(t^2)$
+    \item **Argomento Interno ($x \to 0$):** $t = \sin(x) = x + o(x)$
+\end{itemize}
+Sostituiamo:
+$$ \cos(\sin(x)) = 1 - \frac{(x + o(x))^2}{2} + o((x + o(x))^2) $$
+Sviluppiamo le potenze:
+\begin{itemize}
+    \item $(x + o(x))^2 = x^2 + 2x \cdot o(x) + (o(x))^2 = x^2 + o(x^2) + o(x^2) = x^2 + o(x^2)$
+    \item $o((x + o(x))^2) = o(x^2 + o(x^2)) = o(x^2)$
+\end{itemize}
+Quindi:
+$$ \cos(\sin(x)) = 1 - \frac{x^2 + o(x^2)}{2} + o(x^2) = 1 - \frac{x^2}{2} + o(x^2) $$
+
+\paragraph{3. Sostituzione nel Limite e Conclusione}
+$$ \lim_{x\to 0}\frac{\left(1 - \frac{x^2}{2} + o(x^2)\right) - 1}{x^2} = \lim_{x\to 0}\frac{-\frac{x^2}{2} + o(x^2)}{x^2} $$
+$$ = \lim_{x\to 0} \left( -\frac{1}{2} + \frac{o(x^2)}{x^2} \right) = \mathbf{-\frac{1}{2}} $$
+
+% \end{document}

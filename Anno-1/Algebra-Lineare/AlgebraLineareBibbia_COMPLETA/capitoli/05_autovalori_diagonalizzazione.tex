@@ -1,0 +1,64 @@
+\section{Determinante e Autovalori}
+\emph{[Rif. Determinante, Autovalori]}
+
+\subsection{Determinante}
+\begin{definitionbox}
+\textbf{Determinante:} Funzione che associa a una matrice quadrata $A$ un numero reale.
+Casi base:
+- $n=1$: $\det(a) = a$.
+- $n=2$: $\det \begin{pmatrix} a & b \\ c & d \end{pmatrix} = ad - bc$.
+\end{definitionbox}
+
+\begin{concept}{Sviluppo di Laplace}
+$$ \det(A) = \sum_{j=1}^n (-1)^{i+j} a_{ij} \det(A_{ij}) $$
+Dove $A_{ij}$ è la matrice complementare (senza riga $i$ e colonna $j$).
+\end{concept}
+
+\begin{exercisebox}[title={Esempio Calcolo}]
+Matrice $3 \times 3$:
+$A = \begin{pmatrix} 1 & 0 & 3 \\ 0 & 2 & 0 \\ 4 & 0 & 1 \end{pmatrix}$.
+Sviluppo riga 2:
+$$ 2 \cdot (-1)^{2+2} \det \begin{pmatrix} 1 & 3 \\ 4 & 1 \end{pmatrix} = 2(1 - 12) = -22 $$
+\end{exercisebox}
+
+\begin{concept}{Teorema di Binet}
+$\det(AB) = \det(A)\det(B)$.
+\end{concept}
+
+\begin{concept}{Invertibilità}
+$A$ è invertibile $\iff \det(A) \neq 0$.
+In tal caso $A^{-1}$ si calcola con la matrice dei cofattori (Cramer).
+\end{concept}
+
+\subsection{Autovalori e Autovettori}
+\begin{definitionbox}
+$\lambda$ è \textbf{autovalore} di $\phi: V \to V$ se esiste $v \neq 0$ tale che $\phi(v) = \lambda v$.
+$v$ è detto \textbf{autovettore}.
+\end{definitionbox}
+
+\begin{definitionbox}
+\textbf{Polinomio Caratteristico:} $p(\lambda) = \det(A - \lambda I)$.
+Le radici di $p(\lambda)$ sono gli autovalori.
+\end{definitionbox}
+
+\begin{definitionbox}
+\textbf{Molteplicità:}
+- \textbf{Algebrica ($\mu_a$):} Molteplicità come radice del polinomio.
+- \textbf{Geometrica ($\mu_g$):} Dimensione dell'autospazio $V_\lambda = \text{Ker}(A - \lambda I)$.
+Vale sempre $1 \le \mu_g \le \mu_a$.
+\end{definitionbox}
+
+\subsection{Diagonalizzazione}
+\begin{concept}{Criterio di Diagonalizzabilità}
+Una matrice (o endomorfismo) è diagonalizzabile se e solo se:
+1. La somma delle $\mu_a$ è pari a $n$ (tutte le radici sono in $\mathbb{R}$).
+2. Per ogni autovalore, $\mu_a(\lambda) = \mu_g(\lambda)$.
+\end{concept}
+
+\begin{exercisebox}[title={Esempio Non Diagonalizzabile}]
+$A = \begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}$.
+Autovalore $\lambda=1$ con $\mu_a=2$.
+$\text{Ker}(A-I) = \text{Ker} \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix}$.
+$y=0 \implies v=(t,0)$. Dim $\mu_g=1$.
+$1 \neq 2 \implies$ Non diagonalizzabile.
+\end{exercisebox}

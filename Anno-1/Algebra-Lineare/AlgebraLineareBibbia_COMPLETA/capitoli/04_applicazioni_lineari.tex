@@ -1,0 +1,71 @@
+\section{Applicazioni Lineari}
+\emph{[Rif. Applicazioni Lineari]}
+
+\subsection{Definizione}
+\begin{definitionbox}
+\textbf{Applicazione Lineare:} Siano $V_1, V_2$ spazi vettoriali su $\mathbb{R}$. Una funzione $\varphi: V_1 \to V_2$ è \textbf{lineare} se:
+\begin{enumerate}
+    \item $\varphi(v_1 + v_2) = \varphi(v_1) + \varphi(v_2)$ (Additività).
+    \item $\varphi(\lambda v) = \lambda \varphi(v)$ (Omogeneità).
+\end{enumerate}
+\end{definitionbox}
+
+\begin{exercisebox}[title={Esempi}]
+\begin{itemize}
+    \item $\varphi: \mathbb{R}^n \to \mathbb{R}$, $\varphi(x) = \sum \lambda_i x_i$. (Funzionale lineare).
+    \item $\varphi: \mathbb{R}^n \to \mathbb{R}^m$, $\varphi(x) = Ax$. (Moltiplicazione matriciale).
+    \item Derivata: $D: \mathbb{R}[x] \to \mathbb{R}[x]$, $D(f) = f'$. È lineare.
+    \item Integrale: $I(f) = \int_0^1 f(x)dx$. È lineare.
+\end{itemize}
+\end{exercisebox}
+
+\begin{concept}{Proprietà fondamentale}
+Un'applicazione lineare è completamente determinata dai valori che assume su una base.
+Se $\{e_1, \dots, e_n\}$ è una base di $V_1$ e conosciamo $w_i = \varphi(e_i)$, allora per ogni $v = \sum \lambda_i e_i$,
+$\varphi(v) = \sum \lambda_i w_i$.
+\end{concept}
+
+\subsection{Nucleo e Immagine}
+\begin{definitionbox}
+\textbf{Nucleo:} $\text{Ker}(\varphi) = \{ v \in V_1 \mid \varphi(v) = 0 \}$. (Sottospazio di $V_1$).
+\textbf{Immagine:} $\text{Im}(\varphi) = \{ w \in V_2 \mid \exists v, \varphi(v)=w \}$. (Sottospazio di $V_2$).
+\end{definitionbox}
+
+\begin{concept}{Teorema della Dimensione}
+Se $\dim(V_1) < \infty$:
+$$ \dim(\text{Ker}(\varphi)) + \dim(\text{Im}(\varphi)) = \dim(V_1) $$
+\end{concept}
+
+\begin{proof}
+Sia $\{v_1, \dots, v_r\}$ base del Ker. La completiamo a base di $V_1$: $\{v_1, \dots, v_r, u_1, \dots, u_s\}$.
+Si dimostra che le immagini $\{\varphi(u_1), \dots, \varphi(u_s)\}$ formano una base dell'Immagine.
+Quindi $\dim(V_1) = r+s = \dim(\text{Ker}) + \dim(\text{Im})$.
+\end{proof}
+
+\begin{exercisebox}[title={Esempio Nucleo/Immagine}]
+$\varphi: \mathbb{R}^2 \to \mathbb{R}^2$ proiezione sull'asse $x$? No, esempio $\varphi(x,y) = (0, y)$.
+$\text{Ker} = \{(x,0)\} = \text{Span}(e_1)$. Dim = 1.
+$\text{Im} = \{(0,y)\} = \text{Span}(e_2)$. Dim = 1.
+$1+1 = 2 = \dim(\mathbb{R}^2)$.
+\end{exercisebox}
+
+\subsection{Matrici Associate}
+\begin{definitionbox}
+Sia $\varphi: V \to W$ lineare. Fissate basi $\mathcal{B}$ di $V$ e $\mathcal{B}'$ di $W$.
+La \textbf{matrice associata} $A$ ha come colonna $j$-esima le coordinate di $\varphi(v_j)$ rispetto alla base $\mathcal{B}'$.
+\end{definitionbox}
+
+\begin{exercisebox}[title={Calcolo Matrice Associata}]
+$\varphi: \mathbb{R}^3 \to \mathbb{R}$, $\varphi(x,y,z) = x+2y+3z$.
+Base canoniche.
+$\varphi(e_1) = 1$.
+$\varphi(e_2) = 2$.
+$\varphi(e_3) = 3$.
+Matrice $A = (1 \ 2 \ 3)$.
+\end{exercisebox}
+
+\begin{concept}{Isomorfismi}
+$\varphi$ è un isomorfismo se è biunivoca.
+Ciò accade se e solo se $\dim(\text{Ker}) = 0$ (iniettiva) e $\dim(\text{Im}) = \dim(V_2)$ (suriettiva).
+Questo implica $\dim(V_1) = \dim(V_2)$.
+\end{concept}

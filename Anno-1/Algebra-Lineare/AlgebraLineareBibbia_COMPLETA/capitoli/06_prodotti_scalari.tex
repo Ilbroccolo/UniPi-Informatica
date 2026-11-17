@@ -1,0 +1,66 @@
+\section{Prodotti Scalari e Ortogonalità}
+\emph{[Rif. Lezioni successive]}
+
+\subsection{Prodotto Scalare}
+
+\begin{definitionbox}
+\textbf{Prodotto Scalare:} Sia $V$ uno spazio vettoriale reale. Un prodotto scalare è una funzione $\langle \cdot, \cdot \rangle: V \times V \to \mathbb{R}$ che soddisfa:
+\begin{enumerate}
+    \item \textbf{Bilineare:} Lineare in entrambi gli argomenti.
+    \item \textbf{Simmetrica:} $\langle u, v \rangle = \langle v, u \rangle$.
+    \item \textbf{Definita Positiva:} $\langle v, v \rangle \ge 0$, e $\langle v, v \rangle = 0 \iff v=0$.
+\end{enumerate}
+\end{definitionbox}
+
+\begin{example}
+In $\mathbb{R}^n$, il \textbf{prodotto scalare canonico} (o standard) è:
+$$ \langle \mathbf{x}, \mathbf{y} \rangle = x_1y_1 + x_2y_2 + \dots + x_ny_n = \mathbf{x}^T \mathbf{y} $$
+\end{example}
+
+\subsection{Norma e Distanza}
+Dal prodotto scalare definiamo la lunghezza (norma) e la geometria dello spazio.
+
+\begin{definitionbox}
+\begin{itemize}
+    \item \textbf{Norma:} $\| v \| = \sqrt{\langle v, v \rangle}$.
+    \item \textbf{Distanza:} $d(u, v) = \| u - v \|$.
+    \item \textbf{Angolo:} $\cos(\theta) = \frac{\langle u, v \rangle}{\|u\| \|v\|}$ (Disuguaglianza di Cauchy-Schwarz: $|\langle u, v \rangle| \le \|u\| \|v\|$).
+\end{itemize}
+\end{definitionbox}
+
+\subsection{Ortogonalità}
+
+\begin{concept}{Vettori Ortogonali}
+Due vettori $u, v$ si dicono \textbf{ortogonali} se $\langle u, v \rangle = 0$.
+Un insieme di vettori $\{v_1, \dots, v_k\}$ è un \textbf{sistema ortogonale} se sono a due a due ortogonali. È \textbf{ortonormale} se inoltre hanno tutti norma 1.
+\end{concept}
+
+\begin{concept}{Teorema di Pitagora}
+Se $u$ e $v$ sono ortogonali, allora:
+$$ \| u + v \|^2 = \| u \|^2 + \| v \|^2 $$
+\end{concept}
+
+\subsection{Basi Ortonormali e Gram-Schmidt}
+Le basi ortonormali sono le "migliori" basi possibili perché i calcoli delle coordinate sono semplici (prodotti scalari).
+
+\begin{definitionbox}
+\textbf{Algoritmo di Gram-Schmidt:}
+Data una base qualsiasi $\{v_1, \dots, v_n\}$, costruiamo una base ortonormale $\{u_1, \dots, u_n\}$:
+\begin{enumerate}
+    \item $u_1 = \frac{v_1}{\|v_1\|}$.
+    \item $w_2 = v_2 - \langle v_2, u_1 \rangle u_1$. Poi normalizziamo: $u_2 = \frac{w_2}{\|w_2\|}$.
+    \item $w_k = v_k - \sum_{j=1}^{k-1} \langle v_k, u_j \rangle u_{j}$. Poi $u_k = \frac{w_k}{\|w_k\|}$.
+\end{enumerate}
+\end{definitionbox}
+
+\subsection{Teorema Spettrale}
+Questo teorema collega gli autovalori (Cap. 5) con i prodotti scalari.
+
+\begin{concept}{Teorema Spettrale (caso Reale)}
+Se $A$ è una matrice \textbf{simmetrica} ($A = A^T$), allora:
+\begin{enumerate}
+    \item Tutti gli autovalori di $A$ sono reali.
+    \item Esiste una base ortonormale di autovettori di $A$.
+    \item $A$ è diagonalizzabile tramite una matrice ortogonale ($P^{-1} = P^T$).
+\end{enumerate}
+\end{concept}

@@ -1,0 +1,31 @@
+\section{Matrici}
+\emph{[Rif. Lezioni 2 e 3]}
+
+\subsection{Definizioni Fondamentali}
+Per studiare i sistemi lineari, basta studiare le loro matrici associate.
+
+\subsubsection{Matrice Associata e Completa}
+Dato un sistema generico, definiamo:
+\begin{itemize}
+    \item \textbf{Matrice Associata ($A$):} Tabella $m \times n$ dei coefficienti. $A = (a_{ij})$.
+    \item \textbf{Vettore Termini Noti ($b$):} Matrice colonna $m \times 1$.
+    \item \textbf{Matrice Completa ($A|b$):} Matrice $m \times (n+1)$ ottenuta affiancando $b$ ad $A$.
+\end{itemize}
+
+\subsection{Matrici Quadrate e Tipologie Speciali}
+Se $m=n$, la matrice è \textbf{Quadrata} di \textbf{ORDINE} $n$.
+
+\begin{definitionbox}
+\textbf{1. Diagonale Principale:} Insieme degli elementi $a_{ij}$ con $i=j$ ($a_{11}, a_{22}, \dots$).
+
+\textbf{2. Matrice Diagonale:} Se $a_{ij} = 0$ per ogni $i \neq j$.
+$$ \text{Esempio: } A = \begin{pmatrix} 1 & 0 & 0 \\ 0 & 3 & 0 \\ 0 & 0 & 5 \end{pmatrix} $$
+
+\textbf{3. Matrice Triangolare Superiore:} Se tutti gli elementi \textbf{SOTTO} la diagonale principale sono 0 ($a_{ij}=0 \ \forall i > j$).
+$$ \text{Esempio: } A = \begin{pmatrix} 1 & 3 & 5 \\ 0 & 2 & 4 \\ 0 & 0 & 6 \end{pmatrix} $$
+
+\textbf{4. Matrice Triangolare Inferiore:} Se tutti gli elementi \textbf{SOPRA} la diagonale principale sono 0 ($a_{ij}=0 \ \forall i < j$).
+$$ \text{Esempio: } A = \begin{pmatrix} 1 & 0 \\ 2 & 3 \end{pmatrix} $$
+
+\textbf{Osservazione:} Una matrice diagonale è contemporaneamente triangolare superiore e inferiore.
+\end{definitionbox}

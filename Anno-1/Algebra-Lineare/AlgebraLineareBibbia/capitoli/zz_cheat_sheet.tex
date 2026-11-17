@@ -1,0 +1,104 @@
+\newpage
+\newgeometry{top=1.5cm, bottom=1.5cm, left=1cm, right=1cm} % Margini ridotti per Cheat Sheet
+\section*{Cheat Sheet Finale: Algebra Lineare}
+\addcontentsline{toc}{section}{Cheat Sheet Finale}
+
+\begin{multicols*}{2}
+
+% --- SISTEMI LINEARI ---
+\begin{tcolorbox}[colback=lightBg, colframe=cherryRed, title={Sistemi Lineari ($Ax=b$)}]
+\small
+\textbf{Rouché-Capelli:}
+\begin{itemize}[leftmargin=*]
+    \item Compatibile $\iff \text{rk}(A) = \text{rk}(A|b)$.
+    \item $\infty^{n-r}$ soluzioni se $r < n$.
+    \item 1 soluzione unica se $r = n$.
+\end{itemize}
+\textbf{Gauss:}
+\begin{enumerate}[leftmargin=*]
+    \item Scambio righe ($R_i \leftrightarrow R_j$).
+    \item Moltiplicazione per scalare ($\lambda R_i$).
+    \item Comb. lineare ($R_i \to R_i + k R_j$).
+\end{enumerate}
+\textbf{Cramer:} Se $\det(A) \neq 0, x_i = \frac{\det(A_i)}{\det(A)}$.
+\end{tcolorbox}
+
+% --- SPAZI VETTORIALI ---
+\begin{tcolorbox}[colback=white, colframe=maroon, title={Spazi Vettoriali e Basi}]
+\small
+\textbf{Indipendenza Lineare:} $\sum \lambda_i v_i = 0 \implies \forall \lambda_i = 0$.
+\textbf{Generatori:} $\text{Span}(v_1, \dots, v_k) = V$.
+\textbf{Base:} Insieme di generatori lin. indip.
+\textbf{Dimensione:} Numero elementi della base.
+\tcblower
+\textbf{Formula di Grassmann:}
+\[ \dim(U+W) = \dim(U) + \dim(W) - \dim(U \cap W) \]
+\textbf{Somma Diretta ($V = U \oplus W$):}
+\begin{itemize}[leftmargin=*]
+    \item $U \cap W = \{0\}$.
+    \item Ogni $v \in V$ si scrive in modo unico come $u+w$.
+\end{itemize}
+\end{tcolorbox}
+
+% --- MATRICI ---
+\begin{tcolorbox}[colback=lightBg, colframe=cherryRed, title={Matrici e Determinante}]
+\small
+\textbf{Rango (rk):} Numero pivot / Numero righe lin. indip.
+\textbf{Inversa ($A^{-1}$):} Esiste $\iff \det(A) \neq 0$.
+\[ A^{-1} = \frac{1}{\det(A)} (\text{Cof}(A))^T \]
+\textbf{Proprietà Determinante:}
+\begin{itemize}[leftmargin=*]
+    \item $\det(A) = \det(A^T)$.
+    \item $\det(AB) = \det(A)\det(B)$ (Binet).
+    \item $\det(A^{-1}) = 1/\det(A)$.
+\end{itemize}
+\end{tcolorbox}
+
+% --- APPLICAZIONI LINEARI ---
+\begin{tcolorbox}[colback=white, colframe=maroon, title={Applicazioni Lineari ($f: V \to W$)}]
+\small
+\textbf{Nucleo ($\ker f$):} $\{ v \in V \mid f(v) = 0 \}$. (Iniettiva $\iff \ker f = \{0\}$).
+\textbf{Immagine ($\text{Im } f$):} $\{ w \in W \mid \exists v: f(v)=w \}$. (Suriettiva $\iff \text{Im } f = W$).
+\tcblower
+\textbf{Teorema della Dimensione (Rank-Nullity):}
+\[ \dim(V) = \dim(\ker f) + \dim(\text{Im } f) \]
+\textbf{Matrice Associata ($M_\mathcal{B}^\mathcal{C}(f)$):}
+Le colonne sono le coordinate delle immagini dei vettori della base di partenza rispetto alla base di arrivo.
+\[ [f(v)]_\mathcal{C} = A [v]_\mathcal{B} \]
+\end{tcolorbox}
+
+% --- AUTOVALORI ---
+\begin{tcolorbox}[colback=lightBg, colframe=cherryRed, title={Autovalori e Diagonalizzazione}]
+\small
+\textbf{Definizione:} $f(v) = \lambda v \implies (A - \lambda I)v = 0$.
+\textbf{Polinomio Caratteristico:} $P_A(\lambda) = \det(A - \lambda I)$.
+\textbf{Spettro:} Insieme delle radici di $P_A(\lambda)$.
+\textbf{Molteplicità:}
+\begin{itemize}[leftmargin=*]
+    \item Alg. ($m_a(\lambda)$): esponente nel pol. caratt.
+    \item Geom. ($m_g(\lambda)$): $\dim(\ker(A-\lambda I)) = n - \text{rk}(A-\lambda I)$.
+\end{itemize}
+\textbf{Diagonalizzabile} $\iff$:
+\begin{itemize}[leftmargin=*]
+    \item Tutte le radici sono nel campo (p.c. si spezza).
+    \item $\forall \lambda, m_g(\lambda) = m_a(\lambda)$.
+\end{itemize}
+Se diag., $D = P^{-1}AP$ con $P$ matrice cambio base (autovettori).
+\end{tcolorbox}
+
+% --- PRODOTTI SCALARI ---
+\begin{tcolorbox}[colback=white, colframe=maroon, title={Prodotti Scalari e Spettale}]
+\small
+\textbf{Standard in $\mathbb{R}^n$:} $\langle x, y \rangle = x^T y$.
+\textbf{Norma:} $\|v\| = \sqrt{\langle v, v \rangle}$.
+\textbf{Ortogonalità:} $\langle v, w \rangle = 0$.
+\textbf{Proiezione Ortogonale su $v$:} $P_v(u) = \frac{\langle u, v \rangle}{\|v\|^2} v$.
+\textbf{Gram-Schmidt:} $u_{k} = v_k - \sum_{j=1}^{k-1} P_{u_j}(v_k)$.
+\tcblower
+\textbf{Teorema Spettrale (Reale):}
+Una matrice $A \in \mathbb{R}^{n \times n}$ è simmetrica ($A=A^T$) $\iff$ ammette una base ORTONORMALE di autovettori.
+(Tutte le matrici simmetriche sono diagonalizzabili).
+\end{tcolorbox}
+
+\end{multicols*}
+\restoregeometry

@@ -1,0 +1,168 @@
+\section{Spazi Vettoriali}
+\emph{[Rif. Spazi Vettoriali]}
+
+\subsection{Spazio n-dimensionale}
+\begin{definitionbox}
+\textbf{Spazio n-dimensionale:} Uno spazio \textbf{n-dimensionale} standard su $\mathbb{R}$ si rappresenta come:
+$$ \mathbb{R}^n = \Bigg\{ \begin{pmatrix}x_1\\ \vdots \\ x_n\end{pmatrix} : x_i \in \mathbb{R} \Bigg\} $$
+\end{definitionbox}
+Geometricamente uno spazio $n$-dimensionale con $n=2$ sarà un punto sul piano cartesiano.
+
+\subsubsection{Operazioni}
+Sugli spazi $n$-dimensionali si possono effettuare alcune operazioni:
+\begin{itemize}
+    \item \textbf{Somma:} $(x_1, \dots, x_n) + (y_1, \dots, y_n) = (x_1 + y_1, \dots, x_n + y_n)$.
+    \item \textbf{Moltiplicazione:} $\lambda(x_1, \dots, x_n) = (\lambda x_1, \dots, \lambda x_n)$.
+\end{itemize}
+
+\subsection{Spazio Vettoriale}
+\begin{definitionbox}
+\textbf{Spazio vettoriale:} Uno spazio vettoriale su $\mathbb{R}$ è un insieme $V$ che ammette due tipi di operazioni:
+\begin{itemize}
+    \item Somma: dati $v_1, v_2 \in V \implies v_1 + v_2 \in V$.
+    \item Prodotto con $\lambda \in \mathbb{R}$: dato $v \in V \implies \lambda \cdot v \in V$.
+\end{itemize}
+\end{definitionbox}
+
+\textbf{Assiomi:}
+Esistono una serie di assiomi che devono essere rispettati:
+\begin{enumerate}
+    \item $(v_1 + v_2) + v_3 = v_1 + (v_2 + v_3)$ (Associativa)
+    \item $v_1 + v_2 = v_2 + v_1$ (Commutativa)
+    \item $\exists \mathbf{0} \in V : v + \mathbf{0} = v$ (Elemento neutro)
+    \item $\forall v, \exists -v : v + (-v) = \mathbf{0}$ (Opposto)
+    \item $(\lambda_1 + \lambda_2)v = \lambda_1 v + \lambda_2 v$ (Distributiva)
+    \item $\lambda(v_1 + v_2) = \lambda v_1 + \lambda v_2$
+    \item $(\lambda_1 \lambda_2)v = \lambda_1(\lambda_2 v)$
+    \item $1 \cdot v = v$
+\end{enumerate}
+
+\begin{concept}{Osservazione}
+$\mathbb{R}^n$ soddisfa tutti gli assiomi sopra scritti.
+\end{concept}
+
+\begin{exercisebox}[title={Esempio: Matrici}]
+Consideriamo l'insieme delle matrici $n \times m$ a coefficienti reali $M_{n \times m}(\mathbb{R})$.
+Somma: se $A = [a_{ij}], B = [b_{ij}]$, allora $A+B = [a_{ij}+b_{ij}]$.
+Prodotto: $\lambda A = [\lambda a_{ij}]$.
+Questo è uno spazio vettoriale.
+\end{exercisebox}
+
+\begin{exercisebox}[title={Esempio: Polinomi}]
+L'insieme dei polinomi a coefficienti reali:
+$$ \mathbb{R}[x] = \{ a_n x^n + \dots + a_0 \mid a_i \in \mathbb{R}, n \ge 0 \} $$
+Operazioni:
+\begin{itemize}
+    \item Somma: somma dei coefficienti dei termini di ugual grado.
+    \item Prodotto per scalare: ogni coefficiente moltiplicato per $\lambda$.
+\end{itemize}
+È uno spazio vettoriale.
+\end{exercisebox}
+
+\begin{exercisebox}[title={Esempio: Funzioni}]
+Prendiamo due funzioni continue $f, g: \mathbb{R} \to \mathbb{R}$.
+Somma: $(f+g)(x) = f(x) + g(x)$.
+Prodotto: $(\lambda f)(x) = \lambda f(x)$.
+È uno spazio vettoriale.
+\end{exercisebox}
+
+\subsection{Sottospazio}
+\begin{definitionbox}
+\textbf{Sottospazio:} Un sottoinsieme $W \subset V$ è un sottospazio se:
+\begin{itemize}
+    \item $v_1, v_2 \in W \implies v_1 + v_2 \in W$.
+    \item $v \in W \implies \lambda v \in W, \forall \lambda$.
+\end{itemize}
+\end{definitionbox}
+
+\begin{concept}{Proposizione}
+Un sottospazio $W \subset V$ è a sua volta uno spazio vettoriale.
+\end{concept}
+
+\subsubsection{Esempi di Sottospazi}
+
+\begin{exercisebox}[title={Esempio 1}]
+In $\mathbb{R}^2$, l'insieme $W = \{ (0, x_2) \mid x_2 \in \mathbb{R} \}$ (asse y) è un sottospazio.
+Infatti la somma di due vettori sull'asse y è ancora sull'asse y, e così il prodotto per scalare.
+Invece l'insieme $\{ (1, x_2) \}$ non è un sottospazio (non contiene l'origine, somma non chiusa).
+\end{exercisebox}
+
+\begin{exercisebox}[title={Esempio 2 (Polinomi)}]
+- $\{ f \in \mathbb{R}[x] : \deg(f) \le d \}$ è un sottospazio.
+- $\{ f \in \mathbb{R}[x] : \deg(f) = d \}$ NON è un sottospazio (la somma può abbassare il grado).
+- $\{ f \in \mathbb{R}[x] : f(0) = 0 \}$ è un sottospazio.
+\end{exercisebox}
+
+\begin{exercisebox}[title={Esempio 3 (Soluzioni Sistemi)}]
+L'insieme delle soluzioni di un sistema omogeneo $A\mathbf{x} = \mathbf{0}$ è un sottospazio di $\mathbb{R}^n$.
+$$ W = \{ \mathbf{x} \in \mathbb{R}^n : a_{11}x_1 + \dots + a_{1n}x_n = 0, \dots \} $$
+\end{exercisebox}
+
+\subsection{Combinazioni Lineari}
+\begin{definitionbox}
+\textbf{Combinazione Lineare:} Una somma $\lambda_1 v_1 + \dots + \lambda_m v_m$.
+\textbf{Span:} Il sottospazio generato da $v_1, \dots, v_m$ è l'insieme di tutte le loro combinazioni lineari:
+$$ \text{Span}(v_1, \dots, v_m) = \{ \lambda_1 v_1 + \dots + \lambda_m v_m \} $$
+\end{definitionbox}
+
+\begin{concept}{Proposizione}
+$\text{Span}(v_1, \dots, v_m)$ è sempre un sottospazio di $V$.
+\end{concept}
+
+\subsection{Indipendenza Lineare}
+\begin{definitionbox}
+I vettori $v_1, \dots, v_m$ sono \textbf{linearmente indipendenti} se l'unica combinazione lineare che dà 0 è quella con tutti i coefficienti nulli.
+$$ \lambda_1 v_1 + \dots + \lambda_m v_m = \mathbf{0} \implies \lambda_1 = \dots = \lambda_m = 0 $$
+\end{definitionbox}
+
+Metodo pratico con Gauss: Mettiamo i vettori in colonna in una matrice. Se il sistema omogeneo ha solo la soluzione nulla (banale), sono indipendenti.
+
+\begin{exercisebox}[title={Esempio Verifica Indipendenza}]
+Vettori $v_1=(1,2,3), v_2=(1,0,1), v_3=(0,0,1)$.
+Matrice:
+$$ \begin{pmatrix} 1 & 1 & 0 \\ 2 & 0 & 0 \\ 3 & 1 & 1 \end{pmatrix} $$
+Riduciamo a scalini. Se otteniamo 3 pivot, sono indipendenti.
+\end{exercisebox}
+
+\subsection{Base e Dimensione}
+\begin{definitionbox}
+\textbf{Base:} Un insieme $\{v_1, \dots, v_n\}$ è una base di $V$ se:
+1. Sono linearmente indipendenti.
+2. Generano $V$ (Span = V).
+\end{definitionbox}
+
+\begin{definitionbox}
+\textbf{Dimensione:} Il numero di elementi di una base è detto \textbf{dimensione} di $V$.
+\end{definitionbox}
+
+\begin{exercisebox}[title={Esempi di Basi}]
+- $\mathbb{R}^n$: Base standard $\{e_1, \dots, e_n\}$. Dim = $n$.
+- $M_{2 \times 2}(\mathbb{R})$: Base standard con le 4 matrici elementari. Dim = 4.
+- $\mathbb{R}[x]_{\le d}$: Base $\{1, x, x^2, \dots, x^d\}$. Dim = $d+1$.
+\end{exercisebox}
+
+\begin{concept}{Teorema del Completamento}
+Se $v_1, \dots, v_k$ sono indipendenti in $V$ di dimensione $n$, si possono aggiungere $n-k$ vettori per completare a una base.
+\end{concept}
+
+\subsection{Formula di Grassmann}
+\begin{concept}{Teorema (Formula di Grassmann)}
+Siano $U, W$ sottospazi di $V$. Allora:
+$$ \dim(U+W) = \dim(U) + \dim(W) - \dim(U \cap W) $$
+\end{concept}
+
+\begin{proof}
+Sia $\{e_1, \dots, e_r\}$ una base dell'intersezione $U \cap W$.
+La completiamo a una base di $U$: $\{e_1, \dots, e_r, u_{r+1}, \dots, u_n\}$.
+La completiamo a una base di $W$: $\{e_1, \dots, e_r, w_{r+1}, \dots, w_m\}$.
+Si dimostra che l'unione $\{e_i, u_j, w_k\}$ è una base di $U+W$.
+Contando gli elementi:
+$\dim(U+W) = r + (n-r) + (m-r) = n + m - r = \dim(U) + \dim(W) - \dim(U \cap W)$.
+\end{proof}
+
+\begin{exercisebox}[title={Esempio Grassmann}]
+$V$ soluzioni di sistema omogeneo, $W$ Span di due vettori in $\mathbb{R}^4$.
+Calcolo $\dim(V)$ risolvendo il sistema. Calcolo $\dim(W)$ verificando indipendenza.
+Calcolo $\dim(U+W)$ mettendo insieme i generatori e usando Gauss.
+Infine trovo $\dim(U \cap W)$ per sottrazione.
+\end{exercisebox}

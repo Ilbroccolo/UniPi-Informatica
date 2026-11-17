@@ -1,0 +1,41 @@
+\section{Insiemi Numerici e Intervalli}
+
+\subsection{Gli Insiemi Numerici Fondamentali}
+Definiamo i principali insiemi numerici utilizzati in analisi matematica: % [cite: 4, 5, 7, 8]
+
+\begin{itemize}
+    \item $\mathbb{N} = \{0, 1, 2, 3, \dots\}$: Insieme dei numeri naturali (interi non negativi). % [cite: 5, 6]
+    \item $\mathbb{Z} = \{ \dots, -2, -1, 0, 1, 2, \dots\}$: Insieme dei numeri interi (positivi e negativi). % [cite: 7, 22]
+    \item $\mathbb{Q} = \left\{ \frac{p}{q} : p, q \in \mathbb{Z}, q \neq 0 \right\}$: Insieme dei numeri razionali (frazioni). % [cite: 8, 9]
+    \item $\mathbb{R}$: Insieme dei numeri reali (include $\mathbb{Q}$ e i numeri irrazionali come $\sqrt{2}$). % [cite: 33, 35]
+\end{itemize}
+
+Vale la relazione di inclusione: 
+$$ \mathbb{N} \subset \mathbb{Z} \subset \mathbb{Q} \subset \mathbb{R} $$
+
+\subsection{Intervalli di $\mathbb{R}$}
+\begin{definition}[Intervallo]
+    Un sottoinsieme $I \subset \mathbb{R}$ si dice \textbf{intervallo} se, presi comunque $x, y \in I$ con $x < y$, ogni $z$ tale che $x < z < y$ appartiene a $I$. 
+    In altre parole, un intervallo non ha "buchi" al suo interno. 
+\end{definition}
+
+\begin{example}
+    L'insieme $A = \{x \in \mathbb{R} : 1 \le x < 2 \text{ oppure } 6 < x < 7 \}$ \textbf{non} è un intervallo. Infatti, se prendiamo $x = 1.5 \in A$ e $y = 6.5 \in A$, esiste $z=4$ tale che $x < z < y$ ma $z \notin A$. 
+\end{example}
+
+\subsubsection{Notazione degli intervalli}
+Dati $a, b \in \mathbb{R}$ con $a < b$: 
+\begin{itemize}
+    \item \textbf{Intervallo chiuso:} $[a, b] = \{ x \in \mathbb{R} : a \le x \le b \}$ 
+    \item \textbf{Intervallo aperto:} $(a, b) = \{ x \in \mathbb{R} : a < x < b \}$ (indicato talvolta come $]a, b[$) 
+    \item \textbf{Intervalli semi-aperti:} 
+    $$ [a, b) = \{ x \in \mathbb{R} : a \le x < b \} \quad \text{e} \quad (a, b] = \{ x \in \mathbb{R} : a < x \le b \} $$
+\end{itemize}
+
+Intervalli illimitati (semirette): 
+\begin{itemize}
+    \item $[a, +\infty) = \{ x \in \mathbb{R} : x \ge a \}$ (Semiretta chiusa)
+    \item $(a, +\infty) = \{ x \in \mathbb{R} : x > a \}$ (Semiretta aperta)
+    \item $(-\infty, b] = \{ x \in \mathbb{R} : x \le b \}$
+    \item $(-\infty, +\infty) = \mathbb{R}$ 
+\end{itemize}

@@ -1,0 +1,148 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+
+\begin{document}
+
+\section*{Insiemi Numerici}
+
+\begin{itemize}
+    \item \textbf{Numeri Naturali:} $\mathbb{N} = \{0, 1, 2, 3, 4, \dots \}$ (Interi non negativi)
+    \item \textbf{Numeri Interi:} $\mathbb{Z} = \{ \dots, -2, -1, 0, 1, 2, \dots \}$ (Interi positivi e negativi)
+    \item \textbf{Numeri Razionali:} $\mathbb{Q} = \left\{ \frac{p}{q} \mid p, q \in \mathbb{Z}, q \neq 0 \right\}$ (Classi di equivalenza di frazioni, es. $\frac{1}{2} \equiv \frac{2}{4} \equiv \frac{3}{6}$)
+    \item \textbf{Numeri Reali:} $\mathbb{R}$ (Include $\mathbb{Q}$ e molto altro, es. $\sqrt{2}$, $\pi$).
+\end{itemize}
+
+Catena di inclusioni: $\mathbb{N} \subset \mathbb{Z} \subset \mathbb{Q} \subset \mathbb{R}$.
+
+\subsection*{Intervalli di $\mathbb{R}$}
+Definizione: $I \subset \mathbb{R}$ si dice \textbf{intervallo} se dati $x, y \in I$ con $x < y$, risulta che per ogni $z$ tale che $x < z < y$, allora $z \in I$.
+(In parole povere: in un intervallo non ci sono "buchi").
+
+\textbf{Esempi:}
+\begin{itemize}
+    \item $A = \{ x \in \mathbb{R} : 2 < x < 4 \}$ è un intervallo.
+    \item $B = \{ x \in \mathbb{R} : 1 \le x < 2 \text{ oppure } 6 < x < 7 \}$ \textbf{non} è un intervallo. (Controesempio: $x=1.5, y=6.5$, $z=4$ sta in mezzo ma $z \notin B$).
+    \item $C = \mathbb{Z}$ non è un intervallo.
+\end{itemize}
+
+\textbf{Notazione:}
+Dati $a, b \in \mathbb{R}$ con $a < b$:
+\begin{itemize}
+    \item $[a, b] = \{ x \in \mathbb{R} : a \le x \le b \}$ (Chiuso)
+    \item $(a, b) = \{ x \in \mathbb{R} : a < x < b \}$ (Aperto)
+    \item $[a, b) = \{ x \in \mathbb{R} : a \le x < b \}$
+    \item $(a, b] = \{ x \in \mathbb{R} : a < x \le b \}$
+    \item $[a, +\infty) = \{ x \in \mathbb{R} : x \ge a \}$ (Semiretta chiusa)
+    \item $(a, +\infty) = \{ x \in \mathbb{R} : x > a \}$ (Semiretta aperta)
+    \item $(-\infty, b] = \{ x \in \mathbb{R} : x \le b \}$
+    \item $(-\infty, +\infty) = \mathbb{R}$
+\end{itemize}
+
+\section*{Funzioni}
+Una funzione è una terna di oggetti $A, B, f$.
+\begin{itemize}
+    \item $A$: Dominio
+    \item $B$: Codominio
+    \item $f$: Legge che associa ad ogni elemento di $A$ \textbf{uno e un solo} elemento di $B$.
+\end{itemize}
+Notazione: $f: A \to B$.
+
+\subsection*{Grafico e Immagine}
+\begin{itemize}
+    \item \textbf{Prodotto Cartesiano:} $A \times B = \{ (a,b) : a \in A, b \in B \}$.
+    \item \textbf{Grafico:} $\text{graph}(f) = \{ (a,b) \in A \times B : b = f(a) \}$.
+    \item \textbf{Immagine:} Dato $D \subseteq A$, $f(D) = \{ f(x) : x \in D \}$.
+    \item L'immagine di tutta la funzione è $f(A) = \text{Imm}(f)$.
+\end{itemize}
+
+\subsection*{Proprietà delle Funzioni}
+\begin{enumerate}
+    \item \textbf{Iniettiva:} Se $x_1, x_2 \in A$ con $x_1 \neq x_2 \implies f(x_1) \neq f(x_2)$.
+    \textit{Criterio grafico:} Ogni retta orizzontale incontra il grafico al massimo in un punto.
+    \item \textbf{Suriettiva:} Se $\forall y \in B, \exists x \in A$ tale che $f(x) = y$. (Ovvero $\text{Imm}(f) = B$).
+    \textit{Criterio grafico:} Ogni retta orizzontale incontra il grafico almeno in un punto.
+    \item \textbf{Biettiva (o Biunivoca):} Se è sia iniettiva che suriettiva.
+\end{enumerate}
+
+\textbf{Funzione Inversa:}
+Se $f: A \to B$ è biettiva, esiste $f^{-1}: B \to A$ tale che $f^{-1}(b) = a \iff f(a) = b$.
+Esempio: $f(x) = x^2$ su $[0, +\infty)$ è biettiva. L'inversa è $f^{-1}(y) = \sqrt{y}$.
+
+\end{document}
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+
+\begin{document}
+
+\section*{Insiemi Numerici}
+
+\begin{itemize}
+    \item \textbf{Numeri Naturali:} $\mathbb{N} = \{0, 1, 2, 3, 4, \dots \}$ (Interi non negativi)
+    \item \textbf{Numeri Interi:} $\mathbb{Z} = \{ \dots, -2, -1, 0, 1, 2, \dots \}$ (Interi positivi e negativi)
+    \item \textbf{Numeri Razionali:} $\mathbb{Q} = \left\{ \frac{p}{q} \mid p, q \in \mathbb{Z}, q \neq 0 \right\}$ (Classi di equivalenza di frazioni, es. $\frac{1}{2} \equiv \frac{2}{4} \equiv \frac{3}{6}$)
+    \item \textbf{Numeri Reali:} $\mathbb{R}$ (Include $\mathbb{Q}$ e molto altro, es. $\sqrt{2}$, $\pi$).
+\end{itemize}
+
+Catena di inclusioni: $\mathbb{N} \subset \mathbb{Z} \subset \mathbb{Q} \subset \mathbb{R}$.
+
+\subsection*{Intervalli di $\mathbb{R}$}
+Definizione: $I \subset \mathbb{R}$ si dice \textbf{intervallo} se dati $x, y \in I$ con $x < y$, risulta che per ogni $z$ tale che $x < z < y$, allora $z \in I$.
+(In parole povere: in un intervallo non ci sono "buchi").
+
+\textbf{Esempi:}
+\begin{itemize}
+    \item $A = \{ x \in \mathbb{R} : 2 < x < 4 \}$ è un intervallo.
+    \item $B = \{ x \in \mathbb{R} : 1 \le x < 2 \text{ oppure } 6 < x < 7 \}$ \textbf{non} è un intervallo. (Controesempio: $x=1.5, y=6.5$, $z=4$ sta in mezzo ma $z \notin B$).
+    \item $C = \mathbb{Z}$ non è un intervallo.
+\end{itemize}
+
+\textbf{Notazione:}
+Dati $a, b \in \mathbb{R}$ con $a < b$:
+\begin{itemize}
+    \item $[a, b] = \{ x \in \mathbb{R} : a \le x \le b \}$ (Chiuso)
+    \item $(a, b) = \{ x \in \mathbb{R} : a < x < b \}$ (Aperto)
+    \item $[a, b) = \{ x \in \mathbb{R} : a \le x < b \}$
+    \item $(a, b] = \{ x \in \mathbb{R} : a < x \le b \}$
+    \item $[a, +\infty) = \{ x \in \mathbb{R} : x \ge a \}$ (Semiretta chiusa)
+    \item $(a, +\infty) = \{ x \in \mathbb{R} : x > a \}$ (Semiretta aperta)
+    \item $(-\infty, b] = \{ x \in \mathbb{R} : x \le b \}$
+    \item $(-\infty, +\infty) = \mathbb{R}$
+\end{itemize}
+
+\section*{Funzioni}
+Una funzione è una terna di oggetti $A, B, f$.
+\begin{itemize}
+    \item $A$: Dominio
+    \item $B$: Codominio
+    \item $f$: Legge che associa ad ogni elemento di $A$ \textbf{uno e un solo} elemento di $B$.
+\end{itemize}
+Notazione: $f: A \to B$.
+
+\subsection*{Grafico e Immagine}
+\begin{itemize}
+    \item \textbf{Prodotto Cartesiano:} $A \times B = \{ (a,b) : a \in A, b \in B \}$.
+    \item \textbf{Grafico:} $\text{graph}(f) = \{ (a,b) \in A \times B : b = f(a) \}$.
+    \item \textbf{Immagine:} Dato $D \subseteq A$, $f(D) = \{ f(x) : x \in D \}$.
+    \item L'immagine di tutta la funzione è $f(A) = \text{Imm}(f)$.
+\end{itemize}
+
+\subsection*{Proprietà delle Funzioni}
+\begin{enumerate}
+    \item \textbf{Iniettiva:} Se $x_1, x_2 \in A$ con $x_1 \neq x_2 \implies f(x_1) \neq f(x_2)$.
+    \textit{Criterio grafico:} Ogni retta orizzontale incontra il grafico al massimo in un punto.
+    \item \textbf{Suriettiva:} Se $\forall y \in B, \exists x \in A$ tale che $f(x) = y$. (Ovvero $\text{Imm}(f) = B$).
+    \textit{Criterio grafico:} Ogni retta orizzontale incontra il grafico almeno in un punto.
+    \item \textbf{Biettiva (o Biunivoca):} Se è sia iniettiva che suriettiva.
+\end{enumerate}
+
+\textbf{Funzione Inversa:}
+Se $f: A \to B$ è biettiva, esiste $f^{-1}: B \to A$ tale che $f^{-1}(b) = a \iff f(a) = b$.
+Esempio: $f(x) = x^2$ su $[0, +\infty)$ è biettiva. L'inversa è $f^{-1}(y) = \sqrt{y}$.
+
+\end{document}

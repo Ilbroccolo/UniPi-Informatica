@@ -1,0 +1,267 @@
+\documentclass[11pt,a4paper]{article}
+
+% --- PACCHETTI FONDAMENTALI ---
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{geometry}
+\geometry{a4paper, top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins, theorems, breakable}
+\usepackage{tikz}
+\usepackage{xcolor}
+
+% --- PALETTE COLORI (COME DA PROTOCOLLO) ---
+\definecolor{paletteIndigo}{RGB}{75, 0, 130}
+\definecolor{paletteRegalia}{RGB}{82, 45, 128}
+\definecolor{paletteLenurple}{RGB}{147, 112, 219}
+\definecolor{paletteLavender}{RGB}{230, 230, 250}
+
+% --- CONFIGURAZIONE AMBIENTI (BOX) ---
+\newtcbtheorem{definition}{Definizione}{
+    enhanced, breakable,
+    colback=paletteLavender!20, colframe=paletteIndigo, 
+    fonttitle=\bfseries\large, coltitle=white, 
+    boxrule=1pt, arc=3mm
+}{def}
+
+\newtcbtheorem{concept}{Concetto Chiave}{
+    enhanced, breakable,
+    colback=paletteLavender!10, colframe=paletteRegalia, 
+    fonttitle=\bfseries, coltitle=white,
+    boxrule=0.8pt, arc=2mm, borderline west={3pt}{0pt}{paletteRegalia}
+}{cnc}
+
+\newtcbtheorem{example}{Esempio / Controesempio}{
+    enhanced, breakable,
+    colback=white, colframe=paletteLenurple, 
+    fonttitle=\bfseries, coltitle=white,
+    boxrule=0.5pt, arc=1mm
+}{ex}
+
+\title{\Huge \textbf{La Bibbia di Algebra Lineare} \\ \Large \textit{Spazi Vettoriali, Sottospazi e Calcolo Matriciale}}
+\author{\textbf{Redattore Accademico Universale}}
+\date{Livorno, 25 Febbraio 2026}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Introduzione ai Sistemi Lineari e Vettori}
+
+\subsection{Definizione di Vettore in $\mathbb{R}^n$}
+Supponiamo di avere un sistema lineare di $n$ incognite. Per definizione, le sue soluzioni sono $n$-uple di numeri reali. Queste $n$-uple sono costituite da $n$ numeri reali disposti nella forma $\begin{pmatrix} v_1 \\ \vdots \\ v_n \end{pmatrix}$ tali che, sostituendo le incognite con tali valori, tutte le equazioni del sistema risultano soddisfatte.
+
+Denotiamo con $\mathbb{R}^n$ l'insieme delle $n$-uple di numeri reali. In termini formali:
+$$ \mathbb{R}^n = \left\{ v = \begin{pmatrix} v_1 \\ \vdots \\ v_n \end{pmatrix} \;\middle|\; v_i \in \mathbb{R} \;\forall i \right\} $$.
+Ciascun elemento dell'insieme $\mathbb{R}^n$ si chiama \textbf{vettore}.
+
+\begin{concept}{Osservazione sulle Matrici e Vettori}{}
+I vettori colonna sono di fatto matrici di dimensione $n \times 1$. Sebbene come premesso nelle prime lezioni i vettori possano contenere elementi appartenenti ad un qualsiasi altro insieme numerico (ad esempio i numeri razionali $\mathbb{Q}$, denotati nel caso generale come $K^n = \{ \begin{pmatrix} k_1 \\ \vdots \\ k_n \end{pmatrix} \mid k_i \in K \} $), nel nostro corso ci interesseranno principalmente i numeri reali.
+\end{concept}
+
+\subsection{Operazioni sui Vettori di $\mathbb{R}^n$}
+Sulle $n$-uple di numeri reali possiamo definire diverse operazioni, "ereditate" da quelle che facciamo con i numeri reali. Ci interesseranno in particolare due operazioni fondamentali: la \textbf{Somma} e il \textbf{Prodotto per Scalare}.
+
+\begin{definition}{Somma e Prodotto per Scalare in $\mathbb{R}^n$}{}
+\begin{itemize}
+    \item \textbf{Somma tra vettori:} Dati due vettori $v = \begin{pmatrix} v_1 \\ \vdots \\ v_n \end{pmatrix}$ e $w = \begin{pmatrix} w_1 \\ \vdots \\ w_n \end{pmatrix}$ appartenenti a $\mathbb{R}^n$, definiamo la somma come:
+    $$ v + w = \begin{pmatrix} v_1 + w_1 \\ v_2 + w_2 \\ \vdots \\ v_n + w_n \end{pmatrix} \in \mathbb{R}^n $$
+    \item \textbf{Prodotto per scalare:} Dato un vettore $v = \begin{pmatrix} v_1 \\ \vdots \\ v_n \end{pmatrix} \in \mathbb{R}^n$ e uno scalare $\lambda \in \mathbb{R}$, definisco il prodotto del vettore $v$ per lo scalare $\lambda$ come:
+    $$ \lambda v = \begin{pmatrix} \lambda v_1 \\ \vdots \\ \lambda v_n \end{pmatrix} \in \mathbb{R}^n $$
+\end{itemize}
+\end{definition}
+
+\subsubsection{Proprietà delle Operazioni}
+L'insieme $\mathbb{R}^n$ equipaggiato con l'operazione di somma $(+)$ costituisce un \textbf{gruppo commutativo}. L'elemento neutro è il vettore nullo:
+$$ 0 = \begin{pmatrix} 0 \\ \vdots \\ 0 \end{pmatrix} $$
+
+Il prodotto per scalare in $\mathbb{R}^n$ soddisfa le seguenti proprietà:
+\begin{itemize}
+    \item $\lambda(v + w) = \lambda v + \lambda w \quad \forall \lambda \in \mathbb{R}, \forall v, w \in \mathbb{R}^n$.
+    \item $(\lambda + \mu)v = \lambda v + \mu v \quad \forall \lambda, \mu \in \mathbb{R}, \forall v \in \mathbb{R}^n$.
+    \item $(\lambda \mu)v = \lambda(\mu v) \quad \forall \lambda, \mu \in \mathbb{R}, \forall v \in \mathbb{R}^n$.
+    \item $1 \cdot v = v \quad \forall v \in \mathbb{R}^n$.
+    \item $0 \cdot v = 0$.
+\end{itemize}
+*(La dimostrazione delle proprietà è lasciata per esercizio)*.
+
+\begin{concept}{Digressione sugli Insiemi Astratti}{}
+Abbiamo visto che l'insieme $\mathbb{R}^n$ non è l'unico insieme noto che soddisfa queste proprietà. Le soddisfano, per esempio, anche l'insieme dei polinomi in una variabile a coefficienti reali e l'insieme delle matrici.
+\end{concept}
+
+\newpage
+\section{Spazi Vettoriali e Sottospazi}
+
+\subsection{Definizione Formale di Spazio Vettoriale}
+\begin{definition}{Spazio Vettoriale su $\mathbb{R}$}{}
+Uno Spazio Vettoriale su $\mathbb{R}$ è un insieme $V$ dotato di due operazioni:
+\begin{itemize}
+    \item \textbf{Somma:} $+ : V \times V \longrightarrow V$.
+    \item \textbf{Prodotto per Scalare:} $\cdot : \mathbb{R} \times V \longrightarrow V$.
+\end{itemize}
+Tali operazioni devono soddisfare i seguenti 8 assiomi:
+\begin{enumerate}
+    \item \textbf{Associatività della somma:} $(u + v) + w = u + (v + w)$.
+    \item \textbf{Esistenza dell'elemento neutro:} $\exists 0 \in V$ tale che $0 + v = v + 0 = v$.
+    \item \textbf{Esistenza dell'opposto:} $\forall v \in V, \exists -v \in V$ tale che $v + (-v) = 0$.
+    \item \textbf{Commutatività della somma:} $\forall u, w \in V$, $v + w = w + v$.
+    \item \textbf{Associatività del prodotto per scalare:} $(\lambda \mu)v = \lambda(\mu v)$.
+    \item \textbf{Elemento neutro del prodotto per scalare:} $1 \cdot v = v$.
+    \item \textbf{Distributività del prodotto per scalare rispetto alla somma di vettori:} $\lambda(v + w) = \lambda v + \lambda w \quad \forall \lambda \in \mathbb{R}, \forall v, w \in V$.
+    \item \textbf{Distributività del prodotto per scalare rispetto alla somma di scalari:} $(\lambda + \mu)v = \lambda v + \mu v \quad \forall \lambda, \mu \in \mathbb{R}, \forall v \in V$.
+\end{enumerate}
+\end{definition}
+
+\subsection{Esempi di Spazi Vettoriali}
+
+\begin{example}{1. Polinomi di Grado $\leq n$}{}
+L'insieme dei polinomi di grado $n$ in una variabile, denotato con $P_n(x)$:
+$$ P_n(x) = \left\{ a_n x^n + a_{n-1} x^{n-1} + \dots + a_1 x + a_0 \mid a_i \in \mathbb{R} \;\forall i \right\} $$
+Per capire se possiamo dotarlo di una struttura di spazio vettoriale, dobbiamo definire le due operazioni e verificare che soddisfino le proprietà.
+\begin{itemize}
+    \item Somma: $P_n(x) \times P_n(x) \longrightarrow P_n(x)$.
+    \item Prodotto per scalare: $\mathbb{R} \times P_n(x) \longrightarrow P_n(x)$.
+\end{itemize}
+*(La definizione rigorosa e la verifica delle proprietà sono lasciate per esercizio)*.
+\end{example}
+
+\begin{example}{2. Matrici $m \times n$}{}
+L'insieme $M_{m \times n}$ delle matrici con $m$ righe e $n$ colonne a coefficienti in $\mathbb{R}$ è uno Spazio Vettoriale.
+Le operazioni sono definite componente per componente:
+\begin{itemize}
+    \item \textbf{Somma:} Se $A = (a_{ij})$ e $B = (b_{ij})$, allora $A+B = (a_{ij} + b_{ij})$.
+    \item \textbf{Prodotto per scalare:} Se $\lambda \in \mathbb{R}$ e $A = (a_{ij})$, allora $\lambda A = (\lambda a_{ij})$.
+\end{itemize}
+\end{example}
+
+\begin{example}{3. Vettori Applicati in $\mathbb{R}^2$}{}
+Consideriamo il piano euclideo $\mathbb{R}^2$ e fissiamo un'origine $O$.
+Un \textbf{vettore applicato} in $O$ è un segmento orientato (una freccia) con il primo estremo nell'origine $O$ e il secondo estremo in un punto $A \in \mathbb{R}^2$.
+
+L'insieme dei vettori applicati in $O$ è denotato con $V_0^2$. Possiamo definire:
+\begin{itemize}
+    \item \textbf{Somma:} $+ : V_0^2 \times V_0^2 \longrightarrow V_0^2$. Dati due vettori $\vec{OA}$ e $\vec{OB}$, la loro somma genera il vettore $\vec{OC}$ utilizzando la \textbf{regola del parallelogramma} (retta per $A$ parallela a $OB$ e retta per $B$ parallela ad $OA$).
+    \item \textbf{Prodotto per scalare:} $\cdot : \mathbb{R} \times V_0^2 \longrightarrow V_0^2$. Moltiplicare uno scalare $\lambda$ (es. $\lambda=2$) per un vettore ne scala la lunghezza mantenendo o invertendo il verso.
+\end{itemize}
+L'insieme dei vettori applicati, equipaggiato con queste operazioni, forma uno spazio vettoriale.
+
+\begin{center}
+\begin{tikzpicture}[scale=1.5]
+    % Assi
+    \draw[->, thick] (-0.5,0) -- (4,0) node[right] {$x$};
+    \draw[->, thick] (0,-0.5) -- (0,3) node[above] {$y$};
+    
+    % Vettori
+    \coordinate (O) at (0,0);
+    \coordinate (A) at (2,0.5);
+    \coordinate (B) at (1,2);
+    \coordinate (C) at (3,2.5);
+    
+    \draw[->, thick, paletteIndigo] (O) -- (A) node[midway, below right] {$\vec{OA}$};
+    \draw[->, thick, paletteRegalia] (O) -- (B) node[midway, above left] {$\vec{OB}$};
+    \draw[->, thick, red] (O) -- (C) node[midway, above] {$\vec{OC} = \vec{OA} + \vec{OB}$};
+    
+    % Parallelogramma
+    \draw[dashed] (A) -- (C);
+    \draw[dashed] (B) -- (C);
+    
+    % Nodi
+    \filldraw (O) circle (1pt) node[below left] {$O$};
+    \filldraw (A) circle (1pt) node[right] {$A$};
+    \filldraw (B) circle (1pt) node[left] {$B$};
+    \filldraw (C) circle (1pt) node[right] {$C$};
+\end{tikzpicture}
+\end{center}
+\end{example}
+
+\subsection{Sottospazi Vettoriali}
+\begin{definition}{Sottospazio Vettoriale}{}
+Dato uno spazio vettoriale $(V, +, \cdot)$, un \textbf{sottospazio vettoriale} è un sottoinsieme $W \subseteq V$ che è chiuso rispetto alle operazioni di somma e prodotto per scalare.
+Formalmente, $W$ è sottospazio se e solo se:
+\begin{enumerate}
+    \item $0 \in W$
+    \item $\forall u, v \in W \implies u+v \in W$
+    \item $\forall \lambda \in \mathbb{R}, \forall v \in W \implies \lambda v \in W$
+\end{enumerate}
+\end{definition}
+
+\subsubsection{Sistemi Lineari Omogenei come Sottospazi}
+Un sistema lineare si dice \textbf{omogeneo} quando il vettore dei termini noti è nullo, ovvero $0 = \begin{pmatrix} 0 \\ \vdots \\ 0 \end{pmatrix}$.
+Il sistema si presenta nella forma:
+$$ \begin{cases} a_{11}x_1 + \dots + a_{1n}x_n = 0 \\ \dots \\ a_{m1}x_1 + \dots + a_{mn}x_n = 0 \end{cases} \implies A\begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix} = 0 $$
+L'insieme delle soluzioni $S$ di un sistema lineare omogeneo è uno \textbf{spazio vettoriale su $\mathbb{R}$} (precisamente un sottospazio di $\mathbb{R}^n$).
+Se $x, y \in S \implies x+y \in S$. E se $\lambda \in \mathbb{R}, x \in S \implies \lambda x \in S$.
+
+\subsubsection{Esempi e Controesempi sui Sottospazi}
+\begin{example}{Esempi di Sottospazi}{}
+\begin{itemize}
+    \item L'insieme delle soluzioni di un sistema lineare omogeneo in $\mathbb{R}^n$.
+    \item L'insieme delle matrici diagonali in $M_{n \times n}$.
+\end{itemize}
+\end{example}
+
+\begin{example}{Sottoinsiemi che NON sono Sottospazi Vettoriali}{}
+La tecnica principe per dimostrare che un insieme non è un sottospazio vettoriale consiste nell'esibire un \textbf{controesempio} che viola uno degli assiomi di chiusura.
+\begin{enumerate}
+    \item \textbf{Soluzioni di un sistema lineare NON omogeneo:} Non è uno spazio vettoriale. Basta osservare che non vi appartiene l'elemento neutro (il vettore nullo non è soluzione). Non c'è neppure la chiusura per somma o per opposto.
+    
+    \item $W = \{ (a,b,c) \in \mathbb{R}^3 \mid a \cdot b \cdot c = 0 \}$. Non è chiuso rispetto al prodotto per scalare.
+    
+    \item In $V = \mathbb{R}[x]$ (polinomi a coefficienti reali), il sottoinsieme $W = \mathbb{Z}[x]$ (polinomi a coefficienti interi) NON è un sottospazio. Non è chiuso rispetto al prodotto per scalari reali (es. $\frac{1}{2} x \notin \mathbb{Z}[x]$).
+    
+    \item $W = \left\{ \begin{pmatrix} a \\ b \\ c \end{pmatrix} \;\middle|\; a \cdot b = 0 \right\}$ in $\mathbb{R}^3$. NON è un sottospazio.
+    \textit{Controesempio:} I vettori $\begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}$ e $\begin{pmatrix} 1 \\ 0 \\ 3 \end{pmatrix}$ appartengono a $W$ (poiché i prodotti delle prime due componenti sono $0 \cdot 1 = 0$ e $1 \cdot 0 = 0$). Tuttavia, la loro somma è $\begin{pmatrix} 1 \\ 1 \\ 3 \end{pmatrix}$, che NON appartiene a $W$ poiché $1 \cdot 1 \neq 0$.
+\end{enumerate}
+\end{example}
+
+\newpage
+\section{Calcolo Matriciale}
+
+\begin{concept}{Digressione sulla Notazione Matriciale per i Sistemi Lineari}{}
+Nel parlare di sistemi lineari ci siamo accorti che quello che conta veramente è la matrice completa del sistema:
+$$ C = (A | b) $$
+Dove $A$ è la matrice dei coefficienti e $b$ è il vettore dei termini noti. In notazione matriciale, il sistema è scritto come $AX = b$, dove $X$ è il vettore colonna delle incognite $X = \begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix} \in \mathbb{R}^n$.
+
+Il vettore $X$ in un certo senso "scompare" nella fase di semplificazione con le mosse di Gauss sulla matrice, e ricompare solo alla fine per esplicitare le soluzioni. È quindi utile semplificare la notazione ragionando solo in termini matriciali, poiché sia $X$ che $b$ sono di fatto matrici. Questo introduce l'argomento vitale del \textbf{Calcolo Matriciale}.
+\end{concept}
+
+\subsection{Operazioni tra Matrici e Matrice Trasposta}
+Sia $M_{m \times n}$ l'insieme delle matrici $m \times n$ (sottinteso, a coefficienti in $\mathbb{R}$).
+Abbiamo già visto che $M_{m \times n}$ è uno spazio vettoriale. Oltre alla somma e al prodotto per scalare, possiamo definire altre operazioni.
+
+\begin{definition}{Matrice Trasposta}{}
+Data una matrice $A \in M_{m \times n}$ con componenti $(a_{ij})$, definiamo la \textbf{Matrice Trasposta} di $A$, denotata con $A^T$, come la matrice ottenuta scambiando le righe con le colonne.
+Se $A \in M_{m \times n}$, allora $A^T \in M_{n \times m}$.
+Gli elementi $b_{ij}$ della matrice trasposta sono definiti come $b_{ij} = a_{ji}$.
+\end{definition}
+
+\begin{example}{Calcolo della Trasposta}{}
+Sia la matrice $3 \times 2$:
+$$ A = \begin{pmatrix} 1 & 2 \\ 3 & 5 \\ 4 & 6 \end{pmatrix} \in M_{3 \times 2} $$
+La sua trasposta sarà una matrice $2 \times 3$:
+$$ A^T = \begin{pmatrix} 1 & 3 & 4 \\ 2 & 5 & 6 \end{pmatrix} \in M_{2 \times 3} $$
+\end{example}
+
+\subsection{Prodotto tra Matrici (Riga per Colonna)}
+Ci chiediamo: possiamo moltiplicare due matrici tra loro?
+
+Siano $A \in M_{m \times n}$ e $B \in M_{n \times p}$. Affinché il prodotto sia definito, il numero di colonne della prima matrice DEVE uguagliare il numero di righe della seconda.
+Il prodotto $C = A \times B$ restituisce una matrice $C \in M_{m \times p}$.
+L'elemento generico $c_{ij}$ si calcola tramite l'operazione di riga per colonna:
+$$ c_{ij} = \sum_{k=1}^n a_{ik} b_{kj} $$
+
+\begin{example}{Verifica delle Dimensioni e Calcolo}{}
+\textbf{Esempio 1: Dimensioni incompatibili.}
+Siano $A = \begin{pmatrix} 2 & 1 \\ 3 & 7 \end{pmatrix} \in M_{2 \times 2}$ e $B = \begin{pmatrix} 1 & 2 & 1 \\ 0 & 5 & 4 \\ 4 & 0 & 1 \end{pmatrix} \in M_{3 \times 3}$. Poiché il numero di colonne di $A$ (2) è diverso dal numero di righe di $B$ (3), \textbf{non si possono moltiplicare}.
+
+\textbf{Esempio 2: Dimensioni compatibili.}
+Moltiplichiamo una matrice $2 \times 2$ per una $2 \times 3$. Il risultato sarà una matrice $2 \times 3$.
+Sia $A = \begin{pmatrix} 1 & 2 \\ \dots \end{pmatrix}$ e $B^T = \begin{pmatrix} 2 & 0 & 4 \\ 7 & 5 & \dots \end{pmatrix}$.
+Calcolo del primo termine $c_{11}$ moltiplicando la prima riga di $A$ per la prima colonna della matrice corrispondente:
+$$ c_{11} = 2 \cdot 2 + 1 \cdot 7 = 11 $$ E via così, "riga per colonna".
+\end{example}
+
+\end{document}

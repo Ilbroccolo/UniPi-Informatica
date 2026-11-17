@@ -1,0 +1,31 @@
+\section{Spazi Vettoriali ed Estrazione Basi}
+
+\begin{concept}{Richiami di Teoria: Basi e Indipendenza}
+Un insieme di vettori $\mathcal{B} = \{v_1, \dots, v_k\}$ forma una \textbf{Base} per lo spazio $V$ se e solo se i vettori:
+\begin{enumerate}
+    \item Generano lo spazio (i.e. ogni vettore $v \in V$ può essere scritto come loro combinazione lineare).
+    \item Sono \textbf{Linearmente Indipendenti} (non esiste alcun legame del tipo $c_1 v_1 + \dots + c_k v_k = 0$ a meno che tutti i $c_i=0$).
+\end{enumerate}
+La dimensione dello spazio è semplicemente il numero di questi vettori nella base. In $\mathbb{R}^n$ la dimensione è $n$, quindi ogni base avrà sempre e rigorosamente $n$ elementi.
+\end{concept}
+
+\begin{logicbox}
+\textbf{Pattern 3: Estrarre una Base da un insieme di Generatori}\\
+Se ti viene dato un insieme di vettori numerosi ($k > n$) e ti si chiede di estrarne una base:
+1. Inserisci i vettori come **COLONNE** all'interno di una matrice $A$.
+2. Riduci la matrice $A$ a scalini (\textit{row echelon form}) usando le classiche mosse di Gauss.
+3. Individua in che numero di colonna si trovano i pivot della matrice finale a scalini.
+4. Per "estrarre" la base, prendi ESATTAMENTE i vettori corrispondenti presenti nella **matrice originaria di partenza**, pescando solo quelli numerati dai pivot (non quelli trasformati!).
+\end{logicbox}
+
+\begin{exercisebox}[title={Esercizio 1: Estrazione}]
+Dati i vettori $v_1=(1,-1,0)^T$, $v_2=(2,-2,0)^T$, $v_3=(0,1,1)^T$, estrarre una base per il sottospazio $W = Span(v_1, v_2, v_3)$.
+\end{exercisebox}
+
+\begin{solbox}
+Noto immediatamente ad occhio che $v_2 = 2v_1$.
+Posso quindi estrarne la radice rimuovendo tranquillamente $v_2$ che è ovviamente linearmente dipendente da $v_1$!
+Una base formale in questo caso molto palese e veloce da dedurre sarà:
+$$ \mathcal{B}_W = \{ v_1, v_3 \} = \left\{ \begin{pmatrix} 1 \\ -1 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \\ 1 \end{pmatrix} \right\} $$
+La dimensione del sottospazio è per cui $2$.
+\end{solbox}

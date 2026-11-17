@@ -1,0 +1,136 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+
+% ==========================================
+%      CONFIGURAZIONE UTENTE (MODIFICA QUI)
+% ==========================================
+
+% 1. Dati del Corso e Università
+\newcommand{\Universita}{Università di PongiBonsi}
+\newcommand{\Dipartimento}{Dipartimento di Informatica \\ Corso di Laurea Triennale in Informatica}
+\newcommand{\InfoCorso}{Corso 1° anno - 12 CFU}
+\newcommand{\TitoloCorso}{Analisi Matematica}
+\newcommand{\Sottotitolo}{Appunti aggiornati}
+\newcommand{\AnnoAccademico}{Anno Accademico 2020/2021}
+\newcommand{\LogoImmagine}{marchio_unipi_pant541.png} % Assicurati che il file esista
+
+% 2. Dati Persone (Copia e incolla dai tuoi appunti)
+\newcommand{\Professori}{
+    {\large\textbf{Professore:}}\\ \large{Prof. Mattia Talpo} \\
+    \vspace{0.5em}
+    {\large\textbf{Professore:}}\\ \large{Prof. Elisabetta Chiodaroli}
+}
+\newcommand{\Autori}{
+    {\large\textbf{Autore:}}\\ \large{Joseph Zucchelli} \\
+    \vspace{0.5em}
+    
+}
+
+% 3. Colore Principale (ROSSO)
+\usepackage{xcolor}
+\definecolor{mainRed}{RGB}{200, 0, 0} % Rosso scuro personalizzabile
+% ==========================================
+
+% ---- Packages ---- 
+\usepackage{amsmath, amsfonts, amsthm, amssymb}
+\usepackage{graphicx}
+\usepackage{makecell}
+\usepackage{wrapfig}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage[italian, english]{babel}
+
+\graphicspath{ {./images/} }
+\geometry{letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm}
+
+% Setup Link col colore ROSSO
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=mainRed, % Link interni rossi
+    urlcolor=mainRed  
+}
+
+% ---- Teoremi e Definizioni ----
+\theoremstyle{remark}      \newtheorem{note}{Note}[subsection]
+\theoremstyle{definition}  \newtheorem{observation}{Osservazione}[subsection]
+\theoremstyle{plain}       \newtheorem{definition}{Definizione}[subsection]
+\theoremstyle{definition}  \newtheorem{example}{Esempio}[subsection]
+\theoremstyle{definition}  \newtheorem{demostration}{Dimostrazione}[subsection]
+\theoremstyle{definition}  \newtheorem{theorem}{Teorema}[subsection]
+\theoremstyle{plain}       \newtheorem{corollaries}{Corollario}[theorem]
+\theoremstyle{plain}       \newtheorem{proposition}{Proposizione}[subsection]
+
+% ---- Header e Footer ---- 
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{\AnnoAccademico}
+\fancyhead[RE,LO]{\TitoloCorso}
+\fancyfoot[RE,LO]{\rightmark}
+\fancyfoot[LE,RO]{\thepage}
+\renewcommand{\headrulewidth}{.5pt}
+\renewcommand{\footrulewidth}{.5pt}
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+
+% ==========================================
+%   TEMPLATE PAGINE DIVISORIE (RICORRENTI)
+% ==========================================
+\newcommand{\PaginaDivisoria}[1]{
+    \newpage
+    \thispagestyle{empty}
+    \vspace*{\fill}
+    \begin{center}
+        {\color{mainRed}\hrule height 2pt}
+        \vspace{1cm}
+        {\Huge \bfseries \scshape \color{mainRed} #1 \par}
+        \vspace{1cm}
+        {\color{mainRed}\hrule height 2pt}
+    \end{center}
+    \vspace*{\fill}
+    \newpage
+}
+
+% Scorciatoie per le pagine che hai richiesto
+\newcommand{\CoverEsercitazioni}{\PaginaDivisoria{Esercitazioni}}
+\newcommand{\CoverApprofondimenti}{\PaginaDivisoria{Approfondimenti}}
+\newcommand{\CoverEserciziGenerali}{\PaginaDivisoria{Esercizi Generali}}
+
+% ==========================================
+%             INIZIO DOCUMENTO
+% ==========================================
+\begin{document}
+
+\input{frontespizio} % Carica il file frontespizio.tex modificato
+
+\tableofcontents
+\newpage
+
+% Rimuovi \maketitle standard perché usiamo frontespizio personalizzato
+% \maketitle 
+
+\begin{center}
+    \vspace{-20pt}
+    {\color{mainRed}\rule{11cm}{.1pt}} % Linea rossa anche qui
+\end{center}
+
+% --- I TUOI CAPITOLI ---
+\input{capitoli/introduzione}
+
+
+% --- ESEMPIO PAGINE RICORRENTI ---
+% Quando ti serve, scommenta queste righe:
+
+\CoverEsercitazioni
+% \input{capitoli/mie_esercitazioni}
+
+% \CoverApprofondimenti
+% \input{capitoli/miei_approfondimenti}
+
+% \CoverEserciziGenerali
+% \input{capitoli/cheatsheet}
+
+\end{document}

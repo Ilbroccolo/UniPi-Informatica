@@ -1,0 +1,41 @@
+\section{Applicazioni Lineari (Nucleo e Immagine)}
+
+\begin{concept}{Richiami di Teoria: Ker e Im}
+Sia data l'applicazione lineare $f: V \to W$, determinata da una sua matrice associata $A$ tale che $L_A(x)=Ax$.
+\begin{itemize}
+    \item \textbf{Nucleo} ($\ker A$): L'insieme delle pre-immagini che restituiscono una trasformazione nulla. Le trovi ponendo $A \cdot x = 0$ e risolvendo tutto il sistema con Gauss.
+    \item \textbf{Immagine} ($\text{Im } A$): L'area d'arrivo di tutti i vettori trasformati dallo span di $V$. È sempre generata dalle COLONNE di $A$ (colonne linearmente indipendenti formano la base per l'immagine).
+\end{itemize}
+\textbf{Teorema Rank-Nullity (Dimensione):} $\dim V = \dim(Ker(f)) + \dim(Im(f))$.
+\end{concept}
+
+\begin{logicbox}
+\textbf{Pattern 4: Lo schema d'attacco classico per le Applicazioni}\\
+Di fronte a una matrice che rappresenta l'applicazione lineare:
+1. Per trovare l'immagine: Riduci la matrice con Gauss, guarda in quali colonne si creano i pivot. Quelli estratti dalle colonne corrispondenti ma della **matrice matrice originale di partenza** saranno i vettori della base dell'immagine!
+2. Per trovare il Kernel: Usa la matrice precedentemente ridotta fino in fondo, ponila a zero ($Ax=0$) e risolvi a ritroso le equazioni in funzione delle variabili libere.
+\end{logicbox}
+
+\begin{exercisebox}[title={Esercizio 1: Determinare Ker e Im}]
+Data la matrice $A$ dell'applicazione lineare:
+$$ A = \begin{pmatrix} 1 & 1 & 0 \\ 0 & -2 & 1 \\ -1 & 1 & -1 \end{pmatrix} $$
+Determinare una base per il Nucleo ($\ker A$) e una base per l'Immagine ($\text{Im } A$).
+\end{exercisebox}
+
+\begin{solbox}
+\textbf{Studio della Matrice e Immagine:}\\
+Riduciamo a scalini:
+$$ A = \begin{pmatrix} 1 & 1 & 0 \\ 0 & -2 & 1 \\ -1 & 1 & -1 \end{pmatrix} \xrightarrow{R_3 \to R_3 + R_1} \begin{pmatrix} 1 & 1 & 0 \\ 0 & -2 & 1 \\ 0 & 2 & -1 \end{pmatrix} \xrightarrow{R_3 \to R_3 + R_2} \begin{pmatrix} 1 & 1 & 0 \\ 0 & -2 & 1 \\ 0 & 0 & 0 \end{pmatrix} $$
+Il rango di $A$ è $r=2$. I pivot si trovano nelle colonne 1 e 2.
+Per cui, le corrispondenti colonne della matrice originaria formano la base dell'immagine:
+$$ \mathcal{B}_{Im} = \left\{ \begin{pmatrix} 1 \\ 0 \\ -1 \end{pmatrix}, \begin{pmatrix} 1 \\ -2 \\ 1 \end{pmatrix} \right\} \quad \implies \dim(Im(f)) = 2 $$
+
+\textbf{Studio del Nucleo:}\\
+Usiamo il teorema di nullità+rango: la dimensione di $\mathbb{R}^3$ del dominio \ è $3$. Allora $\dim(Ker) = 3 - 2 = 1$. Il nucleo dipende da $1$ parametro libero.
+Risolviamo l'omogeno di base per lo zero usando la matrice a scalini derivata:
+$$ \begin{cases} x + y = 0 \\ -2y + z = 0 \end{cases} $$
+Sia $z = t$. Allora $y = t/2$. Di conseguenza $x = -t/2$.
+$$ \ker(A) = \{ (-t/2, t/2, t)^T \} $$
+Scegliamo arbitrariamente $t=2$ per eliminare le frazioni:
+$$ \mathcal{B}_{Ker} = \left\{ \begin{pmatrix} -1 \\ 1 \\ 2 \end{pmatrix} \right\} $$
+\end{solbox}

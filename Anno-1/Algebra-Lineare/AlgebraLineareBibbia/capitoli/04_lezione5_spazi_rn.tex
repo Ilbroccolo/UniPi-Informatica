@@ -1,0 +1,170 @@
+\newgeometry{top=2.5cm, bottom=2.5cm, left=2cm, right=2cm}
+
+% --- TITOLO ---
+\begin{center}
+    {\Huge \textbf{\color{cherryRed} Algebra Lineare e Geometria}} \\
+    \vspace{0.5cm}
+    {\Large \textit{Spazi Vettoriali e Sistemi Lineari (Lezione 5)}}
+    \vspace{1cm}
+    \hrule height 1pt
+\end{center}
+
+% -------------------------------------------------------------------------
+\section{Spazi Vettoriali su $\mathbb{R}$}
+
+\begin{concept}{Definizione di Spazio Vettoriale}{}
+Uno \textbf{Spazio Vettoriale su $\mathbb{R}$} è un insieme $V$ dotato di due operazioni:
+\begin{enumerate}
+    \item \textbf{Somma:} $+ : V \times V \longrightarrow V$
+    \item \textbf{Prodotto per scalare:} $\cdot : \mathbb{R} \times V \longrightarrow V$
+\end{enumerate}
+Tali operazioni devono soddisfare le seguenti 8 proprietà (assiomi).
+\end{concept}
+
+\subsection{Gli 8 Assiomi dello Spazio Vettoriale}
+
+Le proprietà sono divise in due gruppi. Le prime 4 riguardano la struttura di gruppo additivo $(V, +)$.
+
+\begin{proposition}{Proprietà della Somma (Gruppo Commutativo)}{}
+Per ogni $u, v, w \in V$:
+\begin{enumerate}
+    \item \textbf{Associativa:} $(u + v) + w = u + (v + w)$
+    \item \textbf{Commutativa:} $v + w = w + v$
+    \item \textbf{Esistenza dell'Elemento Neutro:}
+    \[ \exists 0 \in V : v + 0 = v, \quad \forall v \in V \]
+    \item \textbf{Esistenza dell'Opposto:}
+    \[ \forall v \in V, \exists -v \in V : v + (-v) = 0 \]
+\end{enumerate}
+\textbf{Nota:} L'insieme $(V, +)$ è dunque un \textit{Gruppo Commutativo}.
+\end{proposition}
+
+\begin{proposition}{Proprietà del Prodotto per Scalare}{}
+Per ogni $v, w \in V$ e per ogni $\lambda, \mu \in \mathbb{R}$:
+\begin{enumerate}[start=5]
+    \item \textbf{Associatività (mista):} $(\lambda\mu) \cdot v = \lambda \cdot (\mu v)$
+    \item \textbf{Elemento Neutro (moltiplicativo):} $1 \cdot v = v$
+    \item \textbf{Distributiva (rispetto alla somma di vettori):} $\lambda(v + w) = \lambda v + \lambda w$
+    \item \textbf{Distributiva (rispetto alla somma di scalari):} $(\lambda + \mu)v = \lambda v + \mu v$
+\end{enumerate}
+\end{proposition}
+
+% -------------------------------------------------------------------------
+\section{Lo Spazio $\mathbb{R}^n$}
+
+\begin{concept}{Definizione di $\mathbb{R}^n$}{}
+Definiamo l'insieme dei vettori colonna a $n$ componenti reali:
+\[
+\mathbb{R}^n = \left\{ v = \begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix} : x_i \in \mathbb{R}, \forall i=1, \dots, n \right\}
+\]
+Esempio in $\mathbb{R}^3$:
+\[
+v = \begin{pmatrix} 1 \\ \pi \\ 7/2 \end{pmatrix} \in \mathbb{R}^3
+\]
+\end{concept}
+
+\begin{proposition}{Operazioni in $\mathbb{R}^n$}{}
+L'operazione $+$ in $\mathbb{R}^n$ gode delle seguenti proprietà (analogo generale dello spazio vettoriale):
+\begin{itemize}
+    \item $\forall v, w, z \in \mathbb{R}^n \implies v + (w + z) = (v + w) + z$ (Associativa)
+    \item $\forall v, w \in \mathbb{R}^n \implies v + w = w + v$ (Commutativa)
+    \item Elemento neutro: $0 = \begin{pmatrix} 0 \\ \vdots \\ 0 \end{pmatrix}$ tale che $v + 0 = v, \forall v$
+    \item Opposto: $\forall v, \exists -v : v + (-v) = 0$
+\end{itemize}
+Inoltre valgono le proprietà legate agli scalari $\lambda, \mu \in \mathbb{R}$ (es. $(\lambda\mu)v = \lambda(\mu v)$).
+\end{proposition}
+
+% -------------------------------------------------------------------------
+\section{Sistemi Lineari}
+
+Un sistema lineare di $m$ equazioni in $n$ incognite ($m \times n$) si scrive come:
+\[
+\begin{cases}
+a_{11}x_1 + \dots + a_{1n}x_n = b_1 \\
+\vdots \\
+a_{m1}x_1 + \dots + a_{mn}x_n = b_m
+\end{cases}
+\]
+Dove $(x_1, \dots, x_n)^t$ sono le incognite in $\mathbb{R}$ e $b_i$ sono i termini noti.
+
+\subsection{Matrici e Algoritmo di Gauss}
+
+Consideriamo la matrice completa (o aumentata) del sistema $C = (A|b)$.
+Applicando l'algoritmo di Gauss ($C \xrightarrow{\text{Gauss}}$), otteniamo una matrice a gradini (ridotta):
+
+\[
+\begin{pmatrix}
+0 & 0 & p_1 & \times & \times & \dots & | & \times \\
+0 & 0 & 0 & p_2 & \times & \dots & | & \times \\
+\vdots & & & & & & & \vdots \\
+0 & 0 & 0 & 0 & \dots & p_r & \dots & | & \times \\
+0 & 0 & 0 & 0 & \dots & 0 & \dots & | & b'_{r+1} \\
+\vdots & & & & & & & \vdots \\
+0 & 0 & 0 & 0 & \dots & 0 & \dots & | & b'_m
+\end{pmatrix}
+\]
+
+Dove:
+\begin{itemize}
+    \item $r$ è il numero di pivot (rango).
+    \item Le prime $r$ righe contengono i pivot.
+    \item Le ultime $m-r$ righe sono composte da zeri nella parte dei coefficienti.
+\end{itemize}
+
+\begin{concept}{Analisi delle Soluzioni (Rouché-Capelli)}{}
+Sia $r$ il numero di pivot e $m$ il numero di equazioni.
+\begin{enumerate}
+    \item \textbf{Caso Impossibile:} Se uno dei termini noti $b'_i$ con $i > r$ è diverso da $0$ (mentre la riga a sinistra è di zeri), il sistema è IMPOSSIBILE.
+    \[ 0 = b'_i \neq 0 \implies \text{Nessuna soluzione} \]
+    
+    \item \textbf{Caso Risolubile:} Se $b'_i = 0$ per ogni $i > r$, allora le ultime $m-r$ righe sono identità ($0=0$) e non danno informazioni (possono essere trascurate).
+    \begin{itemize}
+        \item Il sistema ammette soluzioni.
+        \item Numero di variabili libere = $n - r$.
+        \item Soluzioni totali: $\infty^{n-r}$.
+    \end{itemize}
+\end{enumerate}
+\end{concept}
+
+% -------------------------------------------------------------------------
+\section{Esempio Pratico e Raffinamento della Matrice}
+
+Consideriamo un esempio di matrice associata a un sistema, dove $C$ è univocamente determinata:
+
+\[
+\begin{pmatrix}
+1 & 5 & 2 & 0 & 7 & | & 1 \\
+0 & 0 & 4 & 1 & 2 & | & 1 \\
+0 & 0 & 0 & 2 & 0 & | & 0 \\
+0 & 0 & 0 & 0 & 1 & | & 7
+\end{pmatrix}
+\]
+I pivot sono cerchiati (qui indicati dalle posizioni: $1, 4, 2, 1$).
+Le colonne senza pivot corrispondono alle \textbf{Variabili Libere}.
+
+\subsection{Strategie di riduzione (Domande dalla lavagna)}
+
+\begin{observation}{Fase 1: Normalizzazione dei Pivot}{}
+\textit{"Posso trasformare la matrice ridotta in una matrice equivalente in cui $P_i = 1, \forall i$?"} \\
+\textbf{Sì.} È sufficiente dividere ogni riga per il proprio pivot.
+Esempio di trasformazione sulla matrice sopra:
+\[
+\begin{pmatrix}
+1 & 5 & 2 & 0 & 7 & | & 1 \\
+0 & 0 & 1 & 1/4 & 1/2 & | & 1/4 \\
+0 & 0 & 0 & 1 & 0 & | & 5/2 \\
+0 & 0 & 0 & 0 & 1 & | & 7
+\end{pmatrix}
+\]
+\end{observation}
+
+\begin{observation}{Fase 2: Gauss-Jordan (Zeri sopra i Pivot)}{}
+\textit{"Posso trasformare la matrice ottenuta in (1) in una matrice che ha tutti zeri non solo sotto i pivot, ma anche sopra?"} \\
+\textbf{Sì.} Si opera "all'indietro" (dal basso verso l'alto).
+Esempio di operazione mostrato alla lavagna:
+\[
+C_1 \to C_1 - 5C_2 \quad (\text{Notazione usata, probabile riferimento a operazioni su righe/colonne per eliminazione})
+\]
+Obiettivo: Ottenere una forma diagonale (o simile) per le colonne dei pivot.
+\end{observation}
+
+\restoregeometry

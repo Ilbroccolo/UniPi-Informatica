@@ -1,0 +1,118 @@
+\newgeometry{top=2.5cm, bottom=2.5cm, left=2cm, right=2cm}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+
+% --- TITOLO ---
+\begin{center}
+    {\Huge \textbf{\color{cherryRed} Vettori Applicati nel Piano}} \\
+    \vspace{0.3cm}
+    {\Large \textit{Struttura dello Spazio Vettoriale $V_O^2$}}
+    \vspace{0.5cm}
+    \hrule height 1pt
+\end{center}
+
+\section{Costruzione Geometrica di $V_O^2$}
+
+Dalla proiezione in aula (slide 3), costruiamo lo spazio vettoriale basato sulla geometria euclidea.
+
+\begin{definition}{Vettore Applicato in $O$}{}
+Consideriamo il piano euclideo $\mathbb{R}^2$ e fissiamo un punto $O \in \mathbb{R}^2$ detto \textbf{Origine} (o punto fissato).
+
+Un \textbf{Vettore Applicato in $O$} è definito come un segmento orientato con:
+\begin{itemize}
+    \item \textbf{Primo estremo:} il punto $O$.
+    \item \textbf{Secondo estremo:} un punto $A \in \mathbb{R}^2$.
+\end{itemize}
+Si denota con $\overrightarrow{OA}$.
+\end{definition}
+
+\subsection{L'Insieme $V_O^2$}
+Definiamo l'insieme di tutti i vettori applicati nell'origine:
+\[
+V_O^2 \doteq \{ \text{vettori applicati in } O \}
+\]
+L'\textbf{Origine} di $V_O^2$ corrisponde al vettore nullo, ovvero il punto $O$ stesso (segmento degenere).
+
+% =========================================================================
+\section{Operazioni in $V_O^2$}
+
+Per dotare l'insieme $V_O^2$ di una struttura di spazio vettoriale, definiamo le due operazioni fondamentali.
+
+\subsection{1. Somma di Vettori}
+L'operazione somma è definita come:
+\[ + : V_O^2 \times V_O^2 \longrightarrow V_O^2 \]
+Dati due vettori $\overrightarrow{OA}$ e $\overrightarrow{OB}$, la somma è il vettore $\overrightarrow{OC}$ tale che $C$ è il quarto vertice del parallelogramma costruito su $OA$ e $OB$.
+
+\[ \overrightarrow{OA} + \overrightarrow{OB} = \overrightarrow{OC} \]
+
+\begin{center}
+\begin{tikzpicture}[>=Stealth, scale=1.5]
+    % Coordinate
+    \coordinate (O) at (0,0);
+    \coordinate (A) at (2, 0.5);
+    \coordinate (B) at (1, 1.5);
+    \coordinate (C) at (3, 2); % A + B
+
+    % Vettori
+    \draw[->, thick, color=maroon] (O) -- (A) node[midway, below right] {$\overrightarrow{OA}$};
+    \draw[->, thick, color=maroon] (O) -- (B) node[midway, left] {$\overrightarrow{OB}$};
+    \draw[->, ultra thick, color=cherryRed] (O) -- (C) node[midway, above left] {$\overrightarrow{OC} = \text{Somma}$};
+
+    % Linee tratteggiate per parallelogramma
+    \draw[dashed, gray] (A) -- (C);
+    \draw[dashed, gray] (B) -- (C);
+
+    % Etichette Punti
+    \node[below left] at (O) {$O$};
+    \node[right] at (A) {$A$};
+    \node[above] at (B) {$B$};
+    \node[above right] at (C) {$C$};
+\end{tikzpicture}
+\end{center}
+
+\subsection{2. Prodotto per Scalare}
+L'operazione prodotto per uno scalare $\lambda \in \mathbb{R}$ è definita come:
+\[ \cdot : \mathbb{R} \times V_O^2 \longrightarrow V_O^2 \]
+Dato uno scalare $\lambda$ e un vettore $\overrightarrow{OA}$, il risultato è un vettore $\overrightarrow{OC}$ tale che:
+\begin{itemize}
+    \item $C$ appartiene alla retta passante per $O$ e per $A$.
+    \item La lunghezza (modulo) soddisfa:
+    \[ \frac{\text{lunghezza } OC}{\text{lunghezza } OA} = |\lambda| \]
+\end{itemize}
+Se $\lambda > 0$, il verso è lo stesso. Se $\lambda < 0$, il verso è opposto.
+
+\textbf{Esempio dalla lavagna ($\lambda = 2$):}
+
+\begin{center}
+\begin{tikzpicture}[>=Stealth, scale=1.5]
+    % Coordinate
+    \coordinate (O) at (0,0);
+    \coordinate (A) at (1.5, 0.5);
+    \coordinate (C) at (3, 1); % 2 * A
+
+    % Retta tratteggiata
+    \draw[dashed, gray] (-0.5, -0.16) -- (3.5, 1.16);
+
+    % Vettori
+    \draw[->, thick, color=maroon] (O) -- (A) node[midway, above left] {$\overrightarrow{OA}$};
+    \draw[->, ultra thick, color=cherryRed, transform canvas={yshift=-2pt}] (O) -- (C) node[midway, below right] {$\lambda \cdot \overrightarrow{OA}$};
+
+    % Etichette
+    \node[below left] at (O) {$O$};
+    \node[above] at (A) {$A$};
+    \node[above] at (C) {$C$};
+    \node[right] at (3.5, 1) {$\lambda=2$};
+\end{tikzpicture}
+\end{center}
+
+\begin{tcolorbox}[colback=white, colframe=cherryRed, title=Affermazione (AFF)]
+L'insieme $V_O^2$, dotato delle operazioni di somma (regola del parallelogramma) e prodotto per scalare (dilatazione/contrazione), è uno \textbf{Spazio Vettoriale} su $\mathbb{R}$.
+\end{tcolorbox}
+
+\begin{observation}{Scopo della Lezione (Blackboard)}{}
+Alla base della lavagna si legge:
+\textit{"Scopo: Dotare $V_O^2$ di una struttura di spazio vettoriale."} 
+Questo significa verificare che le operazioni geometriche appena definite soddisfino gli 8 assiomi visti precedentemente (associatività, elemento neutro, ecc.).
+\end{observation}
+
+\restoregeometry
