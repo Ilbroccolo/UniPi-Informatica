@@ -23,7 +23,12 @@
         "Equazioni differenziali ordinarie (ODE I e II ordine)"
       ],
       "note_esame": "Presenti dossier e schemi rapidi + simulazioni d'esame.",
-      "cfu": 12
+      "cfu": 12,
+      "consigli_telegram": [
+        "Scritto ad alta difficoltà per lunghezza e precisione (limiti con Taylor, integrali impropri, studi di funzione).",
+        "Orale rigoroso sulle dimostrazioni dei teoremi cardine (Weierstrass, Rolle, Lagrange).",
+        "Le date escono su esami.unipi.it ~1 mese prima: iscriversi subito appena aprono."
+      ]
     },
     {
       "id": "algebra-lineare",
@@ -95,14 +100,22 @@
         "Alberi, grafi e programmazione dinamica"
       ],
       "note_esame": "Disponibile Bibbia_Programmazione_Algoritmica.pdf. Corso B (matricola dispari): scritto forte può agevolare l'orale; usare le dimostrazioni delle dispense ufficiali.",
-      "cfu": 15
+      "cfu": 15,
+      "consigli_telegram": [
+        "Corso B (Matricola Dispari): con uno scritto molto alto a volte la Prof.ssa Pagli alleggerisce o fa saltare l'orale.",
+        "Usare sempre le dimostrazioni ufficiali viste sulle dispense del Corso B."
+      ]
     },
     {
       "id": "architettura-elaboratori",
       "anno": 1,
       "semestre": 2,
       "materia": "Architettura degli Elaboratori",
-      "docenti": [],
+      "docenti": [
+        "Prof. Marco Danelutto",
+        "Prof. Massimo Torquati",
+        "Prof. Gabriele Mencagli"
+      ],
       "modalita_esame": "Scritto + Orale",
       "stato": "Completato",
       "cartella": "Anno-1/Architettura-Elaboratori",
@@ -112,7 +125,12 @@
         "Assembly e architettura CPU"
       ],
       "note_esame": "Al Corso B (matricola dispari) è richiesto Verilog per il progetto di laboratorio.",
-      "cfu": 9
+      "cfu": 9,
+      "consigli_telegram": [
+        "Scritto con esercizi di Assembly ARMv7 su carta (anche funzioni ricorsive) e reti logiche.",
+        "Corso B: richiesto progetto in Verilog (Danelutto) e progetto server in C con socket/select/poll (Torquati, controllo rigoroso anti-plagio).",
+        "Danelutto usa Didawiki, fa ragionare all'orale e apprezza progetti extra personali; Mencagli è molto tranquillo su cache/I/O."
+      ]
     },
     {
       "id": "paradigmi-di-programmazione",
@@ -120,7 +138,8 @@
       "semestre": 2,
       "materia": "Paradigmi di Programmazione",
       "docenti": [
-        "Prof. Paolo Milazzo"
+        "Prof. Paolo Milazzo",
+        "Prof.ssa Chiara Bodei"
       ],
       "modalita_esame": "Scritto + Orale",
       "stato": "In corso",
@@ -131,7 +150,12 @@
         "Sistemi di tipi e Lambda-calcolo tipato"
       ],
       "note_esame": "Disponibili Tomo Master LaTeX, eserciziario risolto e dispense ufficiali.",
-      "cfu": 9
+      "cfu": 9,
+      "consigli_telegram": [
+        "OCaml è lo scoglio principale dello scritto (3–4 esercizi su OCaml, inferenza tipi, OOP). Nessun progetto da consegnare.",
+        "L'orale parte sempre dalla correzione dello scritto: saper spiegare i propri errori vale metà esame.",
+        "Prof. Milazzo molto chiaro e disponibile (presidente commissione tirocini); Prof.ssa Bodei insiste su Liskov Substitution Principle, Garbage Collector e lock/mutua esclusione."
+      ]
     },
     {
       "id": "ricerca-operativa",
@@ -139,7 +163,8 @@
       "semestre": 2,
       "materia": "Ricerca Operativa",
       "docenti": [
-        "Prof. Luca Mencarelli"
+        "Prof. Luca Mencarelli",
+        "Prof. Novellani"
       ],
       "modalita_esame": "Compitini (parziali) / Scritto + Orale",
       "stato": "In corso",
@@ -152,7 +177,13 @@
         "Grafi, flusso massimo (Ford-Fulkerson), Branch & Bound, TSP"
       ],
       "note_esame": "1° Compitino (metà novembre) su Modellazione e Grafi; disponibili Bibbia LaTeX, formulari e 24 lezioni in Markdown.",
-      "cfu": 6
+      "cfu": 6,
+      "consigli_telegram": [
+        "Scritto definito 'una gara di velocità con la calcolatrice' (Simplesso, duale, sensitività, zaino con DP e Branch & Bound).",
+        "Se non c'è un form esterno per i compitini, iscriversi su esami.unipi.it scrivendo 'Orale Compitini' nelle Note.",
+        "Prof. Mencarelli: lezioni heavy sulle dimostrazioni, ma all'orale guida nel ragionamento. Domande fisse: Simplesso primale/duale (significato grafico), B&B zaino, Dualità forte/debole, Scarti complementari, Base primale degenere, Cammini aumentanti / Flusso massimo / Grafo residuo.",
+        "Prof. Novellani: slide chiarissime su Teams e grande disponibilità."
+      ]
     }
   ],
   "info_generali_inf_l": {

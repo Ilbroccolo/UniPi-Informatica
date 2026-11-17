@@ -22,11 +22,11 @@
 | **S1** | [**Programmazione**](https://github.com/Ilbroccolo/UniPi-Programmazione) | 9 | *Da compilare* | Scritto / Pratico + Orale | 🟢 |
 | **S2** | [**Laboratorio 1**](https://github.com/Ilbroccolo/UniPi-Laboratorio-1) | 12 | *Da compilare* | Prova pratica / Progetto | 🟢 |
 | **S2** | [**Algoritmica**](https://github.com/Ilbroccolo/UniPi-Algoritmica) | 15 | Prof.ssa Linda Pagli *(Corso B)* | Scritto + Orale | 🟢 |
-| **S2** | [**Architettura degli Elaboratori**](https://github.com/Ilbroccolo/UniPi-Architettura-Elaboratori) | 9 | *Da compilare* | Scritto + Orale *(Verilog)* | 🟢 |
+| **S2** | [**Architettura degli Elaboratori**](https://github.com/Ilbroccolo/UniPi-Architettura-Elaboratori) | 9 | Prof. Danelutto / Torquati / Mencagli | Scritto + Orale *(Verilog)* | 🟢 |
 
 ### 🟡 Anno 2 *(in corso)*
 
 | Sem. | Materia *(clicca per aprire la repo)* | CFU | Docente | Modalità Esame | Stato |
 | :---: | :--- | :---: | :--- | :--- | :---: |
-| **S2** | [**Paradigmi di Programmazione**](https://github.com/Ilbroccolo/UniPi-Paradigmi-Programmazione) | 9 | Prof. Paolo Milazzo | Scritto + Orale | 🟡 |
-| **S2** | [**Ricerca Operativa**](https://github.com/Ilbroccolo/UniPi-Ricerca-Operativa) | 6 | Prof. Luca Mencarelli | Compitini / Scritto + Orale | 🟡 |
+| **S2** | [**Paradigmi di Programmazione**](https://github.com/Ilbroccolo/UniPi-Paradigmi-Programmazione) | 9 | Prof. Milazzo / Prof.ssa Bodei | Scritto + Orale | 🟡 |
+| **S2** | [**Ricerca Operativa**](https://github.com/Ilbroccolo/UniPi-Ricerca-Operativa) | 6 | Prof. Mencarelli / Prof. Novellani | Compitini / Scritto + Orale | 🟡 |
