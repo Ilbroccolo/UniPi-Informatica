@@ -31,3 +31,5 @@
 | **S1** | **Paradigmi di Programmazione** | Prof. Milazzo | Scritto + Orale | Semantica, λ-calcolo, sistemi di tipi | 🟡 | [`Anno-2/Paradigmi-di-Programmazione`](./Anno-2/Paradigmi-di-Programmazione) |
 | **S1** | **Ricerca Operativa** | Prof. Luca Mencarelli | Compitini / Scritto + Orale | PL/PLI, Simplesso, Dualità/KKT, Grafi, B&amp;B, TSP | 🟡 | [`Anno-2/Ricerca-Operativa`](./Anno-2/Ricerca-Operativa) |
 
+### 💬 Chat Studenti & Esami
+- [**Consigli dalle Chat Studenti (Esami & Mobilità)**](./Erasmus-NOVA-FCT/Consigli-Chat-Studenti.md)
