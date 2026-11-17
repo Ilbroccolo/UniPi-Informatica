@@ -8,7 +8,10 @@
       "anno": 1,
       "semestre": 1,
       "materia": "Analisi Matematica",
-      "docenti": ["Prof. Carlo Romano Grisanti", "Prof.ssa Elisabetta Chiodaroli"],
+      "docenti": [
+        "Prof. Carlo Romano Grisanti",
+        "Prof.ssa Elisabetta Chiodaroli"
+      ],
       "modalita_esame": "Test a risposta multipla / Scritto + Orale",
       "stato": "Completato / Appello",
       "cartella": "Anno-1/Analisi-Matematica",
@@ -101,14 +104,17 @@
         "Circuiti combinatori e sequenziali",
         "Assembly e architettura CPU"
       ],
-      "note_esame": "Dispense ed esercizi del 2° semestre."
+      "note_esame": "Dispense ed esercizi del 2° semestre.",
+      "cfu": 9
     },
     {
       "id": "paradigmi-di-programmazione",
       "anno": 2,
       "semestre": 1,
       "materia": "Paradigmi di Programmazione",
-      "docenti": ["Prof. Milazzo"],
+      "docenti": [
+        "Prof. Milazzo"
+      ],
       "modalita_esame": "Scritto + Orale",
       "stato": "In corso",
       "cartella": "Anno-2/Paradigmi-di-Programmazione",
@@ -117,14 +123,17 @@
         "Lambda-calcolo non tipato",
         "Sistemi di tipi e Lambda-calcolo tipato"
       ],
-      "note_esame": "Disponibili Tomo Master LaTeX, eserciziario risolto e dispense ufficiali."
+      "note_esame": "Disponibili Tomo Master LaTeX, eserciziario risolto e dispense ufficiali.",
+      "cfu": 6
     },
     {
       "id": "ricerca-operativa",
       "anno": 2,
       "semestre": 1,
       "materia": "Ricerca Operativa",
-      "docenti": ["Prof. Luca Mencarelli"],
+      "docenti": [
+        "Prof. Luca Mencarelli"
+      ],
       "modalita_esame": "Compitini (parziali) / Scritto + Orale",
       "stato": "In corso",
       "cartella": "Anno-2/Ricerca-Operativa",
@@ -137,5 +146,52 @@
       ],
       "note_esame": "1° Compitino (metà novembre) su Modellazione e Grafi; disponibili Bibbia LaTeX, formulari e 24 lezioni in Markdown."
     }
-  ]
+  ],
+  "erasmus_nova_fct": {
+    "ateneo_ospitante": "NOVA FCT — Faculdade de Ciências e Tecnologia (Lisbona)",
+    "semestre": "Primaverile (2° Semestre)",
+    "totale_ects": 30,
+    "canali_comunicazione": {
+      "discord_principale": "n.inf (Núcleo de Informática) — https://linktr.ee/ninf_fct (@ninf_fct)",
+      "reddit": "r/FCT",
+      "whatsapp_telegram": "Gruppi informali per corso/anno (link reperibili sul Discord n.inf)"
+    },
+    "corsi": [
+      {
+        "corso_nova": "Arquitetura de Computadores (11152)",
+        "equivalenza_unipi": "Architettura degli Elaboratori",
+        "ects": 9,
+        "docenti": [
+          "Prof. Nuno Preguiça"
+        ],
+        "note": "Laboratori settimanali e Defesa do Projeto (difesa orale obbligatoria del codice)."
+      },
+      {
+        "corso_nova": "Databases (10640)",
+        "equivalenza_unipi": "Basi di Dati (Anticipo 3° anno)",
+        "ects": 9,
+        "docenti": [],
+        "note": "Progetto con diagramma ER e SQL; verificare scadenze milestone su CLIP."
+      },
+      {
+        "corso_nova": "Probability and Statistics D (12658)",
+        "equivalenza_unipi": "Statistica",
+        "ects": 6,
+        "docenti": [],
+        "note": "Corso di probabilità e statistica."
+      },
+      {
+        "corso_nova": "Empreendedorismo (3 ECTS) + CTCT (3 ECTS)",
+        "equivalenza_unipi": "Esame a Libera Scelta",
+        "ects": 6,
+        "docenti": [
+          "Prof.ssa Fernanda Llussá",
+          "Prof. Aneesh Zutshi",
+          "Prof. António Grilo",
+          "Prof. Ruy Araújo da Costa"
+        ],
+        "note": "CTCT richiede l'80% di frequenza obbligatoria e valutazione continua su Moodle."
+      }
+    ]
+  }
 }

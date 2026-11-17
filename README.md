@@ -30,3 +30,6 @@
 | :---: | :--- | :--- | :--- | :--- | :---: | :--- |
 | **S1** | **Paradigmi di Programmazione** | Prof. Milazzo | Scritto + Orale | Semantica, λ-calcolo, sistemi di tipi | 🟡 | [`Anno-2/Paradigmi-di-Programmazione`](./Anno-2/Paradigmi-di-Programmazione) |
 | **S1** | **Ricerca Operativa** | Prof. Luca Mencarelli | Compitini / Scritto + Orale | PL/PLI, Simplesso, Dualità/KKT, Grafi, B&amp;B, TSP | 🟡 | [`Anno-2/Ricerca-Operativa`](./Anno-2/Ricerca-Operativa) |
+
+### ✈️ Mobilità Erasmus+ (NOVA FCT Lisbona)
+- [**Erasmus-NOVA-FCT**](./Erasmus-NOVA-FCT) — Piano studi (30 ECTS), docenti NOVA, calendario e canali Discord/Telegram/WhatsApp
