@@ -4,6 +4,7 @@
 | :--- | :--- |
 | **Corso di Laurea** | Laurea Triennale in Informatica — Università di Pisa (UniPi) |
 | **Anno / Semestre** | Anno 1 · Semestre 1 |
+| **CFU** | 6 |
 | **Docente/i** | *Da compilare* |
 | **Modalità d'Esame** | Scritto + Orale |
 | **Stato** | Completato |

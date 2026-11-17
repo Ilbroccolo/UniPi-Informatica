@@ -4,6 +4,7 @@
 | :--- | :--- |
 | **Corso di Laurea** | Laurea Triennale in Informatica — Università di Pisa (UniPi) |
 | **Anno / Semestre** | Anno 1 · Semestre 2 |
+| **CFU** | 9 |
 | **Docente/i** | *Da compilare* |
 | **Modalità d'Esame** | Scritto + Orale |
 | **Stato** | Completato |
@@ -16,7 +17,7 @@
 - Assembly e architettura CPU
 
 ## 📝 Note d'Esame
-Dispense ed esercizi del 2° semestre.
+Al Corso B (matricola dispari) è richiesto Verilog per il progetto di laboratorio.
 
 ## 📂 Contenuto della Cartella
 - `Appunti-Latex`

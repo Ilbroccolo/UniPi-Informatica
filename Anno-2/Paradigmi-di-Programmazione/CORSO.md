@@ -3,8 +3,9 @@
 | Campo | Dettaglio |
 | :--- | :--- |
 | **Corso di Laurea** | Laurea Triennale in Informatica — Università di Pisa (UniPi) |
-| **Anno / Semestre** | Anno 2 · Semestre 1 |
-| **Docente/i** | Prof. Milazzo |
+| **Anno / Semestre** | Anno 2 · Semestre 2 |
+| **CFU** | 9 |
+| **Docente/i** | Prof. Paolo Milazzo |
 | **Modalità d'Esame** | Scritto + Orale |
 | **Stato** | In corso |
 
@@ -22,3 +23,4 @@ Disponibili Tomo Master LaTeX, eserciziario risolto e dispense ufficiali.
 - `01_TOMO_MASTER_COMPLETO`
 - `02_SOLO_APPROFONDIMENTI_TEORICI`
 - `03_ESERCIZIARI_E_APPENDICI`
+- `README.md`

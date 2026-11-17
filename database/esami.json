@@ -22,7 +22,8 @@
         "Serie numeriche e polinomi di Taylor",
         "Equazioni differenziali ordinarie (ODE I e II ordine)"
       ],
-      "note_esame": "Presenti dossier e schemi rapidi + simulazioni d'esame."
+      "note_esame": "Presenti dossier e schemi rapidi + simulazioni d'esame.",
+      "cfu": 12
     },
     {
       "id": "algebra-lineare",
@@ -40,7 +41,8 @@
         "Applicazioni lineari",
         "Autovalori, diagonalizzazione e prodotti scalari"
       ],
-      "note_esame": "Disponibile Bibbia LaTeX completa ed eserciziario."
+      "note_esame": "Disponibile Bibbia LaTeX completa ed eserciziario.",
+      "cfu": 6
     },
     {
       "id": "programmazione",
@@ -56,12 +58,13 @@
         "Strutture di controllo e funzioni",
         "Ricorsione e strutture dati base"
       ],
-      "note_esame": "Appunti ed esercizi raccolti dal 1° anno."
+      "note_esame": "Corrisponde a Fondamenti / Programmazione 1° anno.",
+      "cfu": 9
     },
     {
       "id": "laboratorio-1",
       "anno": 1,
-      "semestre": 1,
+      "semestre": 2,
       "materia": "Laboratorio 1",
       "docenti": [],
       "modalita_esame": "Prova pratica / Progetto",
@@ -72,14 +75,17 @@
         "Flusso di controllo",
         "Problemi algoritmici pratici"
       ],
-      "note_esame": "Esercitazioni pratiche in JavaScript."
+      "note_esame": "Esercitazioni pratiche in JavaScript.",
+      "cfu": 12
     },
     {
       "id": "algoritmica",
       "anno": 1,
       "semestre": 2,
       "materia": "Algoritmica",
-      "docenti": [],
+      "docenti": [
+        "Prof.ssa Linda Pagli (Corso B)"
+      ],
       "modalita_esame": "Scritto + Orale",
       "stato": "Completato",
       "cartella": "Anno-1/Algoritmica",
@@ -88,7 +94,8 @@
         "Algoritmi di ordinamento (MergeSort, QuickSort, ecc.)",
         "Alberi, grafi e programmazione dinamica"
       ],
-      "note_esame": "Disponibile Bibbia_Programmazione_Algoritmica.pdf e log errori."
+      "note_esame": "Disponibile Bibbia_Programmazione_Algoritmica.pdf. Corso B (matricola dispari): scritto forte può agevolare l'orale; usare le dimostrazioni delle dispense ufficiali.",
+      "cfu": 15
     },
     {
       "id": "architettura-elaboratori",
@@ -104,16 +111,16 @@
         "Circuiti combinatori e sequenziali",
         "Assembly e architettura CPU"
       ],
-      "note_esame": "Dispense ed esercizi del 2° semestre.",
+      "note_esame": "Al Corso B (matricola dispari) è richiesto Verilog per il progetto di laboratorio.",
       "cfu": 9
     },
     {
       "id": "paradigmi-di-programmazione",
       "anno": 2,
-      "semestre": 1,
+      "semestre": 2,
       "materia": "Paradigmi di Programmazione",
       "docenti": [
-        "Prof. Milazzo"
+        "Prof. Paolo Milazzo"
       ],
       "modalita_esame": "Scritto + Orale",
       "stato": "In corso",
@@ -124,12 +131,12 @@
         "Sistemi di tipi e Lambda-calcolo tipato"
       ],
       "note_esame": "Disponibili Tomo Master LaTeX, eserciziario risolto e dispense ufficiali.",
-      "cfu": 6
+      "cfu": 9
     },
     {
       "id": "ricerca-operativa",
       "anno": 2,
-      "semestre": 1,
+      "semestre": 2,
       "materia": "Ricerca Operativa",
       "docenti": [
         "Prof. Luca Mencarelli"
@@ -144,7 +151,13 @@
         "Dualità, scarti complementari (KKT) e analisi di sensitività",
         "Grafi, flusso massimo (Ford-Fulkerson), Branch & Bound, TSP"
       ],
-      "note_esame": "1° Compitino (metà novembre) su Modellazione e Grafi; disponibili Bibbia LaTeX, formulari e 24 lezioni in Markdown."
+      "note_esame": "1° Compitino (metà novembre) su Modellazione e Grafi; disponibili Bibbia LaTeX, formulari e 24 lezioni in Markdown.",
+      "cfu": 6
     }
-  ]
+  ],
+  "info_generali_inf_l": {
+    "corso_assegnato": "Corso B (Matricola Dispari)",
+    "portale_appelli": "https://esami.unipi.it/esami2/elencoappelli.php?from=sappelli&docente=&insegnamento=&cds=INF-L&cerca=",
+    "regole_chat_telegram": "database/Info_Chat_Telegram.md"
+  }
 }

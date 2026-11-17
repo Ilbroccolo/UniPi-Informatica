@@ -3,7 +3,8 @@
 | Campo | Dettaglio |
 | :--- | :--- |
 | **Corso di Laurea** | Laurea Triennale in Informatica — Università di Pisa (UniPi) |
-| **Anno / Semestre** | Anno 2 · Semestre 1 |
+| **Anno / Semestre** | Anno 2 · Semestre 2 |
+| **CFU** | 6 |
 | **Docente/i** | Prof. Luca Mencarelli |
 | **Modalità d'Esame** | Compitini (parziali) / Scritto + Orale |
 | **Stato** | In corso |
@@ -25,3 +26,4 @@
 - `02_SOLO_APPROFONDIMENTI_TEORICI_E_DIMOSTRAZIONI`
 - `03_ESERCIZIARI_E_APPENDICI`
 - `Lezioni-Markdown`
+- `README.md`

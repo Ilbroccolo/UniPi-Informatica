@@ -4,6 +4,7 @@
 | :--- | :--- |
 | **Corso di Laurea** | Laurea Triennale in Informatica — Università di Pisa (UniPi) |
 | **Anno / Semestre** | Anno 1 · Semestre 1 |
+| **CFU** | 12 |
 | **Docente/i** | Prof. Carlo Romano Grisanti, Prof.ssa Elisabetta Chiodaroli |
 | **Modalità d'Esame** | Test a risposta multipla / Scritto + Orale |
 | **Stato** | Completato / Appello |
