@@ -1,6 +1,6 @@
 <div align="center">
-  <h1>🎓 UniPi — Informatica (Database Esami, Appunti &amp; Bibbie)</h1>
-  <p><b>Archivio centrale e database strutturato per materia, CFU, docente, modalità d'esame, lezioni e info dal gruppo Telegram — Università di Pisa (Corso B · INF-L).</b></p>
+  <h1>🎓 UniPi — Informatica (Hub Centrale &amp; Database Esami)</h1>
+  <p><b>Indice centrale, database JSON e link diretti alle repository dedicate di ogni singola materia — Università di Pisa (Corso B · INF-L).</b></p>
 
   ![LaTeX](https://img.shields.io/badge/LaTeX-008080?style=for-the-badge&logo=latex&logoColor=white)
   ![Markdown](https://img.shields.io/badge/Markdown-000000?style=for-the-badge&logo=markdown&logoColor=white)
@@ -9,24 +9,24 @@
 
 ---
 
-## 🗂️ Database Materie &amp; Esami
+## 🗂️ Database Materie &amp; Repository Dedicate
 
 > 📦 **Dati strutturati**: [`database/esami.json`](./database/esami.json) · 💬 **Regole &amp; Info Chat Telegram**: [`database/Info_Chat_Telegram.md`](./database/Info_Chat_Telegram.md) · 🔗 [**Appelli INF-L**](https://esami.unipi.it/esami2/elencoappelli.php?from=sappelli&docente=&insegnamento=&cds=INF-L&cerca=)
 
 ### 🟢 Anno 1
 
-| Sem. | Materia | CFU | Docente | Modalità Esame | Argomenti &amp; Lezioni | Stato | Cartella |
-| :---: | :--- | :---: | :--- | :--- | :--- | :---: | :--- |
-| **S1** | **Analisi Matematica** | 12 | Prof. Grisanti / Prof.ssa Chiodaroli | Test / Scritto + Orale | Limiti, derivate, integrali, serie, Taylor, ODE | 🟢 | [`Anno-1/Analisi-Matematica`](./Anno-1/Analisi-Matematica) |
-| **S1** | **Algebra Lineare** | 6 | *Da compilare* | Scritto + Orale | Vettori, matrici, Gauss, spazi, autovalori | 🟢 | [`Anno-1/Algebra-Lineare`](./Anno-1/Algebra-Lineare) |
-| **S1** | **Programmazione** | 9 | *Da compilare* | Scritto / Pratico + Orale | Fondamenti, controllo, ricorsione, strutture dati | 🟢 | [`Anno-1/Programmazione`](./Anno-1/Programmazione) |
-| **S2** | **Laboratorio 1** | 12 | *Da compilare* | Prova pratica / Progetto | JavaScript, flusso di controllo, esercizi | 🟢 | [`Anno-1/Laboratorio-1`](./Anno-1/Laboratorio-1) |
-| **S2** | **Algoritmica** | 15 | Prof.ssa Linda Pagli *(Corso B)* | Scritto + Orale | Complessità, ordinamenti, alberi, grafi, DP | 🟢 | [`Anno-1/Algoritmica`](./Anno-1/Algoritmica) |
-| **S2** | **Architettura degli Elaboratori** | 9 | *Da compilare* | Scritto + Orale | Binario, circuiti, Assembly, Verilog *(Corso B)* | 🟢 | [`Anno-1/Architettura-Elaboratori`](./Anno-1/Architettura-Elaboratori) |
+| Sem. | Materia *(clicca per aprire la repo)* | CFU | Docente | Modalità Esame | Stato |
+| :---: | :--- | :---: | :--- | :--- | :---: |
+| **S1** | [**Analisi Matematica**](https://github.com/Ilbroccolo/UniPi-Analisi-Matematica) | 12 | Prof. Grisanti / Prof.ssa Chiodaroli | Test / Scritto + Orale | 🟢 |
+| **S1** | [**Algebra Lineare**](https://github.com/Ilbroccolo/UniPi-Algebra-Lineare) | 6 | *Da compilare* | Scritto + Orale | 🟢 |
+| **S1** | [**Programmazione**](https://github.com/Ilbroccolo/UniPi-Programmazione) | 9 | *Da compilare* | Scritto / Pratico + Orale | 🟢 |
+| **S2** | [**Laboratorio 1**](https://github.com/Ilbroccolo/UniPi-Laboratorio-1) | 12 | *Da compilare* | Prova pratica / Progetto | 🟢 |
+| **S2** | [**Algoritmica**](https://github.com/Ilbroccolo/UniPi-Algoritmica) | 15 | Prof.ssa Linda Pagli *(Corso B)* | Scritto + Orale | 🟢 |
+| **S2** | [**Architettura degli Elaboratori**](https://github.com/Ilbroccolo/UniPi-Architettura-Elaboratori) | 9 | *Da compilare* | Scritto + Orale *(Verilog)* | 🟢 |
 
 ### 🟡 Anno 2 *(in corso)*
 
-| Sem. | Materia | CFU | Docente | Modalità Esame | Argomenti &amp; Lezioni | Stato | Cartella |
-| :---: | :--- | :---: | :--- | :--- | :--- | :---: | :--- |
-| **S2** | **Paradigmi di Programmazione** | 9 | Prof. Paolo Milazzo | Scritto + Orale | Semantica, λ-calcolo, sistemi di tipi | 🟡 | [`Anno-2/Paradigmi-di-Programmazione`](./Anno-2/Paradigmi-di-Programmazione) |
-| **S2** | **Ricerca Operativa** | 6 | Prof. Luca Mencarelli | Compitini / Scritto + Orale | PL/PLI, Simplesso, Dualità/KKT, Grafi, B&amp;B, TSP | 🟡 | [`Anno-2/Ricerca-Operativa`](./Anno-2/Ricerca-Operativa) |
+| Sem. | Materia *(clicca per aprire la repo)* | CFU | Docente | Modalità Esame | Stato |
+| :---: | :--- | :---: | :--- | :--- | :---: |
+| **S2** | [**Paradigmi di Programmazione**](https://github.com/Ilbroccolo/UniPi-Paradigmi-Programmazione) | 9 | Prof. Paolo Milazzo | Scritto + Orale | 🟡 |
+| **S2** | [**Ricerca Operativa**](https://github.com/Ilbroccolo/UniPi-Ricerca-Operativa) | 6 | Prof. Luca Mencarelli | Compitini / Scritto + Orale | 🟡 |
